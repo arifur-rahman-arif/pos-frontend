@@ -2,6 +2,7 @@ import '@/styles/pages/globals.scss';
 import '@/styles/variable.scss';
 import '@/styles/pages/login.scss';
 import '@/styles/components/auth.scss';
+import Head from 'next/head';
 import { Provider } from 'react-redux';
 import type { AppProps } from 'next/app';
 import { Navigation, TopNavigation } from '@/layouts/Navigation';
@@ -31,15 +32,20 @@ const App = ({ Component, pageProps }: AppProps) => {
     const NavigationLayout = navigationLayouts[layout] || ((children) => <>{children}</>);
 
     return (
-        <Provider store={store}>
-            <ThemeConfig>
-                <GlobalStyles />
-                <NavigationLayout>
-                    <Component {...pageProps} />
-                </NavigationLayout>
-                <Alert />
-            </ThemeConfig>
-        </Provider>
+        <>
+            <Head>
+                <title>SaaS POS</title>
+            </Head>
+            <Provider store={store}>
+                <ThemeConfig>
+                    <GlobalStyles />
+                    <NavigationLayout>
+                        <Component {...pageProps} />
+                    </NavigationLayout>
+                    <Alert />
+                </ThemeConfig>
+            </Provider>
+        </>
     );
 };
 

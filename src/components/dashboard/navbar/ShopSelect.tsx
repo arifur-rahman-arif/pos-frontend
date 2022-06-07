@@ -65,10 +65,9 @@ const ShopSelect = () => {
                     aria-haspopup="true"
                     aria-expanded={open ? 'true' : undefined}
                     sx={{
-                        fontSize: '1.5rem',
+                        fontSize: '1.45rem',
                         mr: -1,
-                        width: '55px',
-                        height: '55px'
+                        p: 2
                     }}
                 >
                     <BsShop />

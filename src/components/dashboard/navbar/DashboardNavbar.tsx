@@ -70,7 +70,7 @@ const DashboardNavbar = ({ toggleDrawer, sidebarPosition, noSideBar = false }: D
                     <MHidden width="lgUp">
                         <IconButton
                             onClick={toggleDrawer(sidebarPosition, true)}
-                            sx={{ mr: 1, color: 'text.primary' }}
+                            sx={{ mr: 1, color: 'text.primary', p: 2 }}
                         >
                             <AiOutlineMenuUnfold />
                         </IconButton>
@@ -81,7 +81,7 @@ const DashboardNavbar = ({ toggleDrawer, sidebarPosition, noSideBar = false }: D
                 {noSideBar && (
                     <IconButton
                         onClick={toggleDrawer(sidebarPosition, true)}
-                        sx={{ mr: 1, color: 'text.primary' }}
+                        sx={{ color: 'text.primary', p: 2 }}
                     >
                         <AiOutlineMenuUnfold />
                     </IconButton>
@@ -92,7 +92,7 @@ const DashboardNavbar = ({ toggleDrawer, sidebarPosition, noSideBar = false }: D
                 <Box sx={{ flexGrow: 1 }} />
 
                 <Stack direction="row" alignItems="center" spacing={{ xs: 0.5, sm: 1.5 }}>
-                    <ShopSelect />
+                    {!noSideBar && <ShopSelect />}
                     <NotificationsPopover />
                     <AccountPopover />
                 </Stack>

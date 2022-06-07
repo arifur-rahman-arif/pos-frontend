@@ -93,7 +93,26 @@ const sidebarMenuList = [
     {
         title: 'Orders',
         path: '/dashboard/orders',
-        icon: <MdOutlineReceiptLong />
+        icon: <MdOutlineReceiptLong />,
+        hideSubMenu: true,
+        subMenu: [
+            {
+                // For floating menu
+                title: 'Orders',
+                path: '/dashboard/orders',
+                icon: <BiCircle />,
+                activeIcon: <MdCircle />,
+                show: true,
+                hideMenuOnMaximized: true
+            },
+            {
+                title: 'Order details',
+                path: '/dashboard/order/[id]',
+                icon: <BiCircle />,
+                activeIcon: <MdCircle />,
+                show: false
+            }
+        ]
     },
     {
         title: 'Coupons',

@@ -12,8 +12,6 @@ class MyDocument extends Document {
         return (
             <Html>
                 <Head>
-                    <title>SaaS POS</title>
-
                     <link
                         href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap"
                         rel="stylesheet"

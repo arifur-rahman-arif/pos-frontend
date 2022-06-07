@@ -214,7 +214,9 @@ const Sidebar = ({
                                                 px: 2,
                                                 py: 2,
                                                 mx: 1,
-                                                fontSize: '1.6rem'
+                                                fontSize: '1.6rem',
+                                                width: '60px',
+                                                height: '60px'
                                             }}
                                         >
                                             <HiChevronDoubleLeft />
@@ -230,7 +232,9 @@ const Sidebar = ({
                                             py: 2,
                                             mx: 1,
                                             my: 2,
-                                            fontSize: '1.6rem'
+                                            fontSize: '1.6rem',
+                                            width: '60px',
+                                            height: '60px'
                                         }}
                                     >
                                         <HiChevronDoubleRight />

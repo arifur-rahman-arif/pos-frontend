@@ -3,6 +3,7 @@ import { styled, alpha } from '@mui/material/styles';
 import { Input, Slide, Button, InputAdornment, ClickAwayListener, IconButton } from '@mui/material';
 import { APP_BAR_DESKTOP, APP_BAR_MOBILE } from '@/layouts/Navigation/Navigation';
 import { HiOutlineSearch } from 'react-icons/hi';
+import { ImSearch } from 'react-icons/im';
 
 const SearchbarStyle = styled('div')(({ theme }) => ({
     top: 0,
@@ -48,7 +49,7 @@ const Searchbar = () => {
         <ClickAwayListener onClickAway={handleClose}>
             <div>
                 {!isOpen && (
-                    <IconButton onClick={handleOpen}>
+                    <IconButton onClick={handleOpen} sx={{ p: 2 }}>
                         <HiOutlineSearch />
                     </IconButton>
                 )}
@@ -61,15 +62,9 @@ const Searchbar = () => {
                             disableUnderline
                             placeholder="Search…"
                             startAdornment={
-                                <InputAdornment position="start">
-                                    <i
-                                        className="fa-solid fa-magnifying-glass"
-                                        style={{
-                                            width: '20px',
-                                            height: '20px'
-                                        }}
-                                    ></i>
-                                </InputAdornment>
+                                <IconButton sx={{ mr: 2 }}>
+                                    <HiOutlineSearch />
+                                </IconButton>
                             }
                             sx={{
                                 mr: 1,

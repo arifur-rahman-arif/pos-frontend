@@ -3,6 +3,8 @@ import { NextPage } from 'next';
 import { SITE_NAME } from '@/utils/global';
 import Page from '@/components/Page';
 import { ListTopNavigation } from '@/components/page-component/list-navigation';
+import { OrderDetails, OrderItems } from '@/components/order';
+import { Grid } from '@mui/material';
 
 /**
  * Single product page to edit or view the product details in depth
@@ -14,7 +16,17 @@ const OrderPage: NextPage = () => {
 
     return (
         <Page title={siteName}>
-            <ListTopNavigation title="Order details" url="/dashboard/orders" />
+            <ListTopNavigation title="Order #345 details" url="/dashboard/orders" />
+
+            <Grid container spacing={3}>
+                <Grid item xs={12}>
+                    <OrderDetails />
+                </Grid>
+
+                <Grid item xs={12} md={8}>
+                    <OrderItems />
+                </Grid>
+            </Grid>
         </Page>
     );
 };
