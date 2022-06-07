@@ -1,0 +1,12 @@
+@import '../variable.scss';
+
+.login_side_logo {
+    box-shadow: none;
+}
+
+.login_page_get_started_link {
+    color: $primaryColor_1 !important;
+    &:hover {
+        text-decoration: underline !important;
+    }
+}

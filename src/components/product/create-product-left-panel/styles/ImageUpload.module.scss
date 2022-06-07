@@ -1,0 +1,5 @@
+.image_upload_box {
+    &:hover :global(.image_upload_overlay) {
+        background: #f4f6f8;
+    }
+}

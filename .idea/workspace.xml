@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="2dfdbedd-c9d3-410f-90a2-85de0a05006f" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../demo" beforeDir="false" afterPath="$PROJECT_DIR$/../demo" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+        <option value="SCSS File" />
+        <option value="TypeScript JSX File" />
+        <option value="TypeScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="FormatOnSaveOptions">
+    <option name="myRunOnSave" value="true" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="29Ia96Ng82r6OpC3ekA6MYb0kG0" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "js.last.introduce.type": "CONST",
+    "last_opened_file_path": "/home/ar-arif/Workspace/mern-stack/pos/client/src/components/page-component",
+    "list.type.of.created.stylesheet": "SCSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.standard": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.standard": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "yarn",
+    "prettierjs.PrettierConfiguration.Package": "/home/ar-arif/.config/yarn/global/node_modules/prettier",
+    "rearrange.code.on.save": "true",
+    "settings.editor.selected.configurable": "preferences.sourceCode.JavaScript",
+    "ts.external.directory.path": "/home/ar-arif/Workspace/mern-stack/pos/client/node_modules/typescript/lib",
+    "ts.rename.search.for.dynamic.occurrences": "true",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/components/product/tags" />
+      <recent name="$PROJECT_DIR$/src/components/product" />
+      <recent name="$PROJECT_DIR$/src/components/top-navigation" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/components/page-component" />
+      <recent name="$PROJECT_DIR$/src/styles/components" />
+      <recent name="$PROJECT_DIR$/src/pages/dashboard" />
+      <recent name="$PROJECT_DIR$/src/components/page-component/list-navigation" />
+      <recent name="$PROJECT_DIR$/src/pages/dashboard/user" />
+    </key>
+    <key name="es6.move.members.recent.items">
+      <recent name="$PROJECT_DIR$/src/components/product/create-product-left-panel/Description.tsx" />
+      <recent name="$PROJECT_DIR$/src/components/product/create-product-left-panel/ProductName.tsx" />
+      <recent name="$PROJECT_DIR$/src/components/page-component/user/UserNavigation.tsx" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JavaScript Debug.coupons.html">
+    <configuration name="React Debugger" type="JavascriptDebugType" uri="http://localhost:3000">
+      <method v="2" />
+    </configuration>
+    <configuration name="coupons.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/client/.next/server/pages/dashboard/coupons.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="$USER_HOME$/.nvm/versions/node/v16.14.2/bin/node" />
+      <package-manager value="yarn" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="JavaScript Debug.React Debugger" />
+      <item itemvalue="JavaScript Debug.coupons.html" />
+      <item itemvalue="npm.dev" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JavaScript Debug.coupons.html" />
+        <item itemvalue="npm.dev" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2dfdbedd-c9d3-410f-90a2-85de0a05006f" name="Changes" comment="" />
+      <created>1652802900224</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1652802900224</updated>
+      <workItem from="1652802903160" duration="2421000" />
+      <workItem from="1652805342333" duration="90000" />
+      <workItem from="1652805449402" duration="190000" />
+      <workItem from="1652851188398" duration="1059000" />
+      <workItem from="1652852253467" duration="3704000" />
+      <workItem from="1652855963895" duration="868000" />
+      <workItem from="1652856837983" duration="2787000" />
+      <workItem from="1652962828722" duration="3476000" />
+      <workItem from="1652966312109" duration="7552000" />
+      <workItem from="1652976590221" duration="1046000" />
+      <workItem from="1653025808224" duration="240000" />
+      <workItem from="1653045557431" duration="1883000" />
+      <workItem from="1653056233916" duration="6118000" />
+      <workItem from="1653112148368" duration="2521000" />
+      <workItem from="1653115316848" duration="1667000" />
+      <workItem from="1653118808189" duration="8112000" />
+      <workItem from="1653133157755" duration="3092000" />
+      <workItem from="1653138674285" duration="5529000" />
+      <workItem from="1653145502868" duration="499000" />
+      <workItem from="1653194248865" duration="3377000" />
+      <workItem from="1653200913746" duration="5518000" />
+      <workItem from="1653214206083" duration="8222000" />
+      <workItem from="1653260390515" duration="2662000" />
+      <workItem from="1653265341795" duration="5129000" />
+      <workItem from="1653279492325" duration="8886000" />
+      <workItem from="1653302358071" duration="9165000" />
+      <workItem from="1653363562850" duration="1602000" />
+      <workItem from="1653365170686" duration="5623000" />
+      <workItem from="1653375566584" duration="2258000" />
+      <workItem from="1653391380298" duration="4092000" />
+      <workItem from="1653395589009" duration="338000" />
+      <workItem from="1653395933342" duration="81000" />
+      <workItem from="1653396021087" duration="131000" />
+      <workItem from="1653396163393" duration="2074000" />
+      <workItem from="1653404098774" duration="5512000" />
+      <workItem from="1653456898416" duration="8008000" />
+      <workItem from="1653478250024" duration="8088000" />
+      <workItem from="1653543849959" duration="3196000" />
+      <workItem from="1653547053144" duration="3255000" />
+      <workItem from="1653568844397" duration="1174000" />
+      <workItem from="1653577971821" duration="704000" />
+      <workItem from="1653713473431" duration="34000" />
+      <workItem from="1653721694301" duration="56000" />
+      <workItem from="1653735890788" duration="3000" />
+      <workItem from="1653739175553" duration="7031000" />
+      <workItem from="1653802029121" duration="8083000" />
+      <workItem from="1653824189418" duration="11841000" />
+      <workItem from="1653888640934" duration="7039000" />
+      <workItem from="1653909271215" duration="4029000" />
+      <workItem from="1653925347855" duration="5175000" />
+      <workItem from="1653959534277" duration="12202000" />
+      <workItem from="1653975016961" duration="2302000" />
+      <workItem from="1653981557097" duration="622000" />
+      <workItem from="1654000584450" duration="11118000" />
+      <workItem from="1654065039413" duration="7724000" />
+      <workItem from="1654087126770" duration="12596000" />
+      <workItem from="1654153336521" duration="324000" />
+      <workItem from="1654153667538" duration="188000" />
+      <workItem from="1654153862622" duration="6039000" />
+      <workItem from="1654237831782" duration="133000" />
+      <workItem from="1654319771104" duration="21000" />
+      <workItem from="1654405714689" duration="738000" />
+      <workItem from="1654406465415" duration="1265000" />
+      <workItem from="1654410610485" duration="8479000" />
+      <workItem from="1654434575588" duration="3127000" />
+      <workItem from="1654576503683" duration="8587000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="XPathView.XPathProjectComponent">
+    <history />
+    <find-history>
+      <element expression="UserListToolbar.js" />
+    </find-history>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>

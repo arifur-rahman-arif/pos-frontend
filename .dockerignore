@@ -1,0 +1,11 @@
+.env
+.git
+.idea
+.gitignore
+.next
+nginx
+node_modules
+package-lock.json
+yarn.lock
+Dockerfile.*
+

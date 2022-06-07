@@ -1,0 +1,7 @@
+.hover_menu {
+    left: 85px;
+
+    :global(div:nth-child(3)) {
+        margin-top: -40px;
+    }
+}

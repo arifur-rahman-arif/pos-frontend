@@ -1,0 +1,5 @@
+.mobile_style {
+    @media screen and (max-width: 1200px) {
+        max-width: unset !important;
+    }
+}
