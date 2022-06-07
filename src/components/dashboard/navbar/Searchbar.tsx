@@ -1,9 +1,8 @@
 import { useState } from 'react';
-import { styled, alpha } from '@mui/material/styles';
-import { Input, Slide, Button, InputAdornment, ClickAwayListener, IconButton } from '@mui/material';
+import { alpha, styled } from '@mui/material/styles';
+import { Button, ClickAwayListener, IconButton, Input, Slide } from '@mui/material';
 import { APP_BAR_DESKTOP, APP_BAR_MOBILE } from '@/layouts/Navigation/Navigation';
 import { HiOutlineSearch } from 'react-icons/hi';
-import { ImSearch } from 'react-icons/im';
 
 const SearchbarStyle = styled('div')(({ theme }) => ({
     top: 0,
