@@ -3,8 +3,9 @@ import { NextPage } from 'next';
 import { SITE_NAME } from '@/utils/global';
 import Page from '@/components/Page';
 import { ListTopNavigation } from '@/components/page-component/list-navigation';
-import { OrderDetails, OrderItems } from '@/components/order';
+import { OrderDetails, OrderItemList } from '@/components/order';
 import { Grid } from '@mui/material';
+import OrderTotals from '@/components/order/OrderTotals';
 
 /**
  * Single product page to edit or view the product details in depth
@@ -23,8 +24,12 @@ const OrderPage: NextPage = () => {
                     <OrderDetails />
                 </Grid>
 
-                <Grid item xs={12} md={8}>
-                    <OrderItems />
+                <Grid item xs={12} md={7}>
+                    <OrderItemList />
+                </Grid>
+
+                <Grid item xs={12} md={5}>
+                    <OrderTotals />
                 </Grid>
             </Grid>
         </Page>

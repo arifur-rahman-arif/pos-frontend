@@ -1,5 +1,6 @@
 import React from 'react';
 import { Grid, Typography } from '@mui/material';
+import DetailsWrapper from '@/components/order/DetailsWrapper';
 
 /**
  * Billing details component
@@ -16,85 +17,85 @@ const BillingDetails = () => {
             </Grid>
 
             <Grid container spacing={1.5}>
-                <Grid item xs={12} display="flex" justifyContent="flex-start" gap={1} flexWrap="wrap">
+                <DetailsWrapper>
                     <Typography variant="body1" sx={{ fontWeight: 'bolder' }}>
                         First name:
                     </Typography>
 
                     <Typography variant="body1">Lorem ipsum</Typography>
-                </Grid>
+                </DetailsWrapper>
 
-                <Grid item xs={12} display="flex" justifyContent="flex-start" gap={1} flexWrap="wrap">
+                <DetailsWrapper>
                     <Typography variant="body1" sx={{ fontWeight: 'bolder' }}>
                         Last name:
                     </Typography>
 
                     <Typography variant="body1">consequuntur</Typography>
-                </Grid>
+                </DetailsWrapper>
 
-                <Grid item xs={12} display="flex" justifyContent="flex-start" gap={1} flexWrap="wrap">
+                <DetailsWrapper>
                     <Typography variant="body1" sx={{ fontWeight: 'bolder' }}>
                         Address 1:
                     </Typography>
 
                     <Typography variant="body1">iure eius earum ut molestias</Typography>
-                </Grid>
+                </DetailsWrapper>
 
-                <Grid item xs={12} display="flex" justifyContent="flex-start" gap={1} flexWrap="wrap">
+                <DetailsWrapper>
                     <Typography variant="body1" sx={{ fontWeight: 'bolder' }}>
                         Address 2:
                     </Typography>
 
                     <Typography variant="body1">architecto voluptate aliquam</Typography>
-                </Grid>
+                </DetailsWrapper>
 
-                <Grid item xs={12} display="flex" justifyContent="flex-start" gap={1} flexWrap="wrap">
+                <DetailsWrapper>
                     <Typography variant="body1" sx={{ fontWeight: 'bolder' }}>
                         City:
                     </Typography>
 
                     <Typography variant="body1">architecto</Typography>
-                </Grid>
+                </DetailsWrapper>
 
-                <Grid item xs={12} display="flex" justifyContent="flex-start" gap={1} flexWrap="wrap">
+                <DetailsWrapper>
                     <Typography variant="body1" sx={{ fontWeight: 'bolder' }}>
                         State:
                     </Typography>
 
                     <Typography variant="body1">voluptate</Typography>
-                </Grid>
+                </DetailsWrapper>
 
-                <Grid item xs={12} display="flex" justifyContent="flex-start" gap={1} flexWrap="wrap">
+                <DetailsWrapper>
                     <Typography variant="body1" sx={{ fontWeight: 'bolder' }}>
                         Postal code:
                     </Typography>
 
                     <Typography variant="body1">HA8 0YU</Typography>
-                </Grid>
+                </DetailsWrapper>
 
-                <Grid item xs={12} display="flex" justifyContent="flex-start" gap={1} flexWrap="wrap">
+                <DetailsWrapper>
                     <Typography variant="body1" sx={{ fontWeight: 'bolder' }}>
                         Country:
                     </Typography>
 
                     <Typography variant="body1">UK</Typography>
-                </Grid>
+                </DetailsWrapper>
 
-                <Grid item xs={12} display="flex" justifyContent="flex-start" gap={1} flexWrap="wrap">
+                <DetailsWrapper>
                     <Typography variant="body1" sx={{ fontWeight: 'bolder' }}>
                         Phone:
                     </Typography>
 
                     <Typography variant="body1">+44 023123 3242</Typography>
-                </Grid>
+                </DetailsWrapper>
 
-                <Grid item xs={12} display="flex" justifyContent="flex-start" gap={1} flexWrap="wrap">
+                <DetailsWrapper>
                     <Typography variant="body1" sx={{ fontWeight: 'bolder' }}>
                         Email:
                     </Typography>
 
                     <Typography variant="body1">abc@gmail.com</Typography>
-                </Grid>
+                </DetailsWrapper>
             </Grid>
         </Grid>
     );

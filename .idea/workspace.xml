@@ -5,9 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2dfdbedd-c9d3-410f-90a2-85de0a05006f" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/components/order/DetailsWrapper.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/order/OrderItem.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/order/OrderItemList.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/order/OrderTotals.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/dashboard/navbar/Searchbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/dashboard/navbar/Searchbar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/order/OrderItems.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/order/OrderItems.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/order/BillingDetails.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/order/BillingDetails.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/order/OrderItems.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/order/ShippingDetails.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/order/ShippingDetails.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/order/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/order/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/dashboard/order/[id].tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/dashboard/order/[id].tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../demo" beforeDir="false" afterPath="$PROJECT_DIR$/../demo" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -188,7 +197,8 @@
       <workItem from="1654410610485" duration="8479000" />
       <workItem from="1654434575588" duration="3127000" />
       <workItem from="1654576503683" duration="9001000" />
-      <workItem from="1654606017186" duration="8257000" />
+      <workItem from="1654606017186" duration="8284000" />
+      <workItem from="1654751835173" duration="8716000" />
     </task>
     <servers />
   </component>
