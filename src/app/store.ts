@@ -6,6 +6,7 @@ import navSlice from '@/features/nav-state/navSlice';
 import couponSlice from '@/features/coupon/couponSlice';
 import shopSelectSlice from '@/features/shop/shopSelectSlice';
 import shopFormSlice from '@/features/shop/shopFormSlice';
+import posNavStateSlice from '@/features/nav-state/posNavStateSlice';
 
 /**
  * Redux make store function to create the store
@@ -19,6 +20,7 @@ export const makeStore = () => {
             couponSlice,
             shopSelectSlice,
             shopFormSlice,
+            posNavStateSlice,
             [authApi.reducerPath]: authApi.reducer
         },
         middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(authApi.middleware)

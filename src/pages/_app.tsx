@@ -5,16 +5,16 @@ import '@/styles/components/auth.scss';
 import Head from 'next/head';
 import { Provider } from 'react-redux';
 import type { AppProps } from 'next/app';
-import { Navigation, TopNavigation } from '@/layouts/Navigation';
+import { Navigation, NoNavigation, PosNavigation, TopNavigation } from '@/layouts/Navigation';
 import ThemeConfig from '@/theme/index';
 import GlobalStyles from '@/theme/globalStyles';
 import store from '@/app/store';
-import NoNavigation from '@/layouts/Navigation/NoNavigation';
 import Alert from '@/features/alert/Alert';
 
 const navigationLayouts = {
     navLayout1: Navigation,
     topNavigation: TopNavigation,
+    posNavigation: PosNavigation,
     noNavigation: NoNavigation
 };
 

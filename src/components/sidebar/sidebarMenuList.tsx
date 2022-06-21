@@ -3,13 +3,18 @@ import { BsCart3, BsShop } from 'react-icons/bs';
 import { FiUsers } from 'react-icons/fi';
 import { BiCircle } from 'react-icons/bi';
 import { RiCoupon4Line, RiDoorOpenLine } from 'react-icons/ri';
-import { AiOutlineTable } from 'react-icons/ai';
+import { AiOutlineCalculator, AiOutlineTable } from 'react-icons/ai';
 
 const sidebarMenuList = [
     {
         title: 'dashboard',
         path: '/dashboard',
         icon: <MdOutlineDashboard />
+    },
+    {
+        title: 'POS',
+        path: '/pos/sdl234assfaojf',
+        icon: <AiOutlineCalculator />
     },
     {
         title: 'products',

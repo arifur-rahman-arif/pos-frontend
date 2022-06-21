@@ -1,59 +1,65 @@
 @import './../variable.scss';
 
 * {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
+  font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, Segoe UI, Oxygen, Ubuntu, Cantarell,
+  Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+
+  box-sizing: border-box;
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  label {
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, Segoe UI, Oxygen, Ubuntu, Cantarell,
+    Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  }
+
+  label {
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, Segoe UI, Oxygen, Ubuntu, Cantarell,
+    Fira Sans, Droid Sans, Helvetica Neue, sans-serif !important;
+  }
+
+  input,
+  textarea {
     font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, Segoe UI, Oxygen, Ubuntu, Cantarell,
-        Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    Fira Sans, Droid Sans, Helvetica Neue, sans-serif !important;
+  }
 
-    box-sizing: border-box;
+  body {
+    background-color: #fff;
+    height: 100%;
 
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6,
-    label {
-        font-family: 'Poppins', -apple-system, BlinkMacSystemFont, Segoe UI, Oxygen, Ubuntu, Cantarell,
-            Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    #__next {
+      height: 100%;
     }
+  }
 
-    label {
-        font-family: 'Poppins', -apple-system, BlinkMacSystemFont, Segoe UI, Oxygen, Ubuntu, Cantarell,
-            Fira Sans, Droid Sans, Helvetica Neue, sans-serif !important;
-    }
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+    box-shadow: 0 0 0 30px #fff inset !important;
+    -webkit-box-shadow: 0 0 0 30px #fff inset !important;
+  }
 
-    input,
-    textarea {
-        font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, Segoe UI, Oxygen, Ubuntu, Cantarell,
-            Fira Sans, Droid Sans, Helvetica Neue, sans-serif !important;
-    }
-
-    body {
-        background-color: #fff;
-    }
-
-    input:-webkit-autofill,
-    input:-webkit-autofill:hover,
-    input:-webkit-autofill:focus,
-    input:-webkit-autofill:active {
-        box-shadow: 0 0 0 30px #fff inset !important;
-        -webkit-box-shadow: 0 0 0 30px #fff inset !important;
-    }
-
-    body {
-        width: 100% !important;
-        height: 100% !important;
-        position: relative !important;
-        margin: 0 auto !important;
-    }
+  body {
+    width: 100% !important;
+    height: 100% !important;
+    position: relative !important;
+    margin: 0 auto !important;
+  }
 }
 
 ::-webkit-scrollbar {
-    width: 12px;
+  width: 12px;
 }
+
 ::-webkit-scrollbar-thumb {
-    background: linear-gradient(to top, $primaryColor_1 0%, transparent 100%);
-    border-radius: 15px;
+  background: linear-gradient(to top, $primaryColor_1 0%, transparent 100%);
+  border-radius: 15px;
 }

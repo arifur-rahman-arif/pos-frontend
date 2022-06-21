@@ -1,1 +1,4 @@
-export { default as Sidebar } from '@/components/sidebar/Sidebar';
+import Sidebar from './Sidebar';
+import PosSidebar from './PosSidebar';
+
+export { Sidebar, PosSidebar };
