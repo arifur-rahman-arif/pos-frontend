@@ -5,23 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2dfdbedd-c9d3-410f-90a2-85de0a05006f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/sidebar/PosSideMenu.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/sidebar/PosSidebar.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/sidebar/posMenuList.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/nav-state/posNavStateSlice.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/layouts/Navigation/PosNavigation.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/pos/[id]/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/pos/[id]/orders.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/pos/[id]/reports.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/pos/[id]/tables.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/page-component/pos/TopPanel.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/page-component/pos/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/page-component/pos/products/ProductList.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/page-component/pos/products/SingleProduct.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/page-component/pos/products/styles/ProductList.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/store.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/order/OrderItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/order/OrderItem.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/order/OrderItemList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/order/OrderItemList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/sidebar/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/sidebar/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/sidebar/sidebarMenuList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/sidebar/sidebarMenuList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/layouts/Navigation/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/Navigation/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/_app.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/_app.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/dashboard/navbar/DashboardNavbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/dashboard/navbar/DashboardNavbar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/page-component/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page-component/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/sidebar/PosSidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/sidebar/PosSidebar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/layouts/Navigation/PosNavigation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/Navigation/PosNavigation.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/pos/[id]/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/pos/[id]/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/styles/pages/globals.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/pages/globals.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../demo" beforeDir="false" afterPath="$PROJECT_DIR$/../demo" afterDir="false" />
     </list>
@@ -34,10 +29,10 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
-        <option value="SCSS File" />
         <option value="HTTP Request" />
-        <option value="TypeScript JSX File" />
         <option value="TypeScript File" />
+        <option value="SCSS File" />
+        <option value="TypeScript JSX File" />
       </list>
     </option>
   </component>
@@ -213,7 +208,9 @@
       <workItem from="1654781329068" duration="73000" />
       <workItem from="1654781407659" duration="753000" />
       <workItem from="1655791030851" duration="11960000" />
-      <workItem from="1655814349525" duration="8625000" />
+      <workItem from="1655814349525" duration="9119000" />
+      <workItem from="1655876857992" duration="8660000" />
+      <workItem from="1655894956299" duration="5942000" />
     </task>
     <servers />
   </component>

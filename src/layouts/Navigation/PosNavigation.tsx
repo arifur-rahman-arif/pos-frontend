@@ -22,12 +22,12 @@ const MainStyle = styled('div')(({ theme }) => ({
     minHeight: '100%',
     paddingBottom: theme.spacing(5),
     [theme.breakpoints.up('lg')]: {
-        paddingTop: theme.spacing(5),
-        paddingLeft: theme.spacing(5),
-        paddingRight: theme.spacing(5)
+        paddingTop: theme.spacing(4),
+        paddingLeft: theme.spacing(4),
+        paddingRight: theme.spacing(4)
     },
     [theme.breakpoints.down('lg')]: {
-        paddingTop: theme.spacing(5),
+        paddingTop: theme.spacing(4),
         paddingLeft: theme.spacing(3),
         paddingRight: theme.spacing(3)
     },

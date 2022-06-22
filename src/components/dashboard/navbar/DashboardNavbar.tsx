@@ -16,7 +16,7 @@ const RootStyle = styled(AppBar)(({ theme }) => ({
     boxShadow: 'none',
     backdropFilter: 'blur(6px)',
     WebkitBackdropFilter: 'blur(6px)', // Fix on Mobile
-    backgroundColor: alpha(theme.palette.background.default, 0.72),
+    backgroundColor: alpha('#F8F7FA', 0.72),
     transition: `max-width 225ms ${theme.transitions.easing.sharp}`,
     [theme.breakpoints.up('lg')]: {
         width: `calc(100% - ${MINI_DRAWER_WIDTH + 1}px)`

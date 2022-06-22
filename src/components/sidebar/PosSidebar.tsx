@@ -37,17 +37,23 @@ const PosSidebar = () => {
     const linkActive = (linkSlug: NavStateAcceptedPayload) => posNavState[linkSlug];
 
     return (
-        <RootStyle>
+        <RootStyle
+            sx={{
+                ml: {
+                    md: '15px'
+                }
+            }}
+        >
             <MHidden width="mdDown">
                 <Drawer
                     sx={{
-                        width: MINI_DRAWER_WIDTH + 15,
+                        width: MINI_DRAWER_WIDTH + 5,
                         background: '#fff',
                         boxShadow: '0px 5px 40px rgba(0, 0, 0, 0.1)',
                         top: 0,
                         left: 0,
                         '& .MuiDrawer-paper': {
-                            width: MINI_DRAWER_WIDTH + 15,
+                            width: MINI_DRAWER_WIDTH + 5,
                             boxSizing: 'border-box',
                             border: 'none',
                             borderRadius: '15px',

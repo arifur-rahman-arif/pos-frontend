@@ -31,12 +31,7 @@
   }
 
   body {
-    background-color: #fff;
-    height: 100%;
 
-    #__next {
-      height: 100%;
-    }
   }
 
   input:-webkit-autofill,
@@ -49,10 +44,17 @@
 
   body {
     width: 100% !important;
-    height: 100% !important;
     position: relative !important;
     margin: 0 auto !important;
+    background-color: #F8F7FA !important;
+    height: 100%;
+
+    #__next {
+      height: 100%;
+    }
   }
+
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0) !important;
 }
 
 ::-webkit-scrollbar {

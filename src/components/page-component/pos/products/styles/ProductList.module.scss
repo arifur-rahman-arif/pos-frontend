@@ -1,0 +1,27 @@
+.product_list {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.image_background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-color: #F8F7FA;
+}
+
+.image_style {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: calc(100% - 25px);
+  height: calc(100% - 25px);
+  z-index: 1;
+  border-radius: 50%;
+  overflow: hidden;
+}
