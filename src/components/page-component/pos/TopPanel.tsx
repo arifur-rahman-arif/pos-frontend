@@ -13,7 +13,7 @@ const TopPanel = () => {
         <Grid container spacing={3}>
             <Grid item xs={12} md={6} lg={6}>
                 <Link href="/">
-                    <Card sx={{ maxWidth: 350, cursor: 'pointer' }}>
+                    <Card sx={{ width: 350, cursor: 'pointer' }}>
                         <CardContent
                             sx={{
                                 display: 'flex',

@@ -4,9 +4,10 @@ import { SITE_NAME } from '@/utils/global';
 import Page from '@/components/Page';
 import { useDispatch } from 'react-redux';
 import { setPageActive } from '@/features/nav-state/posNavStateSlice';
-import { ProductList, TopPanel } from '@/components/page-component';
+import { PosCart, ProductList, TopPanel } from '@/components/page-component';
 import { Grid } from '@mui/material';
 import { Scrollbar } from '@/components/scrollbar';
+import { Box } from '@mui/system';
 
 /**
  * Single product page to edit or view the product details in depth
@@ -24,34 +25,55 @@ const PosPage: NextPage = () => {
 
     return (
         <Page title={siteName}>
-            <Grid container spacing={3}>
-                <Grid item xs={12}>
-                    <TopPanel />
-                </Grid>
-
+            <Box
+                sx={{
+                    display: 'flex',
+                    p: 0
+                }}
+            >
                 <Grid
-                    item
-                    xs={12}
+                    container
+                    spacing={3}
                     sx={{
-                        maxHeight: 'calc(100vh - 130px)',
-                        ml: -3
+                        float: 'left'
                     }}
                 >
-                    <Scrollbar
+                    <Grid item xs={12}>
+                        <TopPanel />
+                    </Grid>
+
+                    <Grid
+                        item
+                        xs={12}
                         sx={{
-                            '& .simplebar-content': {
-                                display: 'flex',
-                                flexDirection: 'column'
-                            },
-                            pl: 3,
-                            pr: 3,
-                            pb: 3
+                            maxHeight: 'calc(100vh - 130px)',
+                            ml: {
+                                md: -3
+                            }
                         }}
                     >
-                        <ProductList />
-                    </Scrollbar>
+                        <Scrollbar
+                            sx={{
+                                '& .simplebar-content': {
+                                    display: 'flex',
+                                    flexDirection: 'column'
+                                },
+                                pl: {
+                                    md: 3
+                                },
+                                pr: {
+                                    md: 3
+                                },
+                                pb: 3
+                            }}
+                        >
+                            <ProductList />
+                        </Scrollbar>
+                    </Grid>
                 </Grid>
-            </Grid>
+
+                <PosCart />
+            </Box>
         </Page>
     );
 };
