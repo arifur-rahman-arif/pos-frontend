@@ -15,7 +15,7 @@ import { DesktopDatePicker } from '@mui/x-date-pickers';
 import { LocalizationProvider } from '@mui/lab';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { ShopTooltipInterface } from 'src/pages/dashboard/shop/create';
-import { TooltipComponent } from '@/components/page-component';
+import { InfoTooltip } from '@/components/page-component';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppState } from '@/app/store';
 import {
@@ -203,7 +203,7 @@ const ShopCreate = () => {
                             helperText=""
                         />
 
-                        <TooltipComponent
+                        <InfoTooltip
                             title={`
                                         This field allows you to set the minimum spend (subtotal) allowed 
                                         to use the coupon.
@@ -273,7 +273,7 @@ const ShopCreate = () => {
                             helperText=""
                         />
 
-                        <TooltipComponent
+                        <InfoTooltip
                             title={`
                                         This field allows you to set the minimum spend (subtotal) allowed 
                                         to use the coupon.
@@ -313,7 +313,7 @@ const ShopCreate = () => {
                             />
                         </LocalizationProvider>
 
-                        <TooltipComponent
+                        <InfoTooltip
                             title={`
                                         This field allows you to set the minimum spend (subtotal) allowed 
                                         to use the coupon.
@@ -357,7 +357,7 @@ const ShopCreate = () => {
                             </Select>
                         </FormControl>
 
-                        <TooltipComponent
+                        <InfoTooltip
                             title={`
                                         This field allows you to set the minimum spend (subtotal) allowed 
                                         to use the coupon.
@@ -399,7 +399,7 @@ const ShopCreate = () => {
                             helperText=""
                         />
 
-                        <TooltipComponent
+                        <InfoTooltip
                             title={`
                                         This field allows you to set the minimum spend (subtotal) allowed 
                                         to use the coupon.
@@ -446,7 +446,7 @@ const ShopCreate = () => {
                             </Select>
                         </FormControl>
 
-                        <TooltipComponent
+                        <InfoTooltip
                             title={`
                                         This field allows you to set the minimum spend (subtotal) allowed 
                                         to use the coupon.
@@ -493,7 +493,7 @@ const ShopCreate = () => {
                             </Select>
                         </FormControl>
 
-                        <TooltipComponent
+                        <InfoTooltip
                             title={`
                                         This field allows you to set the minimum spend (subtotal) allowed 
                                         to use the coupon.

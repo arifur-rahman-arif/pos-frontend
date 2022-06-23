@@ -39,7 +39,7 @@ import { TiCancel } from 'react-icons/ti';
 import { Box } from '@mui/system';
 import _without from 'lodash/without';
 import { TooltipInterface } from './CreateCoupon';
-import { TooltipComponent } from '@/components/page-component';
+import { InfoTooltip } from '@/components/page-component';
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -299,7 +299,7 @@ const RestrictionTab = () => {
                                             }}
                                         />
 
-                                        <TooltipComponent
+                                        <InfoTooltip
                                             title={`
                                                 Check this box if the coupon cannot be used in
                                                 conjunction with other coupons
@@ -332,7 +332,7 @@ const RestrictionTab = () => {
                                             }}
                                         />
 
-                                        <TooltipComponent
+                                        <InfoTooltip
                                             title={`
                                                 Check this box if the coupon should not apply to items on sale
                                             `}
@@ -374,7 +374,7 @@ const RestrictionTab = () => {
                                     helperText=""
                                 />
 
-                                <TooltipComponent
+                                <InfoTooltip
                                     title={`
                                         This field allows you to set the minimum spend (subtotal) allowed 
                                         to use the coupon.
@@ -416,7 +416,7 @@ const RestrictionTab = () => {
                                     helperText=""
                                 />
 
-                                <TooltipComponent
+                                <InfoTooltip
                                     title={`
                                       This field allows you to set the maximum spend 
                                        (subtotal) allowed when using the coupon.
@@ -462,7 +462,7 @@ const RestrictionTab = () => {
                                     }}
                                 />
 
-                                <TooltipComponent
+                                <InfoTooltip
                                     title={`How many times this coupon can be used before it is void.`}
                                     tooltip={tooltip.usageLimitPerCouponTooltip || false}
                                     setTooltip={() => {
@@ -500,7 +500,7 @@ const RestrictionTab = () => {
                                     helperText=""
                                 />
 
-                                <TooltipComponent
+                                <InfoTooltip
                                     title={`How many times this coupon can be used by an individual user. 
                                     Uses billing email for guests, and user ID for logged in users`}
                                     tooltip={tooltip.usageLimitPerUserTooltip || false}
@@ -569,7 +569,7 @@ const RestrictionTab = () => {
                                     </Select>
                                 </FormControl>
 
-                                <TooltipComponent
+                                <InfoTooltip
                                     title={`Products that the coupon will be applied to, or that need to be in the cart
                                      in order for the "Fixed cart discount" to be applied.`}
                                     tooltip={tooltip.includeProductsTooltip || false}
@@ -638,7 +638,7 @@ const RestrictionTab = () => {
                                     </Select>
                                 </FormControl>
 
-                                <TooltipComponent
+                                <InfoTooltip
                                     title={`Coupon will not be applied for the selected products`}
                                     tooltip={tooltip.excludeProductsTooltip || false}
                                     setTooltip={() => {
@@ -706,7 +706,7 @@ const RestrictionTab = () => {
                                     </Select>
                                 </FormControl>
 
-                                <TooltipComponent
+                                <InfoTooltip
                                     title={`Coupon will be applied to selected categories`}
                                     tooltip={tooltip.includeTermsTooltip || false}
                                     setTooltip={() => {
@@ -774,7 +774,7 @@ const RestrictionTab = () => {
                                     </Select>
                                 </FormControl>
 
-                                <TooltipComponent
+                                <InfoTooltip
                                     title={`Coupon will be not be applied to selected categories`}
                                     tooltip={tooltip.excludeTermsTooltip || false}
                                     setTooltip={() => {
@@ -842,7 +842,7 @@ const RestrictionTab = () => {
                                     </Select>
                                 </FormControl>
 
-                                <TooltipComponent
+                                <InfoTooltip
                                     title={`Coupon will be applied to selected users only`}
                                     tooltip={tooltip.includingUsersTooltip || false}
                                     setTooltip={() => {
@@ -910,7 +910,7 @@ const RestrictionTab = () => {
                                     </Select>
                                 </FormControl>
 
-                                <TooltipComponent
+                                <InfoTooltip
                                     title={`Coupon will not be applied to selected users`}
                                     tooltip={tooltip.excludingUsersTooltip || false}
                                     setTooltip={() => {

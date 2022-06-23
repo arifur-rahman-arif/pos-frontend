@@ -18,12 +18,7 @@ interface CouponTooltipPropInterface {
  * @returns {JSX.Element}
  * @constructor
  */
-const TooltipComponent = ({
-    title,
-    tooltip,
-    setTooltip,
-    onClose
-}: CouponTooltipPropInterface): JSX.Element => (
+const InfoTooltip = ({ title, tooltip, setTooltip, onClose }: CouponTooltipPropInterface): JSX.Element => (
     <Tooltip
         arrow
         placement="bottom"
@@ -45,4 +40,4 @@ const TooltipComponent = ({
     </Tooltip>
 );
 
-export default TooltipComponent;
+export default InfoTooltip;

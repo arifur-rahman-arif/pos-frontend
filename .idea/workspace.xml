@@ -5,11 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2dfdbedd-c9d3-410f-90a2-85de0a05006f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/page-component/pos/cart/PosCart.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/page-component/TooltipWrapper.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/page-component/pos/cart/CartAction.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/page-component/pos/cart/CartHeader.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/page-component/pos/cart/CourseSection.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/page-component/pos/cart/FeeSection.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/page-component/pos/cart/PayButton.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/coupon/RestrictionTab.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/coupon/RestrictionTab.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/dashboard/navbar/DashboardNavbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/dashboard/navbar/DashboardNavbar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/dashboard/navbar/NotificationsPopover.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/dashboard/navbar/NotificationsPopover.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/page-component/TooltipComponent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page-component/InfoTooltip.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/page-component/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page-component/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/page-component/pos/TopPanel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page-component/pos/TopPanel.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/pos/[id]/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/pos/[id]/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/page-component/pos/cart/PosCart.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page-component/pos/cart/PosCart.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/shop/ShopCreate.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/shop/ShopCreate.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../demo" beforeDir="false" afterPath="$PROJECT_DIR$/../demo" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -52,6 +61,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;js.introduce.parameter.add.jsdoc&quot;: &quot;true&quot;,
     &quot;js.last.introduce.type&quot;: &quot;CONST&quot;,
     &quot;last_opened_file_path&quot;: &quot;/home/ar-arif/Workspace/mern-stack/pos/client/src&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;SCSS&quot;,
@@ -203,7 +213,10 @@
       <workItem from="1655814349525" duration="9119000" />
       <workItem from="1655876857992" duration="8660000" />
       <workItem from="1655894956299" duration="6093000" />
-      <workItem from="1655907901795" duration="4362000" />
+      <workItem from="1655907901795" duration="4474000" />
+      <workItem from="1655960483036" duration="3719000" />
+      <workItem from="1655976404329" duration="6959000" />
+      <workItem from="1655987056376" duration="6086000" />
     </task>
     <servers />
   </component>

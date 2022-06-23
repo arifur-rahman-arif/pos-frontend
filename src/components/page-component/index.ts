@@ -1,6 +1,7 @@
 import TableToolbar from './TableToolbar';
-import TooltipComponent from '@/components/page-component/TooltipComponent';
+import InfoTooltip from '@/components/page-component/InfoTooltip';
 import { ProductList, TopPanel } from './pos';
 import PosCart from './pos/cart/PosCart';
+import TooltipWrapper from './TooltipWrapper';
 
-export { TableToolbar, TooltipComponent, TopPanel, ProductList, PosCart };
+export { TableToolbar, InfoTooltip, TopPanel, ProductList, PosCart, TooltipWrapper };

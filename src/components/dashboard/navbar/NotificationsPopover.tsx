@@ -210,6 +210,8 @@ const NotificationsPopover = () => {
                 color={open ? 'primary' : 'default'}
                 onClick={handleOpen}
                 sx={{
+                    p: 2,
+                    fontSize: '2rem',
                     ...(open && {
                         bgcolor: (theme) =>
                             alpha(theme.palette.primary.main, theme.palette.action.focusOpacity)

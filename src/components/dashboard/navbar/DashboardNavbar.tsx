@@ -70,7 +70,7 @@ const DashboardNavbar = ({ toggleDrawer, sidebarPosition, noSideBar = false }: D
                     <MHidden width="lgUp">
                         <IconButton
                             onClick={toggleDrawer(sidebarPosition, true)}
-                            sx={{ mr: 1, color: 'text.primary', p: 2 }}
+                            sx={{ mr: 1, color: 'text.primary', p: 2, fontSize: '1.7rem' }}
                         >
                             <AiOutlineMenuUnfold />
                         </IconButton>
@@ -81,7 +81,7 @@ const DashboardNavbar = ({ toggleDrawer, sidebarPosition, noSideBar = false }: D
                 {noSideBar && (
                     <IconButton
                         onClick={toggleDrawer(sidebarPosition, true)}
-                        sx={{ color: 'text.primary', p: 2 }}
+                        sx={{ color: 'text.primary', p: 2, fontSize: '1.7rem' }}
                     >
                         <AiOutlineMenuUnfold />
                     </IconButton>
