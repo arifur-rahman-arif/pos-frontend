@@ -11,7 +11,8 @@ const PayButton = () => {
     return (
         <Stack
             sx={{
-                p: 2
+                px: 2,
+                pb: 2
             }}
         >
             <Button
