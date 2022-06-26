@@ -23,14 +23,10 @@ const RootStyle = styled('div')(({ theme }) => ({
 const PosCart = () => {
     return (
         <MHidden width="mdDown">
-            <RootStyle
-                sx={{
-                    ml: -6
-                }}
-            >
+            <RootStyle>
                 <Drawer
                     sx={{
-                        width: 400,
+                        width: 360,
                         background: '#fff',
                         boxShadow: '0px 5px 40px rgba(0, 0, 0, 0.1)',
                         top: 0,
@@ -38,10 +34,10 @@ const PosCart = () => {
                         '& .MuiDrawer-paper': {
                             boxSizing: 'border-box',
                             border: 'none',
-                            borderRadius: '15px 0 0 15px',
+                            borderRadius: '25px 0 0 25px',
                             overFlow: 'hidden',
                             py: 1,
-                            width: 400,
+                            width: 360,
                             boxShadow: '0px 5px 40px rgba(0, 0, 0, 0.1)'
                         }
                     }}

@@ -4,10 +4,11 @@ import { SITE_NAME } from '@/utils/global';
 import Page from '@/components/Page';
 import { useDispatch } from 'react-redux';
 import { setPageActive } from '@/features/nav-state/posNavStateSlice';
-import { PosCart, ProductList, TopPanel } from '@/components/page-component';
-import { Grid } from '@mui/material';
+import { CategoriesSection, PosCart, ProductList, TopPanel } from '@/components/page-component';
+import { Grid, Stack } from '@mui/material';
 import { Scrollbar } from '@/components/scrollbar';
 import { Box } from '@mui/system';
+import { MHidden } from '@/components/@material-extend';
 
 /**
  * Single product page to edit or view the product details in depth
@@ -25,31 +26,23 @@ const PosPage: NextPage = () => {
 
     return (
         <Page title={siteName}>
-            <Box
-                sx={{
-                    display: 'flex',
-                    p: 0
-                }}
-            >
-                <Grid
-                    container
-                    spacing={3}
+            <Stack direction="row" gap={0}>
+                <Stack
+                    gap={3}
                     sx={{
-                        float: 'left'
+                        width: {
+                            md: 'calc(100% - 360px)',
+                            sm: '100%'
+                        }
                     }}
                 >
-                    <Grid item xs={12}>
-                        <TopPanel />
-                    </Grid>
+                    <TopPanel />
 
-                    <Grid
-                        item
-                        xs={12}
+                    <CategoriesSection />
+
+                    <Box
                         sx={{
-                            maxHeight: 'calc(100vh - 130px)',
-                            ml: {
-                                md: -3
-                            }
+                            maxHeight: 'calc(100vh - 130px)'
                         }}
                     >
                         <Scrollbar
@@ -58,22 +51,25 @@ const PosPage: NextPage = () => {
                                     display: 'flex',
                                     flexDirection: 'column'
                                 },
-                                pl: {
-                                    md: 3
-                                },
-                                pr: {
-                                    md: 3
-                                },
+                                px: 2,
                                 pb: 3
                             }}
                         >
                             <ProductList />
                         </Scrollbar>
-                    </Grid>
-                </Grid>
+                    </Box>
+                </Stack>
 
-                <PosCart />
-            </Box>
+                <MHidden width="mdDown">
+                    <Stack
+                        sx={{
+                            width: 350
+                        }}
+                    >
+                        <PosCart />
+                    </Stack>
+                </MHidden>
+            </Stack>
         </Page>
     );
 };

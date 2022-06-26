@@ -3,6 +3,7 @@ import { Card, CardContent, Collapse, Grid, IconButton, Stack, Typography } from
 import { AiFillCaretDown, AiFillCaretRight, AiOutlineMinusCircle, AiOutlinePlusCircle } from 'react-icons/ai';
 import { FiTrash2 } from 'react-icons/fi';
 import { TooltipWrapper } from '@/components/page-component';
+import { trimText } from '@/utils/global';
 
 /**
  * Course section of Cart
@@ -74,14 +75,16 @@ const CourseSection = () => {
                                                 maxWidth: 90
                                             }}
                                         >
-                                            <Typography
-                                                variant="body1"
-                                                sx={{
-                                                    cursor: 'pointer'
-                                                }}
-                                            >
-                                                Proudct #1
-                                            </Typography>
+                                            <TooltipWrapper title="Course #1 delicious food">
+                                                <Typography
+                                                    variant="body1"
+                                                    sx={{
+                                                        whiteSpace: 'nowrap'
+                                                    }}
+                                                >
+                                                    {trimText('Course #1 delicious food', 9)}
+                                                </Typography>
+                                            </TooltipWrapper>
 
                                             <Typography
                                                 variant="body1"
@@ -105,7 +108,7 @@ const CourseSection = () => {
                                         >
                                             <IconButton
                                                 sx={{
-                                                    p: 1.5,
+                                                    p: 1.4,
                                                     mr: 1
                                                 }}
                                             >
@@ -116,7 +119,7 @@ const CourseSection = () => {
 
                                             <IconButton
                                                 sx={{
-                                                    p: 1.5,
+                                                    p: 1.4,
                                                     ml: 1
                                                 }}
                                             >
@@ -127,7 +130,7 @@ const CourseSection = () => {
                                         <IconButton
                                             sx={{
                                                 fontSize: '1.5rem',
-                                                p: 1.5,
+                                                p: 1.4,
                                                 ml: 'auto',
                                                 color: (theme) => theme.palette.error.main
                                             }}

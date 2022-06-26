@@ -72,6 +72,18 @@ export const fToNow = (date: Date) => {
     });
 };
 
+/**
+ * Trim the text to a specified length with ...
+ * @param {string} text
+ * @param {number} char
+ * @returns {string}
+ */
+export const trimText = (text: string, char: number): string => {
+    const length = char;
+
+    return text.length > length ? text.substring(0, length - 3) + '...' : text;
+};
+
 export const SITE_NAME = 'Cloud POS';
 
 export const acceptedImageTypes = ['image/webp', 'image/jpeg', 'image/jpg', 'image/png', 'image/svg+xml'];

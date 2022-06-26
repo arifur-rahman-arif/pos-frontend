@@ -28,15 +28,27 @@ const SingleProduct = ({ name, price, image }: PropInterface) => {
                     justifyContent: 'flex-start',
                     alignItems: 'center',
                     gap: 1,
-                    cursor: 'pointer'
+                    cursor: 'pointer',
+                    p: 2,
+                    paddingBottom: '16px !important'
                 }}
             >
                 <Box
                     sx={{
-                        width: '200px',
-                        height: '200px',
                         borderRadius: '50%',
                         position: 'relative',
+                        minWidth: '154px',
+                        width: {
+                            xs: '154px',
+                            sm: '100%',
+                            lg: '200px'
+                        },
+                        height: {
+                            xs: '154px',
+                            sm: '165px',
+                            md: '165px',
+                            lg: '200px'
+                        },
                         overflow: 'hidden'
                     }}
                 >

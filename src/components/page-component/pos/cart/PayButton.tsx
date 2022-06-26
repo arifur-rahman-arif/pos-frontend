@@ -1,6 +1,5 @@
 import React from 'react';
-import { Button, IconButton, Stack, Typography } from '@mui/material';
-import { AiOutlineDoubleRight } from 'react-icons/ai';
+import { Button, Stack, Typography } from '@mui/material';
 
 /**
  * Pay button component
