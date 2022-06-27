@@ -5,19 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2dfdbedd-c9d3-410f-90a2-85de0a05006f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/page-component/pos/CategoriesSection.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/page-component/pos/TopPanel/ProductSearch.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/page-component/pos/cart/Course.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/page-component/pos/cart/CourseItem.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/course-features/courseSlice.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/page-component/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page-component/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/page-component/pos/TopPanel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page-component/pos/TopPanel.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/store.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/page-component/pos/TopPanel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page-component/pos/TopPanel/TopPanel.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/page-component/pos/cart/CourseSection.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page-component/pos/cart/CourseSection.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/page-component/pos/cart/PayButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page-component/pos/cart/PayButton.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/page-component/pos/cart/PosCart.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page-component/pos/cart/PosCart.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/page-component/pos/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page-component/pos/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/page-component/pos/products/ProductList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page-component/pos/products/ProductList.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/page-component/pos/products/SingleProduct.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page-component/pos/products/SingleProduct.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/page-component/pos/products/styles/ProductList.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page-component/pos/products/styles/ProductList.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/alert/Alert.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/alert/Alert.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/pos/[id]/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/pos/[id]/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/theme/overrides/Card.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/theme/overrides/Card.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/global.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/global.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../demo" beforeDir="false" afterPath="$PROJECT_DIR$/../demo" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -30,8 +32,8 @@
       <list>
         <option value="JavaScript File" />
         <option value="HTTP Request" />
-        <option value="TypeScript File" />
         <option value="SCSS File" />
+        <option value="TypeScript File" />
         <option value="TypeScript JSX File" />
       </list>
     </option>
@@ -73,7 +75,7 @@
     &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
     &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;/home/ar-arif/.config/yarn/global/node_modules/prettier&quot;,
     &quot;rearrange.code.on.save&quot;: &quot;true&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;ts.external.directory.path&quot;: &quot;/home/ar-arif/Workspace/mern-stack/pos/client/node_modules/typescript/lib&quot;,
     &quot;ts.rename.search.for.dynamic.occurrences&quot;: &quot;true&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
@@ -86,11 +88,11 @@
       <recent name="$PROJECT_DIR$/src/components/top-navigation" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/components/page-component/pos/TopPanel" />
       <recent name="$PROJECT_DIR$/src/components/page-component" />
       <recent name="$PROJECT_DIR$/src/styles/components" />
       <recent name="$PROJECT_DIR$/src/pages/dashboard" />
       <recent name="$PROJECT_DIR$/src/components/page-component/list-navigation" />
-      <recent name="$PROJECT_DIR$/src/pages/dashboard/user" />
     </key>
     <key name="es6.move.members.recent.items">
       <recent name="$PROJECT_DIR$/src/components/product/create-product-left-panel/Description.tsx" />
@@ -98,13 +100,7 @@
       <recent name="$PROJECT_DIR$/src/components/page-component/user/UserNavigation.tsx" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.dev">
-    <configuration name="React Debugger" type="JavascriptDebugType" uri="http://localhost:3000">
-      <method v="2" />
-    </configuration>
-    <configuration name="coupons.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/client/.next/server/pages/dashboard/coupons.html" useBuiltInWebServerPort="true">
-      <method v="2" />
-    </configuration>
+  <component name="RunManager">
     <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -116,15 +112,9 @@
       <envs />
       <method v="2" />
     </configuration>
-    <list>
-      <item itemvalue="JavaScript Debug.React Debugger" />
-      <item itemvalue="JavaScript Debug.coupons.html" />
-      <item itemvalue="npm.dev" />
-    </list>
     <recent_temporary>
       <list>
         <item itemvalue="npm.dev" />
-        <item itemvalue="JavaScript Debug.coupons.html" />
       </list>
     </recent_temporary>
   </component>
@@ -218,7 +208,10 @@
       <workItem from="1655987056376" duration="6398000" />
       <workItem from="1656224539380" duration="4671000" />
       <workItem from="1656241229821" duration="9306000" />
-      <workItem from="1656250563660" duration="4053000" />
+      <workItem from="1656250563660" duration="4155000" />
+      <workItem from="1656306469003" duration="45000" />
+      <workItem from="1656306520958" duration="6463000" />
+      <workItem from="1656327304014" duration="15206000" />
     </task>
     <servers />
   </component>

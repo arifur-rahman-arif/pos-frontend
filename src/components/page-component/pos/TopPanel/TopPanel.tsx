@@ -1,7 +1,11 @@
-import { Card, CardContent, Grid, IconButton, Typography } from '@mui/material';
+import { Card, CardContent, IconButton, Typography } from '@mui/material';
 import { FaLongArrowAltRight } from 'react-icons/fa';
 import { Box } from '@mui/system';
 import Link from 'next/link';
+import { BsCloudCheck } from 'react-icons/bs';
+import { MdSync } from 'react-icons/md';
+import React from 'react';
+import ProductSearch from './ProductSearch';
 
 /**
  * Top panel of Pos page
@@ -9,6 +13,13 @@ import Link from 'next/link';
  * @constructor
  */
 const TopPanel = () => {
+    /**
+     * Reload the page on click event
+     */
+    const refreshPage = () => {
+        window.location.reload();
+    };
+
     return (
         <Box
             sx={{
@@ -19,7 +30,7 @@ const TopPanel = () => {
                 flexWrap: 'wrap'
             }}
         >
-            <Link href="/">
+            <Link href="/src/pages">
                 <Card sx={{ float: 'right' }}>
                     <CardContent
                         sx={{
@@ -74,40 +85,30 @@ const TopPanel = () => {
                             display: 'flex',
                             justifyContent: 'space-between',
                             alignItems: 'center',
-                            padding: '15px !important'
+                            padding: '15px !important',
+                            gap: 1,
+                            flexWrap: 'wrap'
                         }}
                     >
-                        <Box
+                        <ProductSearch />
+
+                        <IconButton
+                            onClick={refreshPage}
                             sx={{
-                                display: 'flex',
-                                justifyContent: 'flex-start',
-                                alignItems: 'center'
+                                fontSize: '2rem'
                             }}
                         >
-                            <Typography
-                                variant="body2"
-                                sx={{
-                                    display: 'flex',
-                                    justifyContent: 'flex-start',
-                                    alignItems: 'center'
-                                }}
-                            >
-                                Last order
-                            </Typography>
-                            <Typography
-                                sx={{ color: '#F2345E', fontSize: '1.1rem', fontWeight: 'bolder', mx: 1 }}
-                            >
-                                JUST EAT
-                            </Typography>{' '}
-                            20 min ago
-                        </Box>
+                            <MdSync />
+                        </IconButton>
+
                         <IconButton
                             sx={{
-                                p: 0,
-                                ml: 2
+                                fontSize: '2rem',
+                                pointerEvents: 'none',
+                                color: (theme) => theme.palette.primary.main
                             }}
                         >
-                            <FaLongArrowAltRight />
+                            <BsCloudCheck />
                         </IconButton>
                     </CardContent>
                 </Card>

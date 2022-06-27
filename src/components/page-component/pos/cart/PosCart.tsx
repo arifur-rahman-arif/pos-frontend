@@ -26,7 +26,7 @@ const PosCart = () => {
             <RootStyle>
                 <Drawer
                     sx={{
-                        width: 360,
+                        width: 370,
                         background: '#fff',
                         boxShadow: '0px 5px 40px rgba(0, 0, 0, 0.1)',
                         top: 0,
@@ -37,7 +37,7 @@ const PosCart = () => {
                             borderRadius: '25px 0 0 25px',
                             overFlow: 'hidden',
                             py: 1,
-                            width: 360,
+                            width: 370,
                             boxShadow: '0px 5px 40px rgba(0, 0, 0, 0.1)'
                         }
                     }}

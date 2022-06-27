@@ -5,7 +5,7 @@ import Page from '@/components/Page';
 import { useDispatch } from 'react-redux';
 import { setPageActive } from '@/features/nav-state/posNavStateSlice';
 import { CategoriesSection, PosCart, ProductList, TopPanel } from '@/components/page-component';
-import { Grid, Stack } from '@mui/material';
+import { Stack } from '@mui/material';
 import { Scrollbar } from '@/components/scrollbar';
 import { Box } from '@mui/system';
 import { MHidden } from '@/components/@material-extend';

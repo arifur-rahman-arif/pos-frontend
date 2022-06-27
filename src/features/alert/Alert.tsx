@@ -2,7 +2,7 @@ import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
 import { useDispatch, useSelector } from 'react-redux';
 import { handleAlert } from './alertSlice';
-import { AppState } from '../../app/store';
+import { AppState } from '@/app/store';
 import { Typography } from '@mui/material';
 
 /**

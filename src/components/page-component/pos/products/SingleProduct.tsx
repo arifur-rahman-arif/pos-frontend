@@ -3,10 +3,13 @@ import { Card, CardContent, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import Image from 'next/image';
 import styles from './styles/ProductList.module.scss';
+import { useDispatch } from 'react-redux';
+import { addItem } from '@/features/course-features/courseSlice';
+import { handleAlert } from '@/features/alert/alertSlice';
 
 interface PropInterface {
     name: string;
-    price: string;
+    price: number;
     image: string;
 }
 
@@ -19,6 +22,29 @@ interface PropInterface {
  * @constructor
  */
 const SingleProduct = ({ name, price, image }: PropInterface) => {
+    const dispatch = useDispatch();
+
+    /**
+     * Add item to courses list
+     */
+    const handleItem = () => {
+        try {
+            dispatch(
+                addItem({
+                    name,
+                    price,
+                    quantity: 1
+                })
+            );
+
+            dispatch(handleAlert({ showAlert: true, alertMessage: 'Product added', alertType: 'success' }));
+        } catch (error) {
+            dispatch(
+                handleAlert({ showAlert: true, alertMessage: 'Failed to add product', alertType: 'error' })
+            );
+        }
+    };
+
     return (
         <Card>
             <CardContent
@@ -32,12 +58,14 @@ const SingleProduct = ({ name, price, image }: PropInterface) => {
                     p: 2,
                     paddingBottom: '16px !important'
                 }}
+                onClick={handleItem}
             >
                 <Box
                     sx={{
                         borderRadius: '50%',
                         position: 'relative',
                         minWidth: '154px',
+                        maxWidth: 200,
                         width: {
                             xs: '154px',
                             sm: '100%',
@@ -46,7 +74,7 @@ const SingleProduct = ({ name, price, image }: PropInterface) => {
                         height: {
                             xs: '154px',
                             sm: '165px',
-                            md: '165px',
+                            md: '170px',
                             lg: '200px'
                         },
                         overflow: 'hidden'
