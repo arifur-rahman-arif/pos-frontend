@@ -1,7 +1,6 @@
 import React from 'react';
 import { Card, CardContent, Chip, Grid, IconButton, Typography } from '@mui/material';
 import { Box } from '@mui/system';
-import { FaRegTimesCircle } from 'react-icons/fa';
 import { FiPlusCircle } from 'react-icons/fi';
 
 /**

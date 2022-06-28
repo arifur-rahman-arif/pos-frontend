@@ -1,21 +1,18 @@
 import { Collapse, IconButton, Stack, Typography } from '@mui/material';
-import { AiFillCaretDown } from 'react-icons/ai';
+import { AiFillCaretDown, AiFillCaretRight } from 'react-icons/ai';
 import { FiTrash2 } from 'react-icons/fi';
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { deleteCourse } from '@/features/course-features/courseSlice';
+import { CourseItemType, deleteCourse } from '@/features/course-features/courseSlice';
 import CourseItem from './CourseItem';
-
-type CourseItem = {
-    name: string;
-    price: number;
-    quantity: number;
-};
 
 interface PropInterface {
     index: number;
     course: {
-        items: Array<CourseItem>;
+        items: {
+            [key: string]: CourseItemType;
+        };
+        open: boolean;
     };
 }
 
@@ -40,12 +37,12 @@ const Course = ({ index, course }: PropInterface) => {
             <Stack direction="row" alignItems="center" gap={1.5}>
                 <IconButton
                     sx={{
-                        fontSize: '1.7rem',
+                        fontSize: '1.6rem',
                         p: 1.5,
                         ml: -1
                     }}
                 >
-                    <AiFillCaretDown />
+                    {course.open ? <AiFillCaretDown /> : <AiFillCaretRight />}
                 </IconButton>
 
                 <Typography variant="h6" sx={{ fontWeight: 'bolder' }}>
@@ -55,7 +52,7 @@ const Course = ({ index, course }: PropInterface) => {
                 <IconButton
                     sx={{
                         fontSize: '1.7rem',
-                        p: 2,
+                        p: 1.7,
                         ml: 'auto',
                         mr: -2,
                         color: (theme) => theme.palette.error.main
@@ -68,10 +65,12 @@ const Course = ({ index, course }: PropInterface) => {
                 </IconButton>
             </Stack>
 
-            <Collapse in={true} sx={{ mt: -0.5 }}>
+            <Collapse in={course.open} sx={{ mt: -0.1 }}>
                 <Stack gap={1.5}>
                     {course?.items && // eslint-disable-line
-                        course.items.map((item, index) => <CourseItem key={index} item={item} />)}
+                        Object.keys(course.items).map((key, index) => (
+                            <CourseItem key={index} item={course.items[key]} />
+                        ))}
                 </Stack>
             </Collapse>
         </div>

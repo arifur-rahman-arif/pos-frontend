@@ -48,7 +48,9 @@ const CourseSection = () => {
                                 display: 'flex',
                                 flexDirection: 'column',
                                 justifyContent: 'flex-start',
-                                alignItems: 'stretch'
+                                alignItems: 'stretch',
+                                maxHeight: 'calc(100vh - 500px)',
+                                minHeight: '300px'
                             },
                             pb: 2,
                             px: 3

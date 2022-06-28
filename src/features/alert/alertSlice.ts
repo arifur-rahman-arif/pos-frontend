@@ -27,7 +27,9 @@ const alertSlice = createSlice({
             const { showAlert, alertType, alertMessage } = action.payload;
 
             state.alertValue = showAlert;
+
             state.alertType = alertType || state.alertType;
+
             state.alertMessage = alertMessage || state.alertMessage;
         }
     }

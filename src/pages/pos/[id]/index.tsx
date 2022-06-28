@@ -9,13 +9,22 @@ import { Stack } from '@mui/material';
 import { Scrollbar } from '@/components/scrollbar';
 import { Box } from '@mui/system';
 import { MHidden } from '@/components/@material-extend';
+import { faker } from '@faker-js/faker';
+
+export type ProductListType = {
+    id: string;
+    name: string;
+    price: number;
+    image: string;
+};
 
 /**
- * Single product page to edit or view the product details in depth
+ * Pos products list page component
+ * @param {any} props
  * @returns {JSX.Element}
  * @constructor
  */
-const PosPage: NextPage = () => {
+const PosPage: NextPage = (props: any) => {
     const siteName = `${SITE_NAME} | POS`;
 
     const dispatch = useDispatch();
@@ -24,6 +33,8 @@ const PosPage: NextPage = () => {
         dispatch(setPageActive('homePageActive'));
     }, []);
 
+    const productList: Array<ProductListType> = props.products;
+
     return (
         <Page title={siteName}>
             <Stack direction="row" gap={0}>
@@ -31,7 +42,7 @@ const PosPage: NextPage = () => {
                     gap={3}
                     sx={{
                         width: {
-                            md: 'calc(100% - 360px)',
+                            md: 'calc(100% - 370px)',
                             sm: '100%'
                         }
                     }}
@@ -42,7 +53,7 @@ const PosPage: NextPage = () => {
 
                     <Box
                         sx={{
-                            maxHeight: 'calc(100vh - 130px)'
+                            maxHeight: 'calc(100vh - 340px)'
                         }}
                     >
                         <Scrollbar
@@ -55,7 +66,7 @@ const PosPage: NextPage = () => {
                                 pb: 3
                             }}
                         >
-                            <ProductList />
+                            <ProductList productList={productList} />
                         </Scrollbar>
                     </Box>
                 </Stack>
@@ -76,5 +87,28 @@ const PosPage: NextPage = () => {
 
 // @ts-ignore
 PosPage.layout = 'posNavigation';
+
+/**
+ * Server component of ProductList
+ * @returns {{props: {}}}
+ */
+export const getServerSideProps = async () => {
+    const productList: Array<ProductListType> = [];
+
+    for (let i = 0; i < 20; i++) {
+        productList.push({
+            id: faker.database.mongodbObjectId(),
+            name: faker.commerce.productName(),
+            price: Number(faker.commerce.price(10, 50, 2)),
+            image: faker.image.food(500, 400, true)
+        });
+    }
+
+    return {
+        props: {
+            products: productList
+        }
+    };
+};
 
 export default PosPage;

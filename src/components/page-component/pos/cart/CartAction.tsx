@@ -5,6 +5,11 @@ import { MdOutlineFrontHand } from 'react-icons/md';
 import { GiCampCookingPot } from 'react-icons/gi';
 import { Box } from '@mui/system';
 
+/**
+ * Cart action component for handling the cart
+ * @returns {JSX.Element}
+ * @constructor
+ */
 const CartAction = () => {
     return (
         <Stack

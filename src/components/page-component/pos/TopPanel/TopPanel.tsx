@@ -1,7 +1,5 @@
-import { Card, CardContent, IconButton, Typography } from '@mui/material';
-import { FaLongArrowAltRight } from 'react-icons/fa';
+import { Card, CardContent, IconButton } from '@mui/material';
 import { Box } from '@mui/system';
-import Link from 'next/link';
 import { BsCloudCheck } from 'react-icons/bs';
 import { MdSync } from 'react-icons/md';
 import React from 'react';
@@ -30,53 +28,53 @@ const TopPanel = () => {
                 flexWrap: 'wrap'
             }}
         >
-            <Link href="/src/pages">
-                <Card sx={{ float: 'right' }}>
-                    <CardContent
-                        sx={{
-                            display: 'flex',
-                            justifyContent: 'space-between',
-                            alignItems: 'center',
-                            padding: '16px !important',
-                            flexWrap: 'wrap'
-                        }}
-                    >
-                        <Box
-                            sx={{
-                                display: 'flex',
-                                justifyContent: 'flex-start',
-                                alignItems: 'center',
-                                flexWrap: 'wrap'
-                            }}
-                        >
-                            <Typography
-                                variant="body2"
-                                sx={{
-                                    display: 'flex',
-                                    justifyContent: 'flex-start',
-                                    alignItems: 'center'
-                                }}
-                            >
-                                Last order
-                            </Typography>
-                            <Typography
-                                sx={{ color: '#F2345E', fontSize: '1.1rem', fontWeight: 'bolder', mx: 1 }}
-                            >
-                                JUST EAT
-                            </Typography>{' '}
-                            20 min ago
-                        </Box>
-                        <IconButton
-                            sx={{
-                                p: 0,
-                                ml: 2
-                            }}
-                        >
-                            <FaLongArrowAltRight />
-                        </IconButton>
-                    </CardContent>
-                </Card>
-            </Link>
+            {/* <Link href="/src/pages"> */}
+            {/*     <Card sx={{ float: 'right' }}> */}
+            {/*         <CardContent */}
+            {/*             sx={{ */}
+            {/*                 display: 'flex', */}
+            {/*                 justifyContent: 'space-between', */}
+            {/*                 alignItems: 'center', */}
+            {/*                 padding: '16px !important', */}
+            {/*                 flexWrap: 'wrap' */}
+            {/*             }} */}
+            {/*         > */}
+            {/*             <Box */}
+            {/*                 sx={{ */}
+            {/*                     display: 'flex', */}
+            {/*                     justifyContent: 'flex-start', */}
+            {/*                     alignItems: 'center', */}
+            {/*                     flexWrap: 'wrap' */}
+            {/*                 }} */}
+            {/*             > */}
+            {/*                 <Typography */}
+            {/*                     variant="body2" */}
+            {/*                     sx={{ */}
+            {/*                         display: 'flex', */}
+            {/*                         justifyContent: 'flex-start', */}
+            {/*                         alignItems: 'center' */}
+            {/*                     }} */}
+            {/*                 > */}
+            {/*                     Last order */}
+            {/*                 </Typography> */}
+            {/*                 <Typography */}
+            {/*                     sx={{ color: '#F2345E', fontSize: '1.1rem', fontWeight: 'bolder', mx: 1 }} */}
+            {/*                 > */}
+            {/*                     JUST EAT */}
+            {/*                 </Typography>{' '} */}
+            {/*                 20 min ago */}
+            {/*             </Box> */}
+            {/*             <IconButton */}
+            {/*                 sx={{ */}
+            {/*                     p: 0, */}
+            {/*                     ml: 2 */}
+            {/*                 }} */}
+            {/*             > */}
+            {/*                 <FaLongArrowAltRight /> */}
+            {/*             </IconButton> */}
+            {/*         </CardContent> */}
+            {/*     </Card> */}
+            {/* </Link> */}
 
             <Box>
                 <Card sx={{ float: 'right' }}>

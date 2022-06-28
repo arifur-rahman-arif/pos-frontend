@@ -16,7 +16,7 @@ const CartHeader = () => {
             flexDirection="row"
             sx={{
                 pt: 1,
-                pb: 3,
+                pb: 2,
                 px: 3
             }}
         >

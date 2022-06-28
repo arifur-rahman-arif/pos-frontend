@@ -10,6 +10,7 @@ import ThemeConfig from '@/theme/index';
 import GlobalStyles from '@/theme/globalStyles';
 import store from '@/app/store';
 import Alert from '@/features/alert/Alert';
+// Import ConsecutiveAlert from '@/features/alert/ConsecutiveAlert';
 
 const navigationLayouts = {
     navLayout1: Navigation,
