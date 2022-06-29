@@ -1,8 +1,14 @@
 import styles from './styles/ProductList.module.scss';
-import { Grid } from '@mui/material';
+import { Grid, Snackbar, Typography } from '@mui/material';
 import SingleProduct from './SingleProduct';
 import { ProductListType } from 'src/pages/pos/[id]';
-import React from 'react';
+import React, { SyntheticEvent, useEffect, useState } from 'react';
+import Slide from '@mui/material/Slide';
+import MuiAlert from '@mui/material/Alert';
+import { handleAlert } from '@/features/alert/alertSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { addItem, CourseItemType, CourseSliceStateInterface } from '@/features/course/courseSlice';
+import { AppState } from '@/app/store';
 
 interface PropInterface {
     productList: Array<ProductListType>;
@@ -19,6 +25,107 @@ export interface SnackbarMessage {
  * @constructor
  */
 const ProductList = ({ productList }: PropInterface) => {
+    const dispatch = useDispatch();
+
+    const { courses } = useSelector((state: AppState) => state.courseSlice as CourseSliceStateInterface);
+
+    const [snackPack, setSnackPack] = useState<readonly SnackbarMessage[]>([]);
+
+    const [open, setOpen] = useState(false);
+
+    const [messageInfo, setMessageInfo] = useState<SnackbarMessage | undefined>(undefined);
+
+    useEffect(() => {
+        if (snackPack.length && !messageInfo) {
+            // Set a new snack when we don't have an active one
+            setMessageInfo({ ...snackPack[0] });
+
+            setSnackPack((prev) => prev.slice(1));
+
+            setOpen(true);
+        } else if (snackPack.length && messageInfo && open) {
+            // Close an active snack when a new one is added
+            setOpen(false);
+        }
+    }, [snackPack, messageInfo, open]);
+
+    /**
+     * Add item to courses listing
+     * @param {CourseItemType} itemData
+     * @returns {any}
+     */
+    const handleAddItem = (itemData: CourseItemType) => {
+        try {
+            return dispatch(addItem(itemData));
+        } catch (error: any) {
+            throw error;
+        }
+    };
+
+    /**
+     * Handle the product add to cart notifications
+     * @param {string} message
+     * @param {CourseItemType} itemData
+     * @returns {any}
+     */
+    const handleClick = (message: string, itemData: CourseItemType) => {
+        try {
+            const activeCourseIndex = getActiveCourseIndex();
+
+            if (activeCourseIndex === undefined) {
+                return dispatch(
+                    handleAlert({
+                        showAlert: true,
+                        alertMessage: 'Please open a course first to add item',
+                        alertType: 'warning'
+                    })
+                );
+            }
+
+            itemData.courseIndex = activeCourseIndex as number;
+
+            if (!handleAddItem(itemData)) throw new Error('Unable to add product');
+
+            setSnackPack((prev) => [...prev, { message, key: Date.now() }]);
+        } catch (error: any) {
+            console.error(error);
+            dispatch(handleAlert({ showAlert: true, alertMessage: error.message, alertType: 'error' }));
+        }
+    };
+
+    /**
+     * Close the product alert
+     * @param {React.SyntheticEvent | Event} event
+     * @param {string} reason
+     */
+    const handleClose = (event: SyntheticEvent | Event, reason?: string) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+        setOpen(false);
+    };
+
+    /**
+     * Handle the alert exit
+     */
+    const handleExited = () => {
+        setMessageInfo(undefined);
+    };
+
+    /**
+     * Get the active course index to add products to the cart
+     * @returns {number | boolean}
+     */
+    const getActiveCourseIndex = (): number | undefined => {
+        let courseIndex;
+
+        courses.forEach((course, index) => {
+            if (course.open) return (courseIndex = index);
+        });
+
+        return courseIndex;
+    };
+
     return (
         <>
             <Grid container spacing={3}>
@@ -30,10 +137,55 @@ const ProductList = ({ productList }: PropInterface) => {
                             name={product.name}
                             price={product.price}
                             image={product.image}
+                            handleClick={handleClick}
                         />
                     ))}
                 </Grid>
             </Grid>
+
+            <Snackbar
+                key={messageInfo ? messageInfo.key : undefined}
+                open={open}
+                onClose={handleClose}
+                autoHideDuration={2000}
+                anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+                TransitionProps={{ onExited: handleExited }}
+                TransitionComponent={Slide}
+            >
+                <MuiAlert
+                    onClose={handleClose}
+                    severity="success"
+                    variant="filled"
+                    className={styles.alert}
+                    sx={{
+                        width: '100%',
+
+                        backgroundColor: 'rgb(46, 125, 50)',
+
+                        '& .MuiAlert-icon': {
+                            color: '#fff',
+
+                            Opacity: '1'
+                        },
+
+                        '& .MuiAlert-action': {
+                            color: '#fff',
+
+                            Opacity: '1'
+                        }
+                    }}
+                >
+                    <Typography
+                        variant="body1"
+                        sx={{
+                            textTransform: 'capitalized',
+                            color: '#fff'
+                        }}
+                    >
+                        {messageInfo?.message || ''}
+                    </Typography>
+                </MuiAlert>
+            </Snackbar>
         </>
     );
 };

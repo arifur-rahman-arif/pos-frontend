@@ -5,12 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2dfdbedd-c9d3-410f-90a2-85de0a05006f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/next.config.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/page-component/pos/CategoriesSection.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page-component/pos/CategoriesSection.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/page-component/pos/TopPanel/TopPanel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page-component/pos/TopPanel/TopPanel.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/page-component/pos/cart/CartAction.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page-component/pos/cart/CartAction.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/store.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/dashboard/navbar/DashboardNavbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/dashboard/navbar/DashboardNavbar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/dashboard/navbar/NotificationsPopover.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/dashboard/navbar/NotificationsPopover.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/page-component/pos/cart/CartHeader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page-component/pos/cart/CartHeader.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/page-component/pos/cart/Course.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page-component/pos/cart/Course.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/page-component/pos/cart/CourseItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page-component/pos/cart/CourseItem.tsx" afterDir="false" />
@@ -18,11 +16,8 @@
       <change beforePath="$PROJECT_DIR$/src/components/page-component/pos/products/ProductList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page-component/pos/products/ProductList.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/page-component/pos/products/SingleProduct.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page-component/pos/products/SingleProduct.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/features/alert/Alert.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/alert/Alert.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/alert/alertSlice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/alert/alertSlice.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/course-features/courseSlice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/course-features/courseSlice.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/_app.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/_app.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/pos/[id]/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/pos/[id]/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/course-features/courseSlice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/course/courseSlice.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/pages/globals.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/pages/globals.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../demo" beforeDir="false" afterPath="$PROJECT_DIR$/../demo" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -35,9 +30,9 @@
       <list>
         <option value="JavaScript File" />
         <option value="HTTP Request" />
-        <option value="SCSS File" />
         <option value="TypeScript File" />
         <option value="TypeScript JSX File" />
+        <option value="SCSS File" />
       </list>
     </option>
   </component>
@@ -103,7 +98,10 @@
       <recent name="$PROJECT_DIR$/src/components/page-component/user/UserNavigation.tsx" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="npm.dev">
+    <configuration type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:3001">
+      <method v="2" />
+    </configuration>
     <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -218,7 +216,10 @@
       <workItem from="1656392983312" duration="13013000" />
       <workItem from="1656407432190" duration="880000" />
       <workItem from="1656408462927" duration="235000" />
-      <workItem from="1656418298474" duration="10505000" />
+      <workItem from="1656418298474" duration="10583000" />
+      <workItem from="1656433517281" duration="157000" />
+      <workItem from="1656478556295" duration="5320000" />
+      <workItem from="1656488628901" duration="6518000" />
     </task>
     <servers />
   </component>

@@ -3,9 +3,8 @@ import { Button, Stack } from '@mui/material';
 import { AiOutlinePlusCircle } from 'react-icons/ai';
 import Course from './Course';
 import { useDispatch, useSelector } from 'react-redux';
-import { CourseSliceStateInterface, createNewCourse } from '@/features/course-features/courseSlice';
+import { CourseSliceStateInterface, createNewCourse } from '@/features/course/courseSlice';
 import { AppState } from '@/app/store';
-import { Scrollbar } from '@/components/scrollbar';
 
 /**
  * Course section of Cart
@@ -27,9 +26,8 @@ const CourseSection = () => {
                 <Stack justifyContent="flex-start" direction="row" sx={{ px: 3 }}>
                     <Button
                         variant="outlined"
-                        size="large"
+                        size="medium"
                         endIcon={<AiOutlinePlusCircle />}
-                        sx={{ p: 2 }}
                         onClick={() => dispatch(createNewCourse())}
                     >
                         Create course
@@ -37,30 +35,20 @@ const CourseSection = () => {
                 </Stack>
 
                 <Stack
+                    id="pos_course_container"
                     sx={{
                         maxHeight: 'calc(100vh - 500px)',
-                        minHeight: '300px'
+                        minHeight: '300px',
+                        overflowY: 'scroll',
+                        overflowX: 'hidden',
+                        pb: 2,
+                        px: 2.5
                     }}
                 >
-                    <Scrollbar
-                        sx={{
-                            '& .simplebar-content': {
-                                display: 'flex',
-                                flexDirection: 'column',
-                                justifyContent: 'flex-start',
-                                alignItems: 'stretch',
-                                maxHeight: 'calc(100vh - 500px)',
-                                minHeight: '300px'
-                            },
-                            pb: 2,
-                            px: 3
-                        }}
-                    >
-                        {courses && // eslint-disable-line
-                            courses.map((course, index) => (
-                                <Course key={index} index={index} course={course} />
-                            ))}
-                    </Scrollbar>
+                    {courses && // eslint-disable-line
+                        courses.map((course, index) => (
+                            <Course key={index} courseIndex={index} course={course} />
+                        ))}
                 </Stack>
             </Stack>
         </Stack>

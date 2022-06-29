@@ -59,7 +59,8 @@ const Alert = () => {
                 <Typography
                     variant="body1"
                     sx={{
-                        textTransform: 'capitalized'
+                        textTransform: 'capitalized',
+                        color: '#fff'
                     }}
                 >
                     {alertMessage}

@@ -20,7 +20,7 @@ const CartHeader = () => {
                 px: 3
             }}
         >
-            <Button variant="outlined" size="large">
+            <Button variant="outlined" size="medium">
                 Table 24
             </Button>
 

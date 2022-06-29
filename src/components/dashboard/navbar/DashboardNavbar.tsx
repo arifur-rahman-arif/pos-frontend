@@ -81,7 +81,7 @@ const DashboardNavbar = ({ toggleDrawer, sidebarPosition, noSideBar = false }: D
                 {noSideBar && (
                     <IconButton
                         onClick={toggleDrawer(sidebarPosition, true)}
-                        sx={{ color: 'text.primary', p: 2, fontSize: '1.7rem' }}
+                        sx={{ color: 'text.primary', p: 2, fontSize: '1.6rem' }}
                     >
                         <AiOutlineMenuUnfold />
                     </IconButton>

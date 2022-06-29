@@ -1,14 +1,15 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Card, CardContent, IconButton, Stack, Typography } from '@mui/material';
 import { AiOutlineMinusCircle, AiOutlinePlusCircle } from 'react-icons/ai';
 import { TooltipWrapper } from '@/components/page-component';
 import { trimText } from '@/utils/global';
 import { FiTrash2 } from 'react-icons/fi';
-import { CourseItemType, deleteItem } from '@/features/course-features/courseSlice';
+import { CourseItemType, deleteItem } from '@/features/course/courseSlice';
 import { useDispatch } from 'react-redux';
 
 interface PropInterface {
     item: CourseItemType;
+    courseIndex: number;
 }
 
 /**
@@ -16,7 +17,7 @@ interface PropInterface {
  * @returns {JSX.Element}
  * @constructor
  */
-const CourseItem = ({ item }: PropInterface) => {
+const CourseItem = ({ item, courseIndex }: PropInterface) => {
     const { id, name, price, quantity } = item;
 
     const dispatch = useDispatch();
@@ -84,7 +85,14 @@ const CourseItem = ({ item }: PropInterface) => {
                                 mr: -1.2,
                                 color: (theme) => theme.palette.error.main
                             }}
-                            onClick={() => dispatch(deleteItem(id))}
+                            onClick={() =>
+                                dispatch(
+                                    deleteItem({
+                                        courseIndex,
+                                        itemID: id
+                                    })
+                                )
+                            }
                         >
                             <FiTrash2 />
                         </IconButton>

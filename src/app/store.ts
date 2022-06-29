@@ -7,7 +7,7 @@ import couponSlice from '@/features/coupon/couponSlice';
 import shopSelectSlice from '@/features/shop/shopSelectSlice';
 import shopFormSlice from '@/features/shop/shopFormSlice';
 import posNavStateSlice from '@/features/nav-state/posNavStateSlice';
-import courseSlice from '@/features/course-features/courseSlice';
+import courseSlice from '@/features/course/courseSlice';
 
 /**
  * Redux make store function to create the store

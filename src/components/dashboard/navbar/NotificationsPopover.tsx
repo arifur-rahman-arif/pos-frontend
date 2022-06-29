@@ -211,7 +211,8 @@ const NotificationsPopover = () => {
                 onClick={handleOpen}
                 sx={{
                     p: 2,
-                    fontSize: '2rem',
+                    mr: 1.5,
+                    fontSize: '1.9rem',
                     ...(open && {
                         bgcolor: (theme) =>
                             alpha(theme.palette.primary.main, theme.palette.action.focusOpacity)
