@@ -159,15 +159,13 @@ const ProductList = ({ productList }: PropInterface) => {
                     className={styles.alert}
                     sx={{
                         width: '100%',
-
+                        alignItems: 'center',
                         backgroundColor: 'rgb(46, 125, 50)',
-
                         '& .MuiAlert-icon': {
                             color: '#fff',
 
                             Opacity: '1'
                         },
-
                         '& .MuiAlert-action': {
                             color: '#fff',
 

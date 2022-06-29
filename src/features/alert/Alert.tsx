@@ -46,6 +46,7 @@ const Alert = () => {
                 sx={{
                     width: '100%',
                     backgroundColor,
+                    alignItems: 'center',
                     '& .MuiAlert-icon': {
                         color: '#fff',
                         opacity: '1'

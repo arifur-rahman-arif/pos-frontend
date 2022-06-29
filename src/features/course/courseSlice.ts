@@ -8,7 +8,7 @@ export type CourseItemType = {
     courseIndex?: number;
 };
 
-type Course = {
+export type Course = {
     open: boolean;
     items: {
         [key: string]: CourseItemType;
@@ -77,10 +77,38 @@ const courseSlice = createSlice({
 
                 state.courses[index].open = index === action.payload;
             });
+        },
+        // Increase the item quantity
+        increaseItemQuantity: (
+            state: CourseSliceStateInterface,
+            action: PayloadAction<{ courseIndex: number; itemID: string; quantity?: number }>
+        ) => {
+            const { courseIndex, itemID, quantity = 1 } = action.payload;
+
+            state.courses[courseIndex].items[itemID].quantity += quantity;
+        },
+        // Decrease the item quantity
+        decreaseItemQuantity: (
+            state: CourseSliceStateInterface,
+            action: PayloadAction<{ courseIndex: number; itemID: string; quantity?: number }>
+        ) => {
+            const { courseIndex, itemID, quantity = 1 } = action.payload;
+
+            if (state.courses[courseIndex].items[itemID].quantity > 0) {
+                state.courses[courseIndex].items[itemID].quantity -= quantity;
+            }
         }
     }
 });
 
-export const { createNewCourse, deleteCourse, addItem, deleteItem, expandCourse } = courseSlice.actions;
+export const {
+    createNewCourse,
+    deleteCourse,
+    addItem,
+    deleteItem,
+    expandCourse,
+    increaseItemQuantity,
+    decreaseItemQuantity
+} = courseSlice.actions;
 
 export default courseSlice.reducer;
