@@ -1,10 +1,8 @@
-import { Collapse, IconButton, Stack, Typography } from '@mui/material';
-import { AiFillCaretDown, AiFillCaretRight } from 'react-icons/ai';
-import { FiTrash2 } from 'react-icons/fi';
-import { useEffect, useRef } from 'react';
-import { useDispatch } from 'react-redux';
-import { CourseItemType, deleteCourse, expandCourse } from '@/features/course/courseSlice';
+import { Collapse, Stack } from '@mui/material';
+import React, { useEffect, useRef } from 'react';
+import { CourseItemType } from '@/features/course/courseSlice';
 import CourseItem from './CourseItem';
+import CourseName from '@/components/page-component/pos/cart/CourseName';
 
 interface PropInterface {
     courseIndex: number;
@@ -22,15 +20,6 @@ interface PropInterface {
  * @constructor
  */
 const Course = ({ courseIndex, course }: PropInterface) => {
-    const dispatch = useDispatch();
-
-    /**
-     * Delete the course by its index number
-     */
-    const handleCourseDelete = () => {
-        dispatch(deleteCourse(courseIndex));
-    };
-
     const divRef = useRef(null);
 
     useEffect(() => {
@@ -40,37 +29,7 @@ const Course = ({ courseIndex, course }: PropInterface) => {
 
     return (
         <div className="course-wrapper">
-            <Stack direction="row" alignItems="center" gap={1.5}>
-                <IconButton
-                    sx={{
-                        fontSize: '1.6rem',
-                        p: 1.2,
-                        ml: -1
-                    }}
-                    onClick={() => dispatch(expandCourse(courseIndex))}
-                >
-                    {course.open ? <AiFillCaretDown /> : <AiFillCaretRight />}
-                </IconButton>
-
-                <Typography variant="h6" sx={{ fontWeight: 'bolder' }}>
-                    Course #{courseIndex + 1}
-                </Typography>
-
-                <IconButton
-                    sx={{
-                        fontSize: '1.6rem',
-                        p: 1.4,
-                        ml: 'auto',
-                        mr: -2,
-                        color: (theme) => theme.palette.error.main
-                    }}
-                    onClick={() => {
-                        handleCourseDelete();
-                    }}
-                >
-                    <FiTrash2 />
-                </IconButton>
-            </Stack>
+            <CourseName courseIndex={courseIndex} course={course} />
 
             <Collapse in={course.open} sx={{ mt: -0.1, mb: 1 }}>
                 <Stack gap={1.5}>

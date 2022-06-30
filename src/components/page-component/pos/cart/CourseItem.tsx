@@ -182,6 +182,9 @@ const CourseItem = ({ item, courseIndex }: PropInterface) => {
                                         top: 1,
                                         color: (theme) => theme.palette.info.main
                                     }}
+                                    onClick={() => {
+                                        dispatch(toggleItemExpand({ courseIndex, itemID: id }));
+                                    }}
                                 >
                                     <AiOutlineComment />
                                 </IconButton>

@@ -12,6 +12,7 @@ export type CourseItemType = {
 
 export type Course = {
     open: boolean;
+    name?: string;
     items: {
         [key: string]: CourseItemType;
     };
@@ -128,11 +129,20 @@ const courseSlice = createSlice({
         toggleItemExpand: (
             state: CourseSliceStateInterface,
             action: PayloadAction<{ courseIndex: number; itemID: string }>
-        ) => {
+        ): void => {
             const { courseIndex, itemID } = action.payload;
 
             state.courses[courseIndex].items[itemID].itemOpen = // eslint-disable-line
                 !state.courses[courseIndex].items[itemID].itemOpen;
+        },
+        // Save the courseName
+        saveCourseName: (
+            state: CourseSliceStateInterface,
+            action: PayloadAction<{ courseIndex: number; name: string }>
+        ): void => {
+            const { courseIndex, name } = action.payload;
+
+            state.courses[courseIndex].name = name;
         }
     }
 });
@@ -147,7 +157,8 @@ export const {
     decreaseItemQuantity,
     modifyItemQuantity,
     setItemNote,
-    toggleItemExpand
+    toggleItemExpand,
+    saveCourseName
 } = courseSlice.actions;
 
 export default courseSlice.reducer;

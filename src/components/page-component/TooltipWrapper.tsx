@@ -1,5 +1,5 @@
-import React from 'react';
-import { Tooltip } from '@mui/material';
+import React, { useState } from 'react';
+import { Tooltip, Zoom } from '@mui/material';
 
 interface PropInterface {
     title: string;
@@ -37,8 +37,19 @@ const TooltipWrapper = ({
     placement = 'bottom',
     children
 }: PropInterface) => {
+    const [toolTip, setToolTip] = useState<boolean>(false);
+
     return (
-        <Tooltip title={title} placement={placement} arrow={arrow}>
+        <Tooltip
+            title={title}
+            placement={placement}
+            arrow={arrow}
+            TransitionComponent={Zoom}
+            open={toolTip}
+            onClick={() => setToolTip(true)}
+            onMouseEnter={() => setToolTip(true)}
+            onClose={() => setToolTip(false)}
+        >
             {children}
         </Tooltip>
     );
