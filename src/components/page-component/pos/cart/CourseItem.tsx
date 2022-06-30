@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Card, CardContent, Collapse, IconButton, Stack, Typography } from '@mui/material';
+import { ChangeEvent, useEffect, useState } from 'react';
+import { Card, CardContent, Collapse, IconButton, Stack, TextField, Typography } from '@mui/material';
 import {
     AiFillCaretDown,
     AiFillCaretRight,
@@ -14,10 +14,13 @@ import {
     CourseItemType,
     decreaseItemQuantity,
     deleteItem,
-    increaseItemQuantity
+    increaseItemQuantity,
+    modifyItemQuantity,
+    toggleItemExpand
 } from '@/features/course/courseSlice';
 import { useDispatch } from 'react-redux';
 import { handleAlert } from '@/features/alert/alertSlice';
+import CourseItemNote from '@/components/page-component/pos/cart/CourseItemNote';
 
 interface PropInterface {
     item: CourseItemType;
@@ -30,18 +33,22 @@ interface PropInterface {
  * @constructor
  */
 const CourseItem = ({ item, courseIndex }: PropInterface) => {
-    const { id, name, price, quantity } = item;
+    const { id, name, price, quantity, itemNote, itemOpen } = item;
 
     const dispatch = useDispatch();
 
-    const [itemExpanded, setItemExpanded] = useState<boolean>(false);
+    const [editQuantity, setEditQuantity] = useState<number>(quantity);
+
+    useEffect(() => {
+        setEditQuantity(quantity);
+    }, [quantity]);
 
     /**
      * Handle the item quantity change event
      * @param {"increase" | "decrease"} type
      * @returns {any}
      */
-    const handleQuantity = (type: 'increase' | 'decrease') => {
+    const handleQuantity = (type: 'increase' | 'decrease' | 'edit') => {
         if (type === 'increase') {
             dispatch(increaseItemQuantity({ courseIndex, itemID: id }));
         }
@@ -59,6 +66,18 @@ const CourseItem = ({ item, courseIndex }: PropInterface) => {
 
             dispatch(decreaseItemQuantity({ courseIndex, itemID: id }));
         }
+    };
+
+    /**
+     * Handle the item quantity edit event
+     * @param {React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>} e
+     */
+    const handleItemQuantityEdit = (e: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
+        const value = parseInt(e.target.value);
+
+        setEditQuantity(value);
+
+        dispatch(modifyItemQuantity({ courseIndex, itemID: id, quantity: value }));
     };
 
     return (
@@ -102,7 +121,8 @@ const CourseItem = ({ item, courseIndex }: PropInterface) => {
                     <Stack
                         direction="row"
                         alignItems="center"
-                        gap={1}
+                        gap={quantity.toString().length < 3 ? 0.9 : 0.7}
+                        flexWrap={quantity.toString().length < 4 ? 'nowrap' : 'wrap'}
                         sx={{
                             width: '100%',
                             marginTop: -1
@@ -115,9 +135,9 @@ const CourseItem = ({ item, courseIndex }: PropInterface) => {
                                 ml: -1,
                                 top: 2
                             }}
-                            onClick={() => setItemExpanded(!itemExpanded)}
+                            onClick={() => dispatch(toggleItemExpand({ courseIndex, itemID: id }))}
                         >
-                            {itemExpanded ? <AiFillCaretDown /> : <AiFillCaretRight />}
+                            {itemOpen ? <AiFillCaretDown /> : <AiFillCaretRight />}
                         </IconButton>
 
                         <Typography
@@ -144,42 +164,64 @@ const CourseItem = ({ item, courseIndex }: PropInterface) => {
                             </IconButton>
                         </Stack>
 
-                        <IconButton
+                        <Stack
+                            direction="row"
+                            justifyContent="flex-start"
+                            alignItems="flex-start"
                             sx={{
-                                fontSize: '1.6rem',
-                                p: 1,
-                                ml: 'auto',
-                                mr: -3.5,
-                                top: 1.5,
-                                color: (theme) => theme.palette.info.main
+                                mt: quantity.toString().length < 4 ? 0 : -1,
+                                ml: quantity.toString().length < 4 ? 'auto' : 0,
+                                mr: quantity.toString().length < 4 ? -1 : 0
                             }}
                         >
-                            <AiOutlineComment />
-                        </IconButton>
+                            {itemNote && (
+                                <IconButton
+                                    sx={{
+                                        fontSize: '1.6rem',
+                                        p: 1,
+                                        top: 1,
+                                        color: (theme) => theme.palette.info.main
+                                    }}
+                                >
+                                    <AiOutlineComment />
+                                </IconButton>
+                            )}
 
-                        <IconButton
-                            sx={{
-                                fontSize: '1.5rem',
-                                p: 1,
-                                mr: -1.2,
-                                ml: 'auto',
-                                color: (theme) => theme.palette.error.main
-                            }}
-                            onClick={() =>
-                                dispatch(
-                                    deleteItem({
-                                        courseIndex,
-                                        itemID: id
-                                    })
-                                )
-                            }
-                        >
-                            <FiTrash2 />
-                        </IconButton>
+                            <IconButton
+                                sx={{
+                                    fontSize: '1.5rem',
+                                    p: 1,
+                                    color: (theme) => theme.palette.error.main
+                                }}
+                                onClick={() =>
+                                    dispatch(
+                                        deleteItem({
+                                            courseIndex,
+                                            itemID: id
+                                        })
+                                    )
+                                }
+                            >
+                                <FiTrash2 />
+                            </IconButton>
+                        </Stack>
                     </Stack>
 
-                    <Collapse in={itemExpanded} collapsedSize={0} sx={{ mt: -1 }}>
-                        <h3>hello</h3>
+                    <Collapse in={itemOpen} collapsedSize={0} sx={{ mt: -1, width: '100%' }}>
+                        <Stack sx={{ pt: 2, pb: 1.2 }} gap={3}>
+                            <TextField
+                                fullWidth
+                                type="text"
+                                label="Item quantity"
+                                value={editQuantity ? editQuantity : ''}
+                                InputLabelProps={{
+                                    shrink: true
+                                }}
+                                onChange={handleItemQuantityEdit}
+                            />
+
+                            <CourseItemNote item={item} courseIndex={courseIndex} />
+                        </Stack>
                     </Collapse>
                 </Stack>
             </CardContent>

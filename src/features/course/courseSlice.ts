@@ -6,6 +6,8 @@ export type CourseItemType = {
     price: number;
     quantity: number;
     courseIndex?: number;
+    itemNote?: string;
+    itemOpen?: boolean;
 };
 
 export type Course = {
@@ -27,7 +29,7 @@ const courseSlice = createSlice({
     name: 'courseSlice',
     initialState,
     reducers: {
-        createNewCourse: (state: CourseSliceStateInterface) => {
+        createNewCourse: (state: CourseSliceStateInterface): void => {
             // If it's a fist course then it should be open by default
             // If the course is not first one then it should be closed by default
             !state.courses.length
@@ -37,10 +39,10 @@ const courseSlice = createSlice({
                       open: false // eslint-disable-line
                   }); // eslint-disable-line
         },
-        deleteCourse: (state: CourseSliceStateInterface, action: PayloadAction<number>) => {
+        deleteCourse: (state: CourseSliceStateInterface, action: PayloadAction<number>): void => {
             state.courses.splice(action.payload, 1);
         },
-        addItem: (state: CourseSliceStateInterface, action: PayloadAction<CourseItemType>) => {
+        addItem: (state: CourseSliceStateInterface, action: PayloadAction<CourseItemType>): void => {
             const { id, name, price, quantity, courseIndex } = action.payload;
 
             if (!id || !name || !price || !quantity) return;
@@ -55,7 +57,8 @@ const courseSlice = createSlice({
                     id,
                     name,
                     price,
-                    quantity
+                    quantity,
+                    courseIndex
                 };
             }
         },
@@ -63,16 +66,17 @@ const courseSlice = createSlice({
         deleteItem: (
             state: CourseSliceStateInterface,
             action: PayloadAction<{ courseIndex: number; itemID: string }>
-        ) => {
+        ): void => {
             const { courseIndex, itemID } = action.payload;
 
             delete state.courses[courseIndex].items[itemID];
         },
         // Open a course my matching index and close rest of the courses
-        expandCourse: (state: CourseSliceStateInterface, action: PayloadAction<number>) => {
+        expandCourse: (state: CourseSliceStateInterface, action: PayloadAction<number>): void => {
             state.courses.forEach((course, index) => {
                 if (state.courses[index].open) {
-                    return (state.courses[index].open = !state.courses[index].open);
+                    state.courses[index].open = !state.courses[index].open;
+                    return;
                 }
 
                 state.courses[index].open = index === action.payload;
@@ -82,7 +86,7 @@ const courseSlice = createSlice({
         increaseItemQuantity: (
             state: CourseSliceStateInterface,
             action: PayloadAction<{ courseIndex: number; itemID: string; quantity?: number }>
-        ) => {
+        ): void => {
             const { courseIndex, itemID, quantity = 1 } = action.payload;
 
             state.courses[courseIndex].items[itemID].quantity += quantity;
@@ -91,12 +95,44 @@ const courseSlice = createSlice({
         decreaseItemQuantity: (
             state: CourseSliceStateInterface,
             action: PayloadAction<{ courseIndex: number; itemID: string; quantity?: number }>
-        ) => {
+        ): void => {
             const { courseIndex, itemID, quantity = 1 } = action.payload;
 
             if (state.courses[courseIndex].items[itemID].quantity > 0) {
                 state.courses[courseIndex].items[itemID].quantity -= quantity;
             }
+        },
+        // Modify item quantity by number
+        modifyItemQuantity: (
+            state: CourseSliceStateInterface,
+            action: PayloadAction<{ courseIndex: number; itemID: string; quantity: number }>
+        ): void => {
+            const { courseIndex, itemID, quantity } = action.payload;
+
+            if (quantity) {
+                state.courses[courseIndex].items[itemID].quantity = quantity;
+            } else {
+                state.courses[courseIndex].items[itemID].quantity = 1;
+            }
+        },
+        // Set the item note for the item
+        setItemNote: (
+            state: CourseSliceStateInterface,
+            action: PayloadAction<{ courseIndex: number; itemID: string; note: string }>
+        ): void => {
+            const { courseIndex, itemID, note } = action.payload;
+
+            state.courses[courseIndex].items[itemID].itemNote = note;
+        },
+        // Toggle item expand
+        toggleItemExpand: (
+            state: CourseSliceStateInterface,
+            action: PayloadAction<{ courseIndex: number; itemID: string }>
+        ) => {
+            const { courseIndex, itemID } = action.payload;
+
+            state.courses[courseIndex].items[itemID].itemOpen = // eslint-disable-line
+                !state.courses[courseIndex].items[itemID].itemOpen;
         }
     }
 });
@@ -108,7 +144,10 @@ export const {
     deleteItem,
     expandCourse,
     increaseItemQuantity,
-    decreaseItemQuantity
+    decreaseItemQuantity,
+    modifyItemQuantity,
+    setItemNote,
+    toggleItemExpand
 } = courseSlice.actions;
 
 export default courseSlice.reducer;
