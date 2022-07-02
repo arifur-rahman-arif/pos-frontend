@@ -20,10 +20,12 @@ export type Course = {
 
 export interface CourseSliceStateInterface {
     courses: Array<Course>;
+    scrollIntoView?: boolean;
 }
 
 const initialState: CourseSliceStateInterface = {
-    courses: []
+    courses: [],
+    scrollIntoView: false
 };
 
 const courseSlice = createSlice({
@@ -125,6 +127,15 @@ const courseSlice = createSlice({
 
             state.courses[courseIndex].items[itemID].itemNote = note;
         },
+        // Clear the item note
+        clearItemNote: (
+            state: CourseSliceStateInterface,
+            action: PayloadAction<{ courseIndex: number; itemID: string }>
+        ): void => {
+            const { courseIndex, itemID } = action.payload;
+
+            state.courses[courseIndex].items[itemID].itemNote = '';
+        },
         // Toggle item expand
         toggleItemExpand: (
             state: CourseSliceStateInterface,
@@ -143,6 +154,9 @@ const courseSlice = createSlice({
             const { courseIndex, name } = action.payload;
 
             state.courses[courseIndex].name = name;
+        },
+        setScrollIntoView: (state: CourseSliceStateInterface, action: PayloadAction<boolean>): void => {
+            state.scrollIntoView = action.payload;
         }
     }
 });
@@ -157,8 +171,10 @@ export const {
     decreaseItemQuantity,
     modifyItemQuantity,
     setItemNote,
+    clearItemNote,
     toggleItemExpand,
-    saveCourseName
+    saveCourseName,
+    setScrollIntoView
 } = courseSlice.actions;
 
 export default courseSlice.reducer;

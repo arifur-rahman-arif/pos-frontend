@@ -1,4 +1,4 @@
-import { ChangeEvent, useEffect, useState } from 'react';
+import React, { ChangeEvent, useEffect, useState } from 'react';
 import { Card, CardContent, Collapse, IconButton, Stack, TextField, Typography } from '@mui/material';
 import {
     AiFillCaretDown,
@@ -20,7 +20,9 @@ import {
 } from '@/features/course/courseSlice';
 import { useDispatch } from 'react-redux';
 import { handleAlert } from '@/features/alert/alertSlice';
-import CourseItemNote from '@/components/page-component/pos/cart/CourseItemNote';
+import CourseItemNote from './CourseItemNote';
+import { TouchBackend } from 'react-dnd-touch-backend';
+import { DndProvider } from 'react-dnd';
 
 interface PropInterface {
     item: CourseItemType;
@@ -81,22 +83,29 @@ const CourseItem = ({ item, courseIndex }: PropInterface) => {
     };
 
     return (
-        <Card
-            sx={{ boxShadow: (theme) => theme.shadows[5], cursor: 'pointer' }}
-            onDragEnter={() => alert('Drag enter')}
-            onDragLeave={() => alert('Drag leave')}
-        >
-            <CardContent
-                sx={{
-                    px: 2,
-                    py: 2,
-                    paddingBottom: '10px !important'
-                }}
-            >
-                <Stack alignItems="start" gap={1}>
-                    <Stack alignItems="start">
-                        {name.length > 39 ? (
-                            <TooltipWrapper title={name}>
+        <DndProvider backend={TouchBackend}>
+            <Card sx={{ boxShadow: (theme) => theme.shadows[5], cursor: 'pointer' }}>
+                <CardContent
+                    sx={{
+                        px: 2,
+                        py: 2,
+                        paddingBottom: '10px !important'
+                    }}
+                >
+                    <Stack alignItems="start" gap={1}>
+                        <Stack alignItems="start">
+                            {name.length > 39 ? (
+                                <TooltipWrapper title={name}>
+                                    <Typography
+                                        variant="body1"
+                                        sx={{
+                                            whiteSpace: 'nowrap'
+                                        }}
+                                    >
+                                        {trimText(name || '', 39)}
+                                    </Typography>
+                                </TooltipWrapper>
+                            ) : (
                                 <Typography
                                     variant="body1"
                                     sx={{
@@ -105,130 +114,128 @@ const CourseItem = ({ item, courseIndex }: PropInterface) => {
                                 >
                                     {trimText(name || '', 39)}
                                 </Typography>
-                            </TooltipWrapper>
-                        ) : (
-                            <Typography
-                                variant="body1"
-                                sx={{
-                                    whiteSpace: 'nowrap'
-                                }}
-                            >
-                                {trimText(name || '', 39)}
-                            </Typography>
-                        )}
-                    </Stack>
-
-                    <Stack
-                        direction="row"
-                        alignItems="center"
-                        gap={quantity.toString().length < 3 ? 0.9 : 0.7}
-                        flexWrap={quantity.toString().length < 4 ? 'nowrap' : 'wrap'}
-                        sx={{
-                            width: '100%',
-                            marginTop: -1
-                        }}
-                    >
-                        <IconButton
-                            sx={{
-                                fontSize: '1.3rem',
-                                p: 1,
-                                ml: -1,
-                                top: 2
-                            }}
-                            onClick={() => dispatch(toggleItemExpand({ courseIndex, itemID: id }))}
-                        >
-                            {itemOpen ? <AiFillCaretDown /> : <AiFillCaretRight />}
-                        </IconButton>
-
-                        <Typography
-                            variant="body1"
-                            sx={{
-                                fontWeight: 'bolder',
-                                mt: 0.5,
-                                ml: -0.5,
-                                color: (theme) => theme.palette.primary.main
-                            }}
-                        >
-                            £{price?.toFixed(2)}
-                        </Typography>
-
-                        <Stack direction="row" alignItems="center" sx={{ mt: '2px', cursor: 'pointer' }}>
-                            <IconButton sx={{ mr: 0.5 }} onClick={() => handleQuantity('decrease')}>
-                                <AiOutlineMinusCircle />
-                            </IconButton>
-
-                            <Typography variant="body1">{quantity}</Typography>
-
-                            <IconButton sx={{ ml: 0.5 }} onClick={() => handleQuantity('increase')}>
-                                <AiOutlinePlusCircle />
-                            </IconButton>
+                            )}
                         </Stack>
 
                         <Stack
                             direction="row"
-                            justifyContent="flex-start"
-                            alignItems="flex-start"
+                            alignItems="center"
+                            flexWrap={quantity.toString().length < 4 ? 'nowrap' : 'wrap'}
                             sx={{
-                                mt: quantity.toString().length < 4 ? 0 : -1,
-                                ml: quantity.toString().length < 4 ? 'auto' : 0,
-                                mr: quantity.toString().length < 4 ? -1 : 0
+                                width: '100%',
+                                marginTop: -1
                             }}
                         >
-                            {itemNote && (
-                                <IconButton
-                                    sx={{
-                                        fontSize: '1.6rem',
-                                        p: 1,
-                                        top: 1,
-                                        color: (theme) => theme.palette.info.main
-                                    }}
-                                    onClick={() => {
-                                        dispatch(toggleItemExpand({ courseIndex, itemID: id }));
-                                    }}
-                                >
-                                    <AiOutlineComment />
-                                </IconButton>
-                            )}
-
                             <IconButton
                                 sx={{
-                                    fontSize: '1.5rem',
+                                    fontSize: '1.1rem',
                                     p: 1,
-                                    color: (theme) => theme.palette.error.main
+                                    ml: -1,
+                                    top: 2
                                 }}
-                                onClick={() =>
-                                    dispatch(
-                                        deleteItem({
-                                            courseIndex,
-                                            itemID: id
-                                        })
-                                    )
-                                }
+                                onClick={() => dispatch(toggleItemExpand({ courseIndex, itemID: id }))}
                             >
-                                <FiTrash2 />
+                                {itemOpen ? <AiFillCaretDown /> : <AiFillCaretRight />}
                             </IconButton>
-                        </Stack>
-                    </Stack>
 
-                    <Collapse in={itemOpen} collapsedSize={0} sx={{ mt: -1, width: '100%' }}>
-                        <Stack sx={{ pt: 2, pb: 1.2 }} gap={3}>
-                            <TextField
-                                fullWidth
-                                type="text"
-                                label="Item quantity"
-                                value={editQuantity ? editQuantity : ''}
-                                InputLabelProps={{
-                                    shrink: true
+                            <Typography
+                                variant="body2"
+                                sx={{
+                                    fontWeight: 'bolder',
+                                    mt: 0.5,
+                                    color: (theme) => theme.palette.primary.main
                                 }}
-                                onChange={handleItemQuantityEdit}
-                            />
+                            >
+                                £{price?.toFixed(2)}
+                            </Typography>
 
-                            <CourseItemNote item={item} courseIndex={courseIndex} />
+                            <Stack
+                                direction="row"
+                                alignItems="center"
+                                sx={{ mt: '2px', cursor: 'pointer', ml: 0.5 }}
+                            >
+                                <IconButton
+                                    sx={{ mr: 0.5, fontSize: '1.29rem' }}
+                                    onClick={() => handleQuantity('decrease')}
+                                >
+                                    <AiOutlineMinusCircle />
+                                </IconButton>
+
+                                <Typography variant="body2">{quantity}</Typography>
+
+                                <IconButton
+                                    sx={{ ml: 0.5, fontSize: '1.29rem' }}
+                                    onClick={() => handleQuantity('increase')}
+                                >
+                                    <AiOutlinePlusCircle />
+                                </IconButton>
+                            </Stack>
+
+                            <Stack
+                                direction="row"
+                                justifyContent="flex-start"
+                                alignItems="flex-start"
+                                sx={{
+                                    ml: quantity.toString().length > 3 && itemNote ? 0 : 'auto',
+                                    mr: -1
+                                }}
+                            >
+                                {itemNote && (
+                                    <IconButton
+                                        sx={{
+                                            fontSize: '1.35rem',
+                                            p: 1,
+                                            top: 1,
+                                            color: (theme) => theme.palette.info.main
+                                        }}
+                                        onClick={() => {
+                                            dispatch(toggleItemExpand({ courseIndex, itemID: id }));
+                                        }}
+                                    >
+                                        <AiOutlineComment />
+                                    </IconButton>
+                                )}
+
+                                <IconButton
+                                    sx={{
+                                        fontSize: '1.25rem',
+                                        p: 1,
+                                        color: (theme) => theme.palette.error.main
+                                    }}
+                                    onClick={() =>
+                                        dispatch(
+                                            deleteItem({
+                                                courseIndex,
+                                                itemID: id
+                                            })
+                                        )
+                                    }
+                                >
+                                    <FiTrash2 />
+                                </IconButton>
+                            </Stack>
                         </Stack>
-                    </Collapse>
-                </Stack>
-            </CardContent>
-        </Card>
+
+                        <Collapse in={itemOpen} collapsedSize={0} sx={{ mt: -1, width: '100%' }}>
+                            <Stack sx={{ pt: 2, pb: 1.2 }} gap={2}>
+                                <TextField
+                                    fullWidth
+                                    type="text"
+                                    label="Item quantity"
+                                    value={editQuantity ? editQuantity : ''}
+                                    InputLabelProps={{
+                                        shrink: true
+                                    }}
+                                    onChange={handleItemQuantityEdit}
+                                />
+
+                                <CourseItemNote item={item} courseIndex={courseIndex} />
+                            </Stack>
+                        </Collapse>
+                    </Stack>
+                </CardContent>
+            </Card>
+        </DndProvider>
     );
 };
 

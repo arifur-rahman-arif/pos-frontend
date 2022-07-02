@@ -5,14 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2dfdbedd-c9d3-410f-90a2-85de0a05006f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/page-component/pos/cart/CourseName.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/hooks/useLongPress.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/page-component/TooltipWrapper.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page-component/TooltipWrapper.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/page-component/pos/cart/Course.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page-component/pos/cart/Course.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/page-component/pos/cart/CourseItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page-component/pos/cart/CourseItem.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/page-component/pos/cart/CourseItemNote.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page-component/pos/cart/CourseItemNote.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/page-component/pos/cart/CourseName.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page-component/pos/cart/CourseName.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/page-component/pos/cart/CourseSection.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page-component/pos/cart/CourseSection.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/page-component/pos/cart/PosCart.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page-component/pos/cart/PosCart.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/page-component/pos/products/ProductList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page-component/pos/products/ProductList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/page-component/pos/products/SingleProduct.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page-component/pos/products/SingleProduct.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/page-component/pos/products/styles/ProductList.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page-component/pos/products/styles/ProductList.module.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/features/course/courseSlice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/course/courseSlice.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/pos/[id]/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/pos/[id]/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../demo" beforeDir="false" afterPath="$PROJECT_DIR$/../demo" afterDir="false" />
     </list>
@@ -218,7 +223,10 @@
       <workItem from="1656488628901" duration="6518000" />
       <workItem from="1656505172863" duration="10762000" />
       <workItem from="1656569769062" duration="11813000" />
-      <workItem from="1656589867818" duration="14220000" />
+      <workItem from="1656589867818" duration="14352000" />
+      <workItem from="1656655197243" duration="4119000" />
+      <workItem from="1656675312370" duration="2446000" />
+      <workItem from="1656765798794" duration="8679000" />
     </task>
     <servers />
   </component>

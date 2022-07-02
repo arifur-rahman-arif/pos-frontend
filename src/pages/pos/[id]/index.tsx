@@ -42,7 +42,7 @@ const PosPage: NextPage = (props: any) => {
                     gap={3}
                     sx={{
                         width: {
-                            md: 'calc(100% - 370px)',
+                            md: 'calc(100% - 340px)',
                             sm: '100%'
                         }
                     }}
@@ -74,7 +74,7 @@ const PosPage: NextPage = (props: any) => {
                 <MHidden width="mdDown">
                     <Stack
                         sx={{
-                            width: 350
+                            width: 330
                         }}
                     >
                         <PosCart />

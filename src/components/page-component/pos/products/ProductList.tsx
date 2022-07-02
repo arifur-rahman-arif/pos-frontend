@@ -7,7 +7,12 @@ import Slide from '@mui/material/Slide';
 import MuiAlert from '@mui/material/Alert';
 import { handleAlert } from '@/features/alert/alertSlice';
 import { useDispatch, useSelector } from 'react-redux';
-import { addItem, CourseItemType, CourseSliceStateInterface } from '@/features/course/courseSlice';
+import {
+    addItem,
+    CourseItemType,
+    CourseSliceStateInterface,
+    setScrollIntoView
+} from '@/features/course/courseSlice';
 import { AppState } from '@/app/store';
 
 interface PropInterface {
@@ -34,6 +39,8 @@ const ProductList = ({ productList }: PropInterface) => {
     const [open, setOpen] = useState(false);
 
     const [messageInfo, setMessageInfo] = useState<SnackbarMessage | undefined>(undefined);
+
+    const [timer, setTimer] = useState<any>();
 
     useEffect(() => {
         if (snackPack.length && !messageInfo) {
@@ -85,6 +92,16 @@ const ProductList = ({ productList }: PropInterface) => {
             itemData.courseIndex = activeCourseIndex as number;
 
             if (!handleAddItem(itemData)) throw new Error('Unable to add product');
+
+            dispatch(setScrollIntoView(true));
+
+            clearTimeout(timer);
+
+            const timeoutID = setTimeout(() => {
+                dispatch(setScrollIntoView(false));
+            }, 800);
+
+            setTimer(timeoutID);
 
             setSnackPack((prev) => [...prev, { message, key: Date.now() }]);
         } catch (error: any) {

@@ -38,7 +38,7 @@ const CourseName = ({ courseIndex, course }: PropInterface) => {
 
     const [showCourseInput, setShowCourseInput] = useState<boolean>(false);
 
-    const [courseName, setCourseName] = useState(course.name ? course.name : `Course #${courseIndex + 1}`);
+    const [courseName, setCourseName] = useState(course.name ? course.name : `Course ${courseIndex + 1}`);
 
     /**
      * Delete the course by its index number
@@ -101,7 +101,7 @@ const CourseName = ({ courseIndex, course }: PropInterface) => {
                     </IconButton>
 
                     {/* If the course name is longer than 28 characters then show the tooltip or else show the normal text */}
-                    {(course.name ? course.name : courseName).length > 28 ? (
+                    {(course.name ? course.name : courseName).length > 25 ? (
                         <TooltipWrapper title={course.name ? course.name : courseName} placement="left">
                             <Typography
                                 {...longPressEvent}
@@ -110,11 +110,11 @@ const CourseName = ({ courseIndex, course }: PropInterface) => {
                                     fontWeight: 'bolder',
                                     fontSize: '0.999rem !important',
                                     cursor: 'pointer',
-                                    minWidth: 250,
+                                    minWidth: 200,
                                     lineHeight: '35px'
                                 }}
                             >
-                                {trimText(course.name ? course.name : courseName, 28)}
+                                {trimText(course.name ? course.name : courseName, 25)}
                             </Typography>
                         </TooltipWrapper>
                     ) : (
@@ -125,7 +125,7 @@ const CourseName = ({ courseIndex, course }: PropInterface) => {
                                 fontWeight: 'bolder',
                                 fontSize: '0.999rem !important',
                                 cursor: 'pointer',
-                                minWidth: 250,
+                                minWidth: 200,
                                 lineHeight: '35px'
                             }}
                         >
@@ -138,7 +138,7 @@ const CourseName = ({ courseIndex, course }: PropInterface) => {
                             fontSize: '1.5rem',
                             p: 1.4,
                             ml: 'auto',
-                            mr: -2,
+                            mr: -1.7,
                             color: (theme) => theme.palette.error.main
                         }}
                         onClick={() => {

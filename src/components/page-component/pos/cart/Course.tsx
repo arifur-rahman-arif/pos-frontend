@@ -1,8 +1,8 @@
 import { Collapse, Stack } from '@mui/material';
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { CourseItemType } from '@/features/course/courseSlice';
 import CourseItem from './CourseItem';
-import CourseName from '@/components/page-component/pos/cart/CourseName';
+import CourseName from './CourseName';
 
 interface PropInterface {
     courseIndex: number;
@@ -12,6 +12,7 @@ interface PropInterface {
         };
         open: boolean;
     };
+    scrollIntoView: boolean | undefined;
 }
 
 /**
@@ -19,12 +20,14 @@ interface PropInterface {
  * @returns {JSX.Element}
  * @constructor
  */
-const Course = ({ courseIndex, course }: PropInterface) => {
+const Course = ({ courseIndex, course, scrollIntoView }: PropInterface) => {
     const divRef = useRef(null);
 
     useEffect(() => {
-        // @ts-ignore
-        divRef.current.scrollIntoView({ behavior: 'smooth' });
+        if (scrollIntoView) {
+            // @ts-ignore
+            divRef.current.scrollIntoView({ behavior: 'smooth' });
+        }
     });
 
     return (

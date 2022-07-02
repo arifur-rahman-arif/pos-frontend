@@ -1,6 +1,10 @@
 import React, { ChangeEvent, useState } from 'react';
-import { TextField } from '@mui/material';
-import { CourseItemType, setItemNote as reduxSetItemNote } from '@/features/course/courseSlice';
+import { Button, TextField } from '@mui/material';
+import {
+    clearItemNote,
+    CourseItemType,
+    setItemNote as reduxSetItemNote
+} from '@/features/course/courseSlice';
 import { useDispatch } from 'react-redux';
 
 interface PropInterface {
@@ -37,21 +41,36 @@ const CourseItemNote = ({ item, courseIndex }: PropInterface) => {
 
         const timeoutID = setTimeout(() => {
             dispatch(reduxSetItemNote({ courseIndex, itemID: id, note: itemNote }));
-        }, 1500);
+        }, 1000);
 
         setTypingTimer(timeoutID);
     };
 
     return (
-        <TextField
-            fullWidth
-            type="text"
-            label="Item note"
-            multiline
-            rows={3}
-            value={itemNote || ''}
-            onChange={handleItemNoteEdit}
-        />
+        <>
+            <TextField
+                fullWidth
+                type="text"
+                label="Item note"
+                multiline
+                rows={3}
+                value={itemNote || ''}
+                onChange={handleItemNoteEdit}
+            />
+
+            {itemNote && (
+                <Button
+                    variant="outlined"
+                    size="small"
+                    onClick={() => {
+                        setItemNote('');
+                        dispatch(clearItemNote({ courseIndex, itemID: id }));
+                    }}
+                >
+                    Clear note
+                </Button>
+            )}
+        </>
     );
 };
 

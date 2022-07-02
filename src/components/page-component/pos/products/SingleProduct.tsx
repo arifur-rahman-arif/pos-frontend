@@ -1,7 +1,6 @@
-import { Card, CardContent, Typography } from '@mui/material';
+import { Card, CardContent, CardMedia, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import Image from 'next/image';
-import styles from './styles/ProductList.module.scss';
 import { CourseItemType } from '@/features/course/courseSlice';
 
 interface PropInterface {
@@ -29,104 +28,42 @@ export interface SnackbarMessage {
  */
 const SingleProduct = ({ id, name, price, image, handleClick }: PropInterface) => {
     return (
-        <>
-            <Card>
-                <CardContent
-                    sx={{
-                        display: 'flex',
-                        flexDirection: 'column',
-                        justifyContent: 'flex-start',
-                        alignItems: 'center',
-                        gap: 1,
-                        cursor: 'pointer',
-                        p: 2,
-                        paddingBottom: '16px !important'
-                    }}
-                    onClick={() => handleClick(`${name} added`, { id, name, price, quantity: 1 })}
+        <Card
+            onClick={() => handleClick(`${name} added`, { id, name, price, quantity: 1 })}
+            sx={{ cursor: 'pointer' }}
+        >
+            <CardMedia
+                sx={{
+                    width: '100%'
+                }}
+            >
+                <Image src={image} layout="responsive" alt={name} height={60} width="100%" />
+                <Box sx={{ width: '100%', height: '12px', backgroundColor: '#F8F7FA' }} />
+            </CardMedia>
+            <CardContent
+                sx={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'flex-start',
+                    alignItems: 'center',
+                    gap: 0.5,
+                    p: 2,
+                    paddingBottom: '16px !important',
+                    paddingTop: '8px !important'
+                }}
+            >
+                <Typography variant="body2" alignSelf="start">
+                    {name}
+                </Typography>
+                <Typography
+                    variant="body1"
+                    alignSelf="flex-start"
+                    sx={{ fontWeight: 'bolder', color: (theme) => theme.palette.primary.main }}
                 >
-                    <Box
-                        sx={{
-                            borderRadius: '50%',
-                            position: 'relative',
-                            minWidth: '154px',
-                            maxWidth: 200,
-                            width: {
-                                xs: '154px',
-                                sm: '100%',
-                                lg: '200px'
-                            },
-                            height: {
-                                xs: '154px',
-                                sm: '165px',
-                                md: '170px',
-                                lg: '200px'
-                            },
-                            overflow: 'hidden'
-                        }}
-                    >
-                        <div className={styles.image_background}></div>
-                        <div className={styles.image_style}>
-                            <Image src={image} layout="fill" />
-                        </div>
-                    </Box>
-
-                    <Typography variant="body1" alignSelf="flex-start">
-                        {name}
-                    </Typography>
-                    <Typography
-                        variant="h5"
-                        alignSelf="flex-start"
-                        sx={{ fontWeight: 'bolder', color: (theme) => theme.palette.primary.main }}
-                    >
-                        £{price.toFixed(2)}
-                    </Typography>
-                </CardContent>
-            </Card>
-
-            {/* <Snackbar */}
-            {/*     key={messageInfo ? messageInfo.key : undefined} */}
-            {/*     open={open} */}
-            {/*     onClose={handleClose} */}
-            {/*     autoHideDuration={2000} */}
-            {/*     anchorOrigin={{ vertical: 'top', horizontal: 'center' }} */}
-            {/*     TransitionProps={{ onExited: handleExited }} */}
-            {/*     TransitionComponent={Slide} */}
-            {/* > */}
-            {/*     <MuiAlert */}
-            {/*         onClose={handleClose} */}
-            {/*         severity="success" */}
-            {/*         variant="filled" */}
-            {/*         className={styles.alert} */}
-            {/*         sx={{ */}
-            {/*             width: '100%', */}
-
-            {/*             backgroundColor: 'rgb(46, 125, 50)', */}
-
-            {/*             '& .MuiAlert-icon': { */}
-            {/*                 color: '#fff', */}
-
-            {/*                 Opacity: '1' */}
-            {/*             }, */}
-
-            {/*             '& .MuiAlert-action': { */}
-            {/*                 color: '#fff', */}
-
-            {/*                 Opacity: '1' */}
-            {/*             } */}
-            {/*         }} */}
-            {/*     > */}
-            {/*         <Typography */}
-            {/*             variant="body1" */}
-            {/*             sx={{ */}
-            {/*                 textTransform: 'capitalized', */}
-            {/*                 color: '#fff' */}
-            {/*             }} */}
-            {/*         > */}
-            {/*             {name} added */}
-            {/*         </Typography> */}
-            {/*     </MuiAlert> */}
-            {/* </Snackbar> */}
-        </>
+                    £{price.toFixed(2)}
+                </Typography>
+            </CardContent>
+        </Card>
     );
 };
 

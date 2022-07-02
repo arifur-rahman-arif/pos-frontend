@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button, Stack } from '@mui/material';
 import { AiOutlinePlusCircle } from 'react-icons/ai';
 import Course from './Course';
 import { useDispatch, useSelector } from 'react-redux';
-import { CourseSliceStateInterface, createNewCourse } from '@/features/course/courseSlice';
+import { CourseSliceStateInterface, createNewCourse, setScrollIntoView } from '@/features/course/courseSlice';
 import { AppState } from '@/app/store';
 
 /**
@@ -14,7 +14,28 @@ import { AppState } from '@/app/store';
 const CourseSection = () => {
     const dispatch = useDispatch();
 
-    const { courses } = useSelector((state: AppState) => state.courseSlice as CourseSliceStateInterface);
+    const { courses, scrollIntoView } = useSelector(
+        (state: AppState) => state.courseSlice as CourseSliceStateInterface
+    );
+
+    const [timer, setTimer] = useState<any>();
+
+    /**
+     * Create new course
+     */
+    const createCourse = () => {
+        dispatch(createNewCourse());
+
+        dispatch(setScrollIntoView(true));
+
+        clearTimeout(timer);
+
+        const timeoutID = setTimeout(() => {
+            dispatch(setScrollIntoView(false));
+        }, 800);
+
+        setTimer(timeoutID);
+    };
 
     return (
         <Stack
@@ -28,7 +49,7 @@ const CourseSection = () => {
                         variant="outlined"
                         size="medium"
                         endIcon={<AiOutlinePlusCircle />}
-                        onClick={() => dispatch(createNewCourse())}
+                        onClick={createCourse}
                     >
                         Create course
                     </Button>
@@ -47,7 +68,12 @@ const CourseSection = () => {
                 >
                     {courses && // eslint-disable-line
                         courses.map((course, index) => (
-                            <Course key={index} courseIndex={index} course={course} />
+                            <Course
+                                key={index}
+                                courseIndex={index}
+                                course={course}
+                                scrollIntoView={scrollIntoView}
+                            />
                         ))}
                 </Stack>
             </Stack>
