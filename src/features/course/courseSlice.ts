@@ -157,6 +157,30 @@ const courseSlice = createSlice({
         },
         setScrollIntoView: (state: CourseSliceStateInterface, action: PayloadAction<boolean>): void => {
             state.scrollIntoView = action.payload;
+        },
+        // Re-arrange course items
+        reArrangeCourseItems: (
+            state: CourseSliceStateInterface,
+            action: PayloadAction<{
+                source: { courseIndex: number; itemIndex: number; itemID?: string };
+                destination: { courseIndex: number; itemIndex: number; itemID?: string };
+            }>
+        ): void => {
+            const { source, destination } = action.payload;
+
+            const modifiedObject: { [key: string]: CourseItemType } = {};
+
+            const sourceArray = Object.keys(state.courses[source.courseIndex].items);
+
+            const [deletedItem] = sourceArray.splice(source.itemIndex, 1);
+
+            sourceArray.splice(destination.itemIndex, 0, deletedItem);
+
+            sourceArray.forEach((data: string) => {
+                modifiedObject[data] = state.courses[source.courseIndex].items[data];
+            });
+
+            state.courses[destination.courseIndex].items = modifiedObject;
         }
     }
 });
@@ -174,7 +198,8 @@ export const {
     clearItemNote,
     toggleItemExpand,
     saveCourseName,
-    setScrollIntoView
+    setScrollIntoView,
+    reArrangeCourseItems
 } = courseSlice.actions;
 
 export default courseSlice.reducer;

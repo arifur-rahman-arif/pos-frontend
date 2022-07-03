@@ -36,7 +36,7 @@ const PosSideMenu = ({ menu, linkActive }: PropInterface) => {
                 >
                     <IconButton
                         sx={{
-                            fontSize: '1.8rem',
+                            fontSize: '1.6rem',
                             marginRight: '0',
                             color: (theme) =>
                                 isLinkActive ? theme.palette.primary.main : theme.palette.text.secondary
@@ -47,7 +47,6 @@ const PosSideMenu = ({ menu, linkActive }: PropInterface) => {
 
                     <ListItemText
                         sx={{
-                            fontSize: '1.1rem',
                             color: (theme) =>
                                 isLinkActive ? theme.palette.primary.main : theme.palette.text.secondary
                         }}

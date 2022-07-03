@@ -3,8 +3,15 @@ import { Button, Stack } from '@mui/material';
 import { AiOutlinePlusCircle } from 'react-icons/ai';
 import Course from './Course';
 import { useDispatch, useSelector } from 'react-redux';
-import { CourseSliceStateInterface, createNewCourse, setScrollIntoView } from '@/features/course/courseSlice';
+import {
+    CourseSliceStateInterface,
+    createNewCourse,
+    reArrangeCourseItems,
+    setScrollIntoView
+} from '@/features/course/courseSlice';
 import { AppState } from '@/app/store';
+import { DragDropContext, DropResult } from 'react-beautiful-dnd';
+import { handleAlert } from '@/features/alert/alertSlice';
 
 /**
  * Course section of Cart
@@ -37,6 +44,40 @@ const CourseSection = () => {
         setTimer(timeoutID);
     };
 
+    /**
+     * Handle the dragging items on drag end event
+     * @param {DropResult} data
+     */
+    const onDragEnd = (data: DropResult) => {
+        try {
+            const { source, destination } = data;
+
+            // Console.log(data);
+
+            if (!destination) return;
+
+            // If item is drag in same position in same course than return the function
+            if (destination.droppableId === source.droppableId && destination.index === source.index) return;
+
+            dispatch(
+                reArrangeCourseItems({
+                    source: {
+                        courseIndex: Number(source.droppableId),
+                        itemIndex: source.index
+                    },
+                    destination: {
+                        courseIndex: Number(destination.droppableId),
+                        itemIndex: destination.index
+                    }
+                })
+            );
+        } catch (error: any) {
+            console.error(error);
+
+            dispatch(handleAlert({ showAlert: true, alertMessage: error.message, alertType: 'error' }));
+        }
+    };
+
     return (
         <Stack
             sx={{
@@ -66,15 +107,17 @@ const CourseSection = () => {
                         px: 2.5
                     }}
                 >
-                    {courses && // eslint-disable-line
-                        courses.map((course, index) => (
-                            <Course
-                                key={index}
-                                courseIndex={index}
-                                course={course}
-                                scrollIntoView={scrollIntoView}
-                            />
-                        ))}
+                    <DragDropContext onDragEnd={onDragEnd}>
+                        {courses && // eslint-disable-line
+                            courses.map((course, index) => (
+                                <Course
+                                    key={index}
+                                    courseIndex={index}
+                                    course={course}
+                                    scrollIntoView={scrollIntoView}
+                                />
+                            ))}
+                    </DragDropContext>
                 </Stack>
             </Stack>
         </Stack>

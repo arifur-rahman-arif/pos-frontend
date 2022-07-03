@@ -3,6 +3,7 @@ import { useEffect, useRef } from 'react';
 import { CourseItemType } from '@/features/course/courseSlice';
 import CourseItem from './CourseItem';
 import CourseName from './CourseName';
+import { Droppable, DroppableProvided } from 'react-beautiful-dnd';
 
 interface PropInterface {
     courseIndex: number;
@@ -34,14 +35,29 @@ const Course = ({ courseIndex, course, scrollIntoView }: PropInterface) => {
         <div className="course-wrapper">
             <CourseName courseIndex={courseIndex} course={course} />
 
-            <Collapse in={course.open} sx={{ mt: -0.1, mb: 1 }}>
-                <Stack gap={1.5}>
-                    {course?.items && // eslint-disable-line
-                        Object.keys(course.items).map((key, index) => (
-                            <CourseItem key={index} item={course.items[key]} courseIndex={courseIndex} />
-                        ))}
-                </Stack>
-            </Collapse>
+            <Droppable droppableId={courseIndex.toString()}>
+                {(provided: DroppableProvided, snapshot) => (
+                    <Collapse
+                        in={course.open}
+                        sx={{ mt: -0.1, mb: 1 }}
+                        ref={provided.innerRef}
+                        {...provided.droppableProps}
+                    >
+                        <Stack>
+                            {course?.items && // eslint-disable-line
+                                Object.keys(course.items).map((key, index) => (
+                                    <CourseItem
+                                        key={index}
+                                        item={course.items[key]}
+                                        courseIndex={courseIndex}
+                                        loopIndex={index}
+                                    />
+                                ))}
+                            {provided.placeholder}
+                        </Stack>
+                    </Collapse>
+                )}
+            </Droppable>
 
             <div ref={divRef} />
         </div>

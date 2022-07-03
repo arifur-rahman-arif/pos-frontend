@@ -47,13 +47,13 @@ const PosSidebar = () => {
             <MHidden width="mdDown">
                 <Drawer
                     sx={{
-                        width: MINI_DRAWER_WIDTH + 5,
+                        width: MINI_DRAWER_WIDTH,
                         background: '#fff',
                         boxShadow: '0px 5px 40px rgba(0, 0, 0, 0.1)',
                         top: 0,
                         left: 0,
                         '& .MuiDrawer-paper': {
-                            width: MINI_DRAWER_WIDTH + 5,
+                            width: MINI_DRAWER_WIDTH,
                             boxSizing: 'border-box',
                             border: 'none',
                             borderRadius: '15px',

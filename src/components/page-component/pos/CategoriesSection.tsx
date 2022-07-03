@@ -58,13 +58,13 @@ const CategoriesSection = () => {
                             }}
                         >
                             <Chip
-                                label="Category #1"
+                                label="Cheese"
                                 onDelete={() => alert('deleted')}
                                 sx={{
                                     fontWeight: 'bolder',
                                     color: '#ffffff',
                                     textTransform: 'upperCase',
-                                    fontSize: '0.9025rem',
+                                    fontSize: '0.7525rem',
                                     px: 0.7,
                                     background: (theme) => theme.palette.primary.main,
                                     '& .MuiSvgIcon-root': {

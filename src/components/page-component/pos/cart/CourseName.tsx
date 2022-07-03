@@ -163,7 +163,7 @@ const CourseName = ({ courseIndex, course }: PropInterface) => {
                         onClick={() => {
                             setShowCourseInput(false);
 
-                            setCourseName(course.name ? course.name : `Course #${courseIndex + 1}`);
+                            setCourseName(course.name ? course.name : `Course ${courseIndex + 1}`);
                         }}
                     >
                         <MdOutlineCancel />
