@@ -1,7 +1,7 @@
 import { Card, CardContent, CardMedia, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import Image from 'next/image';
-import { CourseItemType } from '@/features/course/courseSlice';
+import { CourseItemType } from '@/features/cart/courseSlice';
 
 interface PropInterface {
     id: string;

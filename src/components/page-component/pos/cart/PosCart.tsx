@@ -3,10 +3,14 @@ import { styled } from '@mui/material/styles';
 import { MHidden } from '@/components/@material-extend';
 import { Drawer } from '@mui/material';
 import CartHeader from './CartHeader';
-import CourseSection from './CourseSection';
-import FeeSection from '@/components/page-component/pos/cart/FeeSection';
-import CartAction from '@/components/page-component/pos/cart/CartAction';
-import PayButton from '@/components/page-component/pos/cart/PayButton';
+import CourseSection from './courseType/CourseSection';
+import FeeSection from './FeeSection';
+import CartAction from './CartAction';
+import PayButton from './PayButton';
+import { useSelector } from 'react-redux';
+import { CartStateInterface } from '@/features/cart/cartSlice';
+import { AppState } from '@/app/store';
+import CartSection from './normalType/CartSection';
 
 const RootStyle = styled('div')(({ theme }) => ({
     minHeight: '100%',
@@ -21,6 +25,8 @@ const RootStyle = styled('div')(({ theme }) => ({
  * @constructor
  */
 const PosCart = () => {
+    const { cartType } = useSelector((state: AppState) => state.cartSlice as CartStateInterface);
+
     return (
         <MHidden width="mdDown">
             <RootStyle>
@@ -46,7 +52,9 @@ const PosCart = () => {
                 >
                     <CartHeader />
 
-                    <CourseSection />
+                    {cartType === 'course' && <CourseSection />}
+
+                    {cartType === 'normal' && <CartSection />}
 
                     <FeeSection />
 

@@ -13,6 +13,7 @@ export type CourseItemType = {
 export type Course = {
     open: boolean;
     name?: string;
+    note?: string;
     items: {
         [key: string]: CourseItemType;
     };
@@ -20,12 +21,10 @@ export type Course = {
 
 export interface CourseSliceStateInterface {
     courses: Array<Course>;
-    scrollIntoView?: boolean;
 }
 
 const initialState: CourseSliceStateInterface = {
-    courses: [],
-    scrollIntoView: false
+    courses: []
 };
 
 const courseSlice = createSlice({
@@ -155,9 +154,6 @@ const courseSlice = createSlice({
 
             state.courses[courseIndex].name = name;
         },
-        setScrollIntoView: (state: CourseSliceStateInterface, action: PayloadAction<boolean>): void => {
-            state.scrollIntoView = action.payload;
-        },
         // Re-arrange course items
         reArrangeCourseItems: (
             state: CourseSliceStateInterface,
@@ -181,6 +177,28 @@ const courseSlice = createSlice({
             });
 
             state.courses[destination.courseIndex].items = modifiedObject;
+        },
+        // Set the course note
+        saveCourseNote: (
+            state: CourseSliceStateInterface,
+            action: PayloadAction<{ courseIndex: number; note: string }>
+        ): void => {
+            const { courseIndex, note } = action.payload;
+
+            state.courses[courseIndex].note = note;
+        },
+        // Clear the item note
+        clearCourseNote: (
+            state: CourseSliceStateInterface,
+            action: PayloadAction<{ courseIndex: number }>
+        ): void => {
+            const { courseIndex } = action.payload;
+
+            state.courses[courseIndex].note = '';
+        },
+        // Clear the whole course
+        clearCourse: (state: CourseSliceStateInterface): void => {
+            state.courses = [];
         }
     }
 });
@@ -198,8 +216,10 @@ export const {
     clearItemNote,
     toggleItemExpand,
     saveCourseName,
-    setScrollIntoView,
-    reArrangeCourseItems
+    reArrangeCourseItems,
+    saveCourseNote,
+    clearCourseNote,
+    clearCourse
 } = courseSlice.actions;
 
 export default courseSlice.reducer;

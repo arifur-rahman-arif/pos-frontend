@@ -41,7 +41,7 @@ const TooltipWrapper = ({
 
     return (
         <Tooltip
-            title={title}
+            title={title.charAt(0).toUpperCase() + title.slice(1)}
             placement={placement}
             arrow={arrow}
             TransitionComponent={Zoom}

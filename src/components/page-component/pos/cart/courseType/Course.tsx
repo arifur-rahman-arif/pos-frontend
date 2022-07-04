@@ -1,6 +1,6 @@
 import { Collapse, Stack } from '@mui/material';
 import { useEffect, useRef } from 'react';
-import { CourseItemType } from '@/features/course/courseSlice';
+import { CourseItemType } from '@/features/cart/courseSlice';
 import CourseItem from './CourseItem';
 import CourseName from './CourseName';
 import { Droppable, DroppableProvided } from 'react-beautiful-dnd';
@@ -35,15 +35,10 @@ const Course = ({ courseIndex, course, scrollIntoView }: PropInterface) => {
         <div className="course-wrapper">
             <CourseName courseIndex={courseIndex} course={course} />
 
-            <Droppable droppableId={courseIndex.toString()}>
-                {(provided: DroppableProvided, snapshot) => (
-                    <Collapse
-                        in={course.open}
-                        sx={{ mt: -0.1, mb: 1 }}
-                        ref={provided.innerRef}
-                        {...provided.droppableProps}
-                    >
-                        <Stack>
+            <Collapse in={course.open} sx={{ mt: -0.1, mb: 1 }}>
+                <Droppable droppableId={courseIndex.toString()}>
+                    {(provided: DroppableProvided, snapshot) => (
+                        <Stack ref={provided.innerRef} {...provided.droppableProps}>
                             {course?.items && // eslint-disable-line
                                 Object.keys(course.items).map((key, index) => (
                                     <CourseItem
@@ -55,9 +50,9 @@ const Course = ({ courseIndex, course, scrollIntoView }: PropInterface) => {
                                 ))}
                             {provided.placeholder}
                         </Stack>
-                    </Collapse>
-                )}
-            </Droppable>
+                    )}
+                </Droppable>
+            </Collapse>
 
             <div ref={divRef} />
         </div>

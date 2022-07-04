@@ -6,12 +6,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
     CourseSliceStateInterface,
     createNewCourse,
-    reArrangeCourseItems,
-    setScrollIntoView
-} from '@/features/course/courseSlice';
+    reArrangeCourseItems
+} from '@/features/cart/courseSlice';
 import { AppState } from '@/app/store';
 import { DragDropContext, DropResult } from 'react-beautiful-dnd';
 import { handleAlert } from '@/features/alert/alertSlice';
+import { CartStateInterface, setScrollIntoView } from '@/features/cart/cartSlice';
 
 /**
  * Course section of Cart
@@ -21,9 +21,9 @@ import { handleAlert } from '@/features/alert/alertSlice';
 const CourseSection = () => {
     const dispatch = useDispatch();
 
-    const { courses, scrollIntoView } = useSelector(
-        (state: AppState) => state.courseSlice as CourseSliceStateInterface
-    );
+    const { courses } = useSelector((state: AppState) => state.courseSlice as CourseSliceStateInterface);
+
+    const { scrollIntoView } = useSelector((state: AppState) => state.cartSlice as CartStateInterface);
 
     const [timer, setTimer] = useState<any>();
 
@@ -51,8 +51,6 @@ const CourseSection = () => {
     const onDragEnd = (data: DropResult) => {
         try {
             const { source, destination } = data;
-
-            // Console.log(data);
 
             if (!destination) return;
 
@@ -85,7 +83,7 @@ const CourseSection = () => {
             }}
         >
             <Stack gap={1}>
-                <Stack justifyContent="flex-start" direction="row" sx={{ px: 3 }}>
+                <Stack justifyContent="flex-start" direction="row" sx={{ px: 2 }}>
                     <Button
                         variant="outlined"
                         size="medium"
@@ -99,12 +97,12 @@ const CourseSection = () => {
                 <Stack
                     id="pos_course_container"
                     sx={{
-                        maxHeight: 'calc(100vh - 500px)',
+                        maxHeight: 'calc(100vh - 450px)',
                         minHeight: '300px',
                         overflowY: 'scroll',
                         overflowX: 'hidden',
                         pb: 2,
-                        px: 2.5
+                        px: 2
                     }}
                 >
                     <DragDropContext onDragEnd={onDragEnd}>

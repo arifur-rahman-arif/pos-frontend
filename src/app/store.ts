@@ -7,7 +7,9 @@ import couponSlice from '@/features/coupon/couponSlice';
 import shopSelectSlice from '@/features/shop/shopSelectSlice';
 import shopFormSlice from '@/features/shop/shopFormSlice';
 import posNavStateSlice from '@/features/nav-state/posNavStateSlice';
-import courseSlice from '@/features/course/courseSlice';
+import courseSlice from '@/features/cart/courseSlice';
+import cartSlice from '@/features/cart/cartSlice';
+import normalSlice from '@/features/cart/normalSlice';
 
 /**
  * Redux make store function to create the store
@@ -22,6 +24,8 @@ export const makeStore = () => {
             shopSelectSlice,
             shopFormSlice,
             posNavStateSlice,
+            cartSlice,
+            normalSlice,
             courseSlice,
             [authApi.reducerPath]: authApi.reducer
         },

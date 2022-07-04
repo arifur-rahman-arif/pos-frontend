@@ -17,7 +17,7 @@ import {
     increaseItemQuantity,
     modifyItemQuantity,
     toggleItemExpand
-} from '@/features/course/courseSlice';
+} from '@/features/cart/courseSlice';
 import { useDispatch } from 'react-redux';
 import { handleAlert } from '@/features/alert/alertSlice';
 import CourseItemNote from './CourseItemNote';

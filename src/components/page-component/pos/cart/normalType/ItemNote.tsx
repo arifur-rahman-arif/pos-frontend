@@ -1,25 +1,21 @@
-import React, { ChangeEvent, useState } from 'react';
 import { Button, TextField } from '@mui/material';
-import {
-    clearItemNote,
-    CourseItemType,
-    setItemNote as reduxSetItemNote
-} from '@/features/course/courseSlice';
+import { ChangeEvent, useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { CartItemType, clearItemNote } from '@/features/cart/normalSlice';
+import { setItemNote as reduxSetItemNote } from '@/features/cart/normalSlice';
 
 interface PropInterface {
-    item: CourseItemType;
-    courseIndex: number;
+    item: CartItemType;
 }
 
 /**
- * Course item note component for showing the individual course item note
+ * Item note component for showing the individual items note
  * @param {CourseItemType} item
  * @param {number} courseIndex
  * @returns {JSX.Element}
  * @constructor
  */
-const CourseItemNote = ({ item, courseIndex }: PropInterface) => {
+const ItemNote = ({ item }: PropInterface) => {
     const { id } = item;
 
     const dispatch = useDispatch();
@@ -40,7 +36,7 @@ const CourseItemNote = ({ item, courseIndex }: PropInterface) => {
         clearTimeout(typingTimer);
 
         const timeoutID = setTimeout(() => {
-            dispatch(reduxSetItemNote({ courseIndex, itemID: id, note: itemNote }));
+            dispatch(reduxSetItemNote({ itemID: id, note: itemNote }));
         }, 1000);
 
         setTypingTimer(timeoutID);
@@ -64,7 +60,7 @@ const CourseItemNote = ({ item, courseIndex }: PropInterface) => {
                     size="small"
                     onClick={() => {
                         setItemNote('');
-                        dispatch(clearItemNote({ courseIndex, itemID: id }));
+                        dispatch(clearItemNote({ itemID: id }));
                     }}
                 >
                     Clear note
@@ -73,5 +69,4 @@ const CourseItemNote = ({ item, courseIndex }: PropInterface) => {
         </>
     );
 };
-
-export default CourseItemNote;
+export default ItemNote;

@@ -7,13 +7,10 @@ import Slide from '@mui/material/Slide';
 import MuiAlert from '@mui/material/Alert';
 import { handleAlert } from '@/features/alert/alertSlice';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-    addItem,
-    CourseItemType,
-    CourseSliceStateInterface,
-    setScrollIntoView
-} from '@/features/course/courseSlice';
+import { addItem, CourseItemType, CourseSliceStateInterface } from '@/features/cart/courseSlice';
 import { AppState } from '@/app/store';
+import { changeCartType, setScrollIntoView } from '@/features/cart/cartSlice';
+import { CartItemType, addItem as normalAddItem } from '@/features/cart/normalSlice';
 
 interface PropInterface {
     productList: Array<ProductListType>;
@@ -75,23 +72,31 @@ const ProductList = ({ productList }: PropInterface) => {
      * @param {CourseItemType} itemData
      * @returns {any}
      */
-    const handleClick = (message: string, itemData: CourseItemType) => {
+    const handleClick = (message: string, itemData: CourseItemType | CartItemType) => {
         try {
             const activeCourseIndex = getActiveCourseIndex();
 
-            if (activeCourseIndex === undefined) {
-                return dispatch(
-                    handleAlert({
-                        showAlert: true,
-                        alertMessage: 'Please open a course first to add item',
-                        alertType: 'warning'
-                    })
-                );
+            // If there are course created than add the items to those course
+            // Or else create a normal cart
+            if (courses.length > 0) {
+                if (activeCourseIndex === undefined) {
+                    return dispatch(
+                        handleAlert({
+                            showAlert: true,
+                            alertMessage: 'Please select a course first to add item',
+                            alertType: 'warning'
+                        })
+                    );
+                }
+
+                (itemData as CourseItemType).courseIndex = activeCourseIndex as number;
+
+                if (!handleAddItem(itemData)) throw new Error('Unable to add product');
+            } else {
+                dispatch(changeCartType('normal'));
+
+                dispatch(normalAddItem(itemData as CartItemType));
             }
-
-            itemData.courseIndex = activeCourseIndex as number;
-
-            if (!handleAddItem(itemData)) throw new Error('Unable to add product');
 
             dispatch(setScrollIntoView(true));
 
