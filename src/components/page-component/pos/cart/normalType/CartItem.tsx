@@ -8,10 +8,11 @@ import {
     deleteItem,
     increaseItemQuantity,
     modifyItemQuantity,
+    NormalCartStateInterface,
     toggleItemExpand
 } from '@/features/cart/normalSlice';
 import { handleAlert } from '@/features/alert/alertSlice';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
     AiFillCaretDown,
     AiFillCaretRight,
@@ -21,6 +22,8 @@ import {
 } from 'react-icons/ai';
 import { ChangeEvent, useEffect, useState } from 'react';
 import ItemNote from './ItemNote';
+import { changeCartType } from '@/features/cart/cartSlice';
+import { AppState } from '@/app/store';
 
 interface PropInterface {
     item: CartItemType;
@@ -32,10 +35,12 @@ interface PropInterface {
  * @returns {JSX.Element}
  * @constructor
  */
-const CartItems = ({ item }: PropInterface) => {
+const CartItem = ({ item }: PropInterface) => {
     const { id, name, price, quantity, itemNote, itemOpen } = item;
 
     const [editQuantity, setEditQuantity] = useState<number>(quantity);
+
+    const { items } = useSelector((state: AppState) => state.normalSlice as NormalCartStateInterface);
 
     useEffect(() => {
         setEditQuantity(quantity);
@@ -78,6 +83,22 @@ const CartItems = ({ item }: PropInterface) => {
         setEditQuantity(value);
 
         dispatch(modifyItemQuantity({ itemID: id, quantity: value }));
+    };
+
+    /**
+     * Handle the item Delete from normal cart
+     */
+    const handleDeleteItems = () => {
+        dispatch(
+            deleteItem({
+                itemID: id
+            })
+        );
+
+        // If cart has less than items that means cart is cleared and show the course type cart
+        if (Object.keys(items).length < 2) {
+            dispatch(changeCartType('course'));
+        }
     };
 
     return (
@@ -205,13 +226,7 @@ const CartItems = ({ item }: PropInterface) => {
                                     p: 1,
                                     color: (theme) => theme.palette.error.main
                                 }}
-                                onClick={() =>
-                                    dispatch(
-                                        deleteItem({
-                                            itemID: id
-                                        })
-                                    )
-                                }
+                                onClick={handleDeleteItems}
                             >
                                 <FiTrash2 />
                             </IconButton>
@@ -240,4 +255,4 @@ const CartItems = ({ item }: PropInterface) => {
     );
 };
 
-export default CartItems;
+export default CartItem;

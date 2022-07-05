@@ -1,10 +1,10 @@
 import { Stack } from '@mui/material';
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { AppState } from '@/app/store';
 import { CartStateInterface } from '@/features/cart/cartSlice';
 import { NormalCartStateInterface } from '@/features/cart/normalSlice';
-import CartItems from './CartItems';
+import CartItem from 'src/components/page-component/pos/cart/normalType/CartItem';
 
 /**
  * Normal cart component
@@ -46,7 +46,7 @@ const CartSection = () => {
                     <Stack>
                         {items && // eslint-disable-line
                             Object.keys(items).map((key, index) => (
-                                <CartItems key={index} item={items[key]} />
+                                <CartItem key={index} item={items[key]} />
                             ))}
                     </Stack>
 

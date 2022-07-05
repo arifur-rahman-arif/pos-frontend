@@ -2,6 +2,7 @@ import { Card, CardContent, CardMedia, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import Image from 'next/image';
 import { CourseItemType } from '@/features/cart/courseSlice';
+import styles from './styles/ProductList.module.scss';
 
 interface PropInterface {
     id: string;
@@ -29,6 +30,7 @@ export interface SnackbarMessage {
 const SingleProduct = ({ id, name, price, image, handleClick }: PropInterface) => {
     return (
         <Card
+            className={styles.singleProduct}
             onClick={() => handleClick(`${name} added`, { id, name, price, quantity: 1 })}
             sx={{ cursor: 'pointer' }}
         >
@@ -37,7 +39,7 @@ const SingleProduct = ({ id, name, price, image, handleClick }: PropInterface) =
                     width: '100%'
                 }}
             >
-                <Image src={image} layout="responsive" alt={name} height={60} width="100%" />
+                <Image src={image} priority layout="responsive" alt={name} height={60} width="100%" />
                 <Box sx={{ width: '100%', height: '12px', backgroundColor: '#F8F7FA' }} />
             </CardMedia>
             <CardContent

@@ -2,7 +2,7 @@ import { Collapse, Stack } from '@mui/material';
 import { useEffect, useRef } from 'react';
 import { CourseItemType } from '@/features/cart/courseSlice';
 import CourseItem from './CourseItem';
-import CourseName from './CourseName';
+import CourseOptions from './course-options/CourseOptions';
 import { Droppable, DroppableProvided } from 'react-beautiful-dnd';
 
 interface PropInterface {
@@ -33,9 +33,9 @@ const Course = ({ courseIndex, course, scrollIntoView }: PropInterface) => {
 
     return (
         <div className="course-wrapper">
-            <CourseName courseIndex={courseIndex} course={course} />
+            <CourseOptions courseIndex={courseIndex} course={course} />
 
-            <Collapse in={course.open} sx={{ mt: -0.1, mb: 1 }}>
+            <Collapse in={course.open} sx={{ mt: -0.1, mb: 1, overflowY: 'unset', width: '100%' }}>
                 <Droppable droppableId={courseIndex.toString()}>
                     {(provided: DroppableProvided, snapshot) => (
                         <Stack ref={provided.innerRef} {...provided.droppableProps}>

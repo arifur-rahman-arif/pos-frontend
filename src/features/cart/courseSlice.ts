@@ -32,14 +32,12 @@ const courseSlice = createSlice({
     initialState,
     reducers: {
         createNewCourse: (state: CourseSliceStateInterface): void => {
-            // If it's a fist course then it should be open by default
-            // If the course is not first one then it should be closed by default
-            !state.courses.length
-                ? state.courses.push({ items: {}, open: true })
-                : state.courses.push({
-                      items: {}, // eslint-disable-line
-                      open: false // eslint-disable-line
-                  }); // eslint-disable-line
+            // Close all the previously open courses before creating new ones
+            state.courses.forEach((course) => {
+                course.open = false;
+            });
+
+            state.courses.push({ items: {}, open: true });
         },
         deleteCourse: (state: CourseSliceStateInterface, action: PayloadAction<number>): void => {
             state.courses.splice(action.payload, 1);

@@ -39,7 +39,7 @@ const CartHeader = () => {
                 alignItems="center"
                 flexDirection="row"
                 sx={{
-                    pt: 1,
+                    pt: 1.5,
                     pb: 2,
                     px: 2
                 }}

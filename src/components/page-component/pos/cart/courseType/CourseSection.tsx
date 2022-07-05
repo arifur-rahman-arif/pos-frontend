@@ -99,8 +99,9 @@ const CourseSection = () => {
                     sx={{
                         maxHeight: 'calc(100vh - 450px)',
                         minHeight: '300px',
-                        overflowY: 'scroll',
+                        overflowY: 'auto',
                         overflowX: 'hidden',
+                        width: '100%',
                         pb: 2,
                         px: 2
                     }}

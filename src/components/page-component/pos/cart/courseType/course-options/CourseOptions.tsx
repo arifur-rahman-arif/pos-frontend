@@ -29,7 +29,7 @@ interface PropInterface {
  * @returns {JSX.Element}
  * @constructor
  */
-const CourseName = ({ courseIndex, course }: PropInterface) => {
+const CourseOptions = ({ courseIndex, course }: PropInterface) => {
     const dispatch = useDispatch();
 
     const [showCourseOptions, setShowCourseOptions] = useState<boolean>(false);
@@ -100,7 +100,11 @@ const CourseName = ({ courseIndex, course }: PropInterface) => {
             direction="row"
             alignItems="center"
             gap={showCourseOptions ? 0.5 : 1}
-            sx={showCourseOptions ? { mt: 1.2, mb: Object.keys(course.items).length ? 2 : 0 } : {}}
+            sx={
+                showCourseOptions
+                    ? { mt: 1.2, mb: Object.keys(course.items).length && course.open ? 2 : 0 }
+                    : {}
+            }
         >
             {/* If showCourseInput is false then show these components */}
             {!showCourseOptions && !showReadOnlyCourseNote && (
@@ -118,7 +122,7 @@ const CourseName = ({ courseIndex, course }: PropInterface) => {
 
                     {/* If the course name is longer than 28 characters then show the tooltip or else show the normal text */}
                     {(course.name ? course.name : courseName).length > 25 ? (
-                        <TooltipWrapper title={course.name ? course.name : courseName} placement="left">
+                        <TooltipWrapper title={course.name ? course.name : courseName} placement="bottom">
                             <Typography
                                 {...longPressEvent}
                                 variant="h6"
@@ -139,11 +143,13 @@ const CourseName = ({ courseIndex, course }: PropInterface) => {
                                     <IconButton
                                         sx={{
                                             fontSize: '1.35rem',
-                                            top: -1.3,
+                                            top: -2.5,
                                             ml: 1,
                                             color: (theme) => theme.palette.info.main
                                         }}
-                                        onClick={() => {}}
+                                        onClick={() => {
+                                            setShowReadOnlyCourseNote(true);
+                                        }}
                                     >
                                         <AiOutlineComment />
                                     </IconButton>
@@ -171,13 +177,11 @@ const CourseName = ({ courseIndex, course }: PropInterface) => {
                                 <IconButton
                                     sx={{
                                         fontSize: '1.35rem',
-                                        top: -1.3,
+                                        top: -2.5,
                                         ml: 1,
                                         color: (theme) => theme.palette.info.main
                                     }}
                                     onClick={() => {
-                                        // SetShowCourseOptions(true);
-
                                         setShowReadOnlyCourseNote(true);
                                     }}
                                 >
@@ -248,7 +252,9 @@ const CourseName = ({ courseIndex, course }: PropInterface) => {
                 >
                     <IconButton
                         sx={{
-                            fontSize: '1.6rem',
+                            width: '2.5rem',
+                            height: '2.5rem',
+                            top: -0.5,
                             color: (theme) => theme.palette.error.main
                         }}
                         onClick={() => {
@@ -272,7 +278,9 @@ const CourseName = ({ courseIndex, course }: PropInterface) => {
 
                     <IconButton
                         sx={{
-                            fontSize: '1.45rem',
+                            width: '2.5rem',
+                            height: '2.5rem',
+                            top: -1.4,
                             color: (theme) => theme.palette.error.main
                         }}
                         onClick={() => {
@@ -376,4 +384,4 @@ const CourseName = ({ courseIndex, course }: PropInterface) => {
     );
 };
 
-export default CourseName;
+export default CourseOptions;
