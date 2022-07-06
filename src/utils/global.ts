@@ -87,3 +87,26 @@ export const trimText = (text: string, char: number): string => {
 export const SITE_NAME = 'Cloud POS';
 
 export const acceptedImageTypes = ['image/webp', 'image/jpeg', 'image/jpg', 'image/png', 'image/svg+xml'];
+
+/**
+ * Get the time in 00:00am format
+ * @param {Date} date
+ * @returns {string}
+ */
+export const getTimeInAMPMFormat = (date: Date): string => {
+    let hours = date.getHours();
+
+    let minutes: string | number = date.getMinutes();
+
+    const ampm = hours >= 12 ? 'pm' : 'am';
+
+    hours = hours % 12;
+
+    hours = hours ? hours : 12; // The hour '0' should be '12'
+
+    minutes = minutes < 10 ? '0' + minutes : minutes;
+
+    const strTime = hours + ':' + minutes + ampm;
+
+    return strTime;
+};
