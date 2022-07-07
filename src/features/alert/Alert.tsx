@@ -53,7 +53,9 @@ const Alert = () => {
                     },
                     '& .MuiAlert-action': {
                         color: '#fff',
-                        opacity: '1'
+                        opacity: '1',
+                        position: 'relative',
+                        top: '-2px'
                     }
                 }}
             >

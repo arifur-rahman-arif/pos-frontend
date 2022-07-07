@@ -106,7 +106,7 @@ export const getTimeInAMPMFormat = (date: Date): string => {
 
     minutes = minutes < 10 ? '0' + minutes : minutes;
 
-    return hours + ':' + minutes + ampm;
+    return hours + ':' + minutes + ' ' + ampm;
 };
 
 /**
@@ -129,4 +129,23 @@ export const getMinutesInMilliSecond = (min: number) => {
     if (!min) return 0;
 
     return min * 60 * 1000;
+};
+
+/**
+ * Get the date object from time string
+ * @param {string} timeString
+ * @returns {Date}
+ */
+export const getDateFromTimeString = (timeString: string) => {
+    const dateTime = new Date();
+
+    const parts = timeString.match(/(\d+)\:(\d+) (\w+)/);
+    // @ts-ignore
+    const hours = /am/i.test(parts[3]) ? parseInt(parts[1], 10) : parseInt(parts[1], 10) + 12;
+    // @ts-ignore
+    const minutes = parseInt(parts[2], 10);
+
+    dateTime.setHours(hours, minutes, 0, 0);
+
+    return dateTime;
 };

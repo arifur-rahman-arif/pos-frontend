@@ -1,12 +1,16 @@
 import dynamic from 'next/dynamic';
-import { Stack } from '@mui/material';
+import { Button, Stack } from '@mui/material';
 import { useEffect, useState } from 'react';
-import { getTimeInAMPMFormat } from '@/utils/global';
+import { getDateFromTimeString, getTimeInAMPMFormat } from '@/utils/global';
 import { Course } from '@/features/cart/courseSlice';
+import { TimeOutput } from 'react-timekeeper';
+import { useDispatch } from 'react-redux';
+import { handleAlert } from '@/features/alert/alertSlice';
 
-const TimeKeeper = dynamic(() => import('react-timekeeper'), {
-    ssr: false
-});
+import TextField from '@mui/material/TextField';
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { StaticTimePicker } from '@mui/x-date-pickers/StaticTimePicker';
 
 interface PropInterface {
     course: Course;
@@ -26,9 +30,11 @@ const CourseFire = ({
     setShowCourseFireComponent,
     setShowCourseOptions
 }: PropInterface) => {
-    const [time, setTime] = useState<string>(
-        getTimeInAMPMFormat(new Date(Date.now() + Number(course.preparationTime)))
-    );
+    const dispatch = useDispatch();
+
+    const [time, setTime] = useState<Date>(new Date(Date.now() + Number(course.preparationTime || 0)));
+
+    const [timeValid, setTimeValid] = useState<boolean>(true);
 
     /**
      * Handle the click of clock done/fire button
@@ -40,32 +46,96 @@ const CourseFire = ({
     };
 
     useEffect(() => {
-        setTime(getTimeInAMPMFormat(new Date(Date.now() + Number(course.preparationTime))));
-    }, [course.preparationTime]);
+        setTime(new Date(Date.now() + Number(course.preparationTime || 0)));
+    }, [course]);
+
+    /**
+     * Handle the clock time change event
+     * @param {TimeOutput} newTime
+     */
+    const onTimeChange = (newTime: Date | null) => {
+        try {
+            const changedDateTime = newTime?.getTime() as number;
+
+            const preparationDateTime = time?.getTime() as number;
+
+            if (changedDateTime < preparationDateTime) {
+                setTimeValid(false);
+
+                throw new Error("Preparation time can't be less than total item preparation time");
+            } else {
+                setTimeValid(true);
+            }
+
+            setTime(newTime as Date);
+        } catch (error: any) {
+            console.error(error);
+            dispatch(handleAlert({ showAlert: true, alertMessage: error.message, alertType: 'error' }));
+        }
+    };
+
+    /**
+     * Reset the course timer to its initial state
+     */
+    const onResetHandleClick = () => {
+        setTime(new Date(Date.now() + Number(course.preparationTime || 0)));
+    };
 
     return (
         <Stack sx={{ width: '100%' }}>
-            <TimeKeeper
-                time={time}
-                onChange={(newTime) => setTime(newTime.formatted12)}
-                switchToMinuteOnHourSelect
-                doneButton={(newTime) => (
-                    <div
-                        onClick={handleClockFireClick}
-                        style={{
-                            textAlign: 'center',
-                            padding: '10px 0',
-                            borderTop: '1px solid #00AB55',
-                            fontWeight: 'bolder',
-                            fontSize: '16px',
-                            color: '#637381',
-                            cursor: 'pointer'
-                        }}
-                    >
-                        Fire {courseName}
-                    </div>
-                )}
-            />
+            <LocalizationProvider
+                dateAdapter={AdapterDateFns}
+                sx={{
+                    width: '100%',
+                    '& .MuiPickerStaticWrapper-root': {
+                        width: '100%'
+                    }
+                }}
+            >
+                <StaticTimePicker
+                    displayStaticWrapperAs="mobile"
+                    value={time}
+                    onChange={onTimeChange}
+                    renderInput={(params) => <></>}
+                />
+            </LocalizationProvider>
+
+            <div
+                style={{
+                    textAlign: 'center',
+                    fontWeight: 'bolder',
+                    fontSize: '16px',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    gap: '1rem',
+                    flexWrap: 'wrap',
+                    marginTop: '8px',
+                    marginBottom: '8px'
+                }}
+            >
+                <Button
+                    variant="outlined"
+                    color={timeValid ? 'primary' : 'error'}
+                    size="small"
+                    onClick={() => {
+                        timeValid ? handleClockFireClick() : '';
+                    }}
+                    sx={{
+                        cursor: timeValid ? 'pointer' : 'not-allowed'
+                    }}
+                >
+                    {timeValid ? `Fire ${courseName}` : 'Invalid time'}
+                </Button>
+
+                <Button variant="outlined" size="small" onClick={onResetHandleClick}>
+                    Reset
+                </Button>
+
+                <Button variant="outlined" size="small" onClick={() => setShowCourseFireComponent(false)}>
+                    Cancel
+                </Button>
+            </div>
         </Stack>
     );
 };

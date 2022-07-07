@@ -199,13 +199,13 @@ const ProductList = ({ productList }: PropInterface) => {
                         backgroundColor: 'rgb(46, 125, 50)',
                         '& .MuiAlert-icon': {
                             color: '#fff',
-
-                            Opacity: '1'
+                            opacity: '1'
                         },
                         '& .MuiAlert-action': {
                             color: '#fff',
-
-                            Opacity: '1'
+                            opacity: '1',
+                            position: 'relative',
+                            top: '-2px'
                         }
                     }}
                 >

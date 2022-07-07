@@ -5,13 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2dfdbedd-c9d3-410f-90a2-85de0a05006f" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/page-component/pos/cart/courseType/CourseItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page-component/pos/cart/courseType/CourseItem.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/page-component/pos/cart/courseType/course-options/CourseOptions.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page-component/pos/cart/courseType/course-options/CourseOptions.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/page-component/pos/cart/courseType/course-options/course-fire/CourseFire.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page-component/pos/cart/courseType/course-options/course-fire/CourseFire.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/page-component/pos/cart/courseType/course-options/course-fire/styles/timer.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page-component/pos/cart/courseType/course-options/course-fire/styles/timer.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/page-component/pos/products/ProductList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page-component/pos/products/ProductList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/page-component/pos/products/SingleProduct.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page-component/pos/products/SingleProduct.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/cart/courseSlice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/cart/courseSlice.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/alert/Alert.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/alert/Alert.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/pos/[id]/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/pos/[id]/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utils/global.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/global.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../demo" beforeDir="false" afterPath="$PROJECT_DIR$/../demo" afterDir="false" />
@@ -238,7 +237,10 @@
       <workItem from="1657116713461" duration="2265000" />
       <workItem from="1657120748296" duration="4306000" />
       <workItem from="1657168821420" duration="2002000" />
-      <workItem from="1657173489246" duration="7510000" />
+      <workItem from="1657173489246" duration="8016000" />
+      <workItem from="1657191375436" duration="8927000" />
+      <workItem from="1657202517701" duration="2798000" />
+      <workItem from="1657209067821" duration="4543000" />
     </task>
     <servers />
   </component>

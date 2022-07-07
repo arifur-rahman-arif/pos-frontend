@@ -105,7 +105,7 @@ export const getServerSideProps = async () => {
             image: faker.image.food(500, 400, true),
             preparationTime: {
                 min: Number(faker.commerce.price(1, 59)),
-                hour: Number(faker.commerce.price(1, 5))
+                hour: Number(faker.commerce.price(0, 1))
             }
         });
     }
