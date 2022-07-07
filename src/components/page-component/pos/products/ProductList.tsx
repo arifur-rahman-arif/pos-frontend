@@ -7,7 +7,12 @@ import Slide from '@mui/material/Slide';
 import MuiAlert from '@mui/material/Alert';
 import { handleAlert } from '@/features/alert/alertSlice';
 import { useDispatch, useSelector } from 'react-redux';
-import { addItem, CourseItemType, CourseSliceStateInterface } from '@/features/cart/courseSlice';
+import {
+    addItem,
+    CourseItemType,
+    CourseSliceStateInterface,
+    increaseCourseTimer
+} from '@/features/cart/courseSlice';
 import { AppState } from '@/app/store';
 import { changeCartType, setScrollIntoView } from '@/features/cart/cartSlice';
 import { CartItemType, addItem as normalAddItem } from '@/features/cart/normalSlice';
@@ -91,7 +96,15 @@ const ProductList = ({ productList }: PropInterface) => {
 
                 (itemData as CourseItemType).courseIndex = activeCourseIndex as number;
 
-                if (!handleAddItem(itemData)) throw new Error('Unable to add product');
+                if (!handleAddItem(itemData as CourseItemType)) throw new Error('Unable to add product');
+
+                // Increase the course timer
+                dispatch(
+                    increaseCourseTimer({
+                        courseIndex: Number((itemData as CourseItemType).courseIndex),
+                        preparationTime: (itemData as CourseItemType).preparationTime
+                    })
+                );
             } else {
                 dispatch(changeCartType('normal'));
 
@@ -159,6 +172,7 @@ const ProductList = ({ productList }: PropInterface) => {
                             name={product.name}
                             price={product.price}
                             image={product.image}
+                            preparationTime={product.preparationTime}
                             handleClick={handleClick}
                         />
                     ))}

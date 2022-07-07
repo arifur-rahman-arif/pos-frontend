@@ -1,13 +1,15 @@
 import dynamic from 'next/dynamic';
 import { Stack } from '@mui/material';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { getTimeInAMPMFormat } from '@/utils/global';
+import { Course } from '@/features/cart/courseSlice';
 
 const TimeKeeper = dynamic(() => import('react-timekeeper'), {
     ssr: false
 });
 
 interface PropInterface {
+    course: Course;
     courseName: string;
     setShowCourseFireComponent: (param: boolean) => void;
     setShowCourseOptions: (param: boolean) => void;
@@ -18,8 +20,15 @@ interface PropInterface {
  * @returns {JSX.Element}
  * @constructor
  */
-const CourseFire = ({ courseName, setShowCourseFireComponent, setShowCourseOptions }: PropInterface) => {
-    const [time, setTime] = useState<string>(getTimeInAMPMFormat(new Date()));
+const CourseFire = ({
+    course,
+    courseName,
+    setShowCourseFireComponent,
+    setShowCourseOptions
+}: PropInterface) => {
+    const [time, setTime] = useState<string>(
+        getTimeInAMPMFormat(new Date(Date.now() + Number(course.preparationTime)))
+    );
 
     /**
      * Handle the click of clock done/fire button
@@ -29,6 +38,10 @@ const CourseFire = ({ courseName, setShowCourseFireComponent, setShowCourseOptio
 
         setShowCourseOptions(false);
     };
+
+    useEffect(() => {
+        setTime(getTimeInAMPMFormat(new Date(Date.now() + Number(course.preparationTime))));
+    }, [course.preparationTime]);
 
     return (
         <Stack sx={{ width: '100%' }}>

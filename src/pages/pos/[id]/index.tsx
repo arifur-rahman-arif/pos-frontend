@@ -10,12 +10,14 @@ import { Scrollbar } from '@/components/scrollbar';
 import { Box } from '@mui/system';
 import { MHidden } from '@/components/@material-extend';
 import { faker } from '@faker-js/faker';
+import type { PreparationTimeType } from '@/features/cart/courseSlice';
 
 export type ProductListType = {
     id: string;
     name: string;
     price: number;
     image: string;
+    preparationTime: PreparationTimeType;
 };
 
 /**
@@ -100,7 +102,11 @@ export const getServerSideProps = async () => {
             id: faker.database.mongodbObjectId(),
             name: faker.commerce.productName(),
             price: Number(faker.commerce.price(10, 50, 2)),
-            image: faker.image.food(500, 400, true)
+            image: faker.image.food(500, 400, true),
+            preparationTime: {
+                min: Number(faker.commerce.price(1, 59)),
+                hour: Number(faker.commerce.price(1, 5))
+            }
         });
     }
 

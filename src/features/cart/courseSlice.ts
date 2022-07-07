@@ -1,4 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { getHoursInMilliSecond, getMinutesInMilliSecond } from '@/utils/global';
+
+export type PreparationTimeType = {
+    min: number;
+    hour: number;
+};
 
 export type CourseItemType = {
     id: string;
@@ -8,12 +14,14 @@ export type CourseItemType = {
     courseIndex?: number;
     itemNote?: string;
     itemOpen?: boolean;
+    preparationTime: PreparationTimeType;
 };
 
 export type Course = {
     open: boolean;
     name?: string;
     note?: string;
+    preparationTime?: number | undefined;
     items: {
         [key: string]: CourseItemType;
     };
@@ -43,7 +51,7 @@ const courseSlice = createSlice({
             state.courses.splice(action.payload, 1);
         },
         addItem: (state: CourseSliceStateInterface, action: PayloadAction<CourseItemType>): void => {
-            const { id, name, price, quantity, courseIndex } = action.payload;
+            const { id, name, price, quantity, courseIndex, preparationTime } = action.payload;
 
             if (!id || !name || !price || !quantity) return;
 
@@ -58,14 +66,93 @@ const courseSlice = createSlice({
                     name,
                     price,
                     quantity,
-                    courseIndex
+                    courseIndex,
+                    preparationTime
                 };
             }
         },
+        // Increase course timer
+        increaseCourseTimer: (
+            state: CourseSliceStateInterface,
+            action: PayloadAction<{
+                courseIndex: number;
+                preparationTime: PreparationTimeType;
+                quantity?: number;
+            }>
+        ): void => {
+            const { courseIndex, preparationTime, quantity = 1 } = action.payload;
+
+            let totalTime = state.courses[courseIndex].preparationTime || 0;
+
+            if (preparationTime?.min) {
+                totalTime += quantity * getMinutesInMilliSecond(preparationTime.min) || 0;
+            }
+
+            if (preparationTime?.hour) {
+                totalTime += quantity * getHoursInMilliSecond(preparationTime.hour) || 0;
+            }
+
+            state.courses[courseIndex].preparationTime = totalTime;
+        },
+        // Decrease course timer
+        decreaseCourseTimer: (
+            state: CourseSliceStateInterface,
+            action: PayloadAction<{
+                courseIndex: number;
+                preparationTime: PreparationTimeType;
+                quantity?: number;
+            }>
+        ): void => {
+            const { courseIndex, preparationTime, quantity = 1 } = action.payload;
+
+            let totalTime = 0;
+
+            if (preparationTime?.min) {
+                totalTime += quantity * getMinutesInMilliSecond(preparationTime.min) || 0;
+            }
+
+            if (preparationTime?.hour) {
+                totalTime += quantity * getHoursInMilliSecond(preparationTime.hour) || 0;
+            }
+
+            state.courses[courseIndex].preparationTime = // eslint-disable-line
+                (state.courses[courseIndex].preparationTime as number) - totalTime;
+        },
+
+        // Decrease course timer
+        modifyCourseTimer: (
+            state: CourseSliceStateInterface,
+            action: PayloadAction<{
+                courseIndex: number;
+            }>
+        ): void => {
+            const { courseIndex } = action.payload;
+
+            let totalTime = 0;
+
+            const courseItems = state.courses[courseIndex].items;
+
+            // Accumulate the course times preparation time in totalTime variable in milliseconds
+            for (const itemsKey in courseItems) {
+                if (Object.hasOwnProperty.call(courseItems, itemsKey)) {
+                    const item = courseItems[itemsKey];
+
+                    totalTime += item.quantity * getMinutesInMilliSecond(item.preparationTime.min) || 0;
+
+                    totalTime += item.quantity * getHoursInMilliSecond(item.preparationTime.hour) || 0;
+                }
+            }
+
+            state.courses[courseIndex].preparationTime = totalTime;
+        },
+
         // Delete an item from a course
         deleteItem: (
             state: CourseSliceStateInterface,
-            action: PayloadAction<{ courseIndex: number; itemID: string }>
+            action: PayloadAction<{
+                courseIndex: number;
+                itemID: string;
+            }>
         ): void => {
             const { courseIndex, itemID } = action.payload;
 
@@ -205,10 +292,13 @@ export const {
     createNewCourse,
     deleteCourse,
     addItem,
+    increaseCourseTimer,
+    decreaseCourseTimer,
     deleteItem,
     expandCourse,
     increaseItemQuantity,
     decreaseItemQuantity,
+    modifyCourseTimer,
     modifyItemQuantity,
     setItemNote,
     clearItemNote,

@@ -106,7 +106,27 @@ export const getTimeInAMPMFormat = (date: Date): string => {
 
     minutes = minutes < 10 ? '0' + minutes : minutes;
 
-    const strTime = hours + ':' + minutes + ampm;
+    return hours + ':' + minutes + ampm;
+};
 
-    return strTime;
+/**
+ * Return hours into milliseconds format
+ * @param {number} hour
+ * @returns {number}
+ */
+export const getHoursInMilliSecond = (hour: number) => {
+    if (!hour) return 0;
+
+    return hour * 60 * 60 * 1000;
+};
+
+/**
+ * Return minutes into milliseconds format
+ * @param {number} min
+ * @returns {number}
+ */
+export const getMinutesInMilliSecond = (min: number) => {
+    if (!min) return 0;
+
+    return min * 60 * 1000;
 };

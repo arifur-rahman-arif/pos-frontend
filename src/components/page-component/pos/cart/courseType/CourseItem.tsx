@@ -12,9 +12,12 @@ import { trimText } from '@/utils/global';
 import { FiTrash2 } from 'react-icons/fi';
 import {
     CourseItemType,
+    decreaseCourseTimer,
     decreaseItemQuantity,
     deleteItem,
+    increaseCourseTimer,
     increaseItemQuantity,
+    modifyCourseTimer,
     modifyItemQuantity,
     toggleItemExpand
 } from '@/features/cart/courseSlice';
@@ -31,11 +34,14 @@ interface PropInterface {
 
 /**
  * Single course item component for displaying course item
+ * @param {CourseItemType} item
+ * @param {number} courseIndex
+ * @param {number} loopIndex
  * @returns {JSX.Element}
  * @constructor
  */
-const CourseItem = ({ item, courseIndex, loopIndex }: PropInterface) => {
-    const { id, name, price, quantity, itemNote, itemOpen } = item;
+const CourseItem = ({ item, courseIndex, loopIndex }: PropInterface): JSX.Element => {
+    const { id, name, price, quantity, itemNote, itemOpen, preparationTime } = item;
 
     const dispatch = useDispatch();
 
@@ -53,6 +59,14 @@ const CourseItem = ({ item, courseIndex, loopIndex }: PropInterface) => {
     const handleQuantity = (type: 'increase' | 'decrease' | 'edit') => {
         if (type === 'increase') {
             dispatch(increaseItemQuantity({ courseIndex, itemID: id }));
+
+            // Increase course timer reducer
+            dispatch(
+                increaseCourseTimer({
+                    courseIndex,
+                    preparationTime
+                })
+            );
         }
 
         if (type === 'decrease') {
@@ -67,6 +81,14 @@ const CourseItem = ({ item, courseIndex, loopIndex }: PropInterface) => {
             }
 
             dispatch(decreaseItemQuantity({ courseIndex, itemID: id }));
+
+            // Reduce course timer reducer
+            dispatch(
+                decreaseCourseTimer({
+                    courseIndex,
+                    preparationTime
+                })
+            );
         }
     };
 
@@ -80,6 +102,30 @@ const CourseItem = ({ item, courseIndex, loopIndex }: PropInterface) => {
         setEditQuantity(value);
 
         dispatch(modifyItemQuantity({ courseIndex, itemID: id, quantity: value }));
+
+        dispatch(modifyCourseTimer({ courseIndex }));
+    };
+
+    /**
+     * Delete the item from the course
+     */
+    const handleItemDelete = () => {
+        // Delete item reducer
+        dispatch(
+            deleteItem({
+                courseIndex,
+                itemID: id
+            })
+        );
+
+        // Reduce course timer reducer
+        dispatch(
+            decreaseCourseTimer({
+                courseIndex,
+                preparationTime,
+                quantity
+            })
+        );
     };
 
     // @ts-ignore
@@ -212,14 +258,7 @@ const CourseItem = ({ item, courseIndex, loopIndex }: PropInterface) => {
                                             p: 1,
                                             color: (theme) => theme.palette.error.main
                                         }}
-                                        onClick={() =>
-                                            dispatch(
-                                                deleteItem({
-                                                    courseIndex,
-                                                    itemID: id
-                                                })
-                                            )
-                                        }
+                                        onClick={handleItemDelete}
                                     >
                                         <FiTrash2 />
                                     </IconButton>

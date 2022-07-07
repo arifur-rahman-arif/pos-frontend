@@ -1,7 +1,7 @@
 import { Card, CardContent, CardMedia, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import Image from 'next/image';
-import { CourseItemType } from '@/features/cart/courseSlice';
+import type { CourseItemType, PreparationTimeType } from '@/features/cart/courseSlice';
 import styles from './styles/ProductList.module.scss';
 
 interface PropInterface {
@@ -9,6 +9,7 @@ interface PropInterface {
     name: string;
     price: number;
     image: string;
+    preparationTime: PreparationTimeType;
     handleClick: (message: string, itemData: CourseItemType) => void;
 }
 
@@ -23,15 +24,16 @@ export interface SnackbarMessage {
  * @param {string} name
  * @param {number} price
  * @param {string} image
+ * @param {PreparationTimeType} preparationTime
  * @param {Function} handleClick
  * @returns {JSX.Element}
  * @constructor
  */
-const SingleProduct = ({ id, name, price, image, handleClick }: PropInterface) => {
+const SingleProduct = ({ id, name, price, image, preparationTime, handleClick }: PropInterface) => {
     return (
         <Card
             className={styles.singleProduct}
-            onClick={() => handleClick(`${name} added`, { id, name, price, quantity: 1 })}
+            onClick={() => handleClick(`${name} added`, { id, name, price, quantity: 1, preparationTime })}
             sx={{ cursor: 'pointer' }}
         >
             <CardMedia

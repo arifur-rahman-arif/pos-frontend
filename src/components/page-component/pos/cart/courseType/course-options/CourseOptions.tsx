@@ -136,6 +136,7 @@ const CourseOptions = ({ courseIndex, course }: PropInterface) => {
 
             {showCourseFireComponent && (
                 <CourseFire
+                    course={course}
                     courseName={courseName}
                     setShowCourseFireComponent={setShowCourseFireComponent}
                     setShowCourseOptions={setShowCourseOptions}
