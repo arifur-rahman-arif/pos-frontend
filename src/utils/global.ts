@@ -89,6 +89,14 @@ export const SITE_NAME = 'Cloud POS';
 export const acceptedImageTypes = ['image/webp', 'image/jpeg', 'image/jpg', 'image/png', 'image/svg+xml'];
 
 /**
+ * Check if a date is valid or not
+ * @param {string | Date} date
+ * @returns {boolean}
+ */
+export const isValidDate = (date: string | Date): boolean => {
+    return new Date(date).toString() !== 'Invalid Date';
+};
+/**
  * Get the time in 00:00am format
  * @param {Date} date
  * @returns {string}
@@ -133,6 +141,7 @@ export const getMinutesInMilliSecond = (min: number) => {
 
 /**
  * Get the date object from time string
+ * it will parse date from 11.30 am time string pattern
  * @param {string} timeString
  * @returns {Date}
  */
@@ -148,4 +157,30 @@ export const getDateFromTimeString = (timeString: string) => {
     dateTime.setHours(hours, minutes, 0, 0);
 
     return dateTime;
+};
+
+/**
+ * Get the remaining time of a targeted date in 1h:22m:30s format
+ * @param {Date} targetedDateTime
+ * @returns {boolean | string}
+ */
+export const getRemainingTime = (targetedDateTime: Date): string => {
+    if (!isValidDate(targetedDateTime)) return 'invalid date-time';
+
+    targetedDateTime = new Date(targetedDateTime);
+
+    // Get today's date and time
+    const now = new Date().getTime();
+
+    // Find the distance between now and the count-down date
+    const distance = targetedDateTime.getTime() - now;
+
+    if (distance < 0) return '0h:0m:0s';
+
+    // Time calculations for days, hours, minutes and seconds
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    return `${hours}h:${minutes}m:${seconds}s`;
 };

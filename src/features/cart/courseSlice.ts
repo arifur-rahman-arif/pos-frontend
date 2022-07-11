@@ -22,6 +22,7 @@ export type Course = {
     name?: string;
     note?: string;
     preparationTime?: number | undefined;
+    modifiedPreparationDateTime?: string | undefined;
     items: {
         [key: string]: CourseItemType;
     };
@@ -118,8 +119,16 @@ const courseSlice = createSlice({
             state.courses[courseIndex].preparationTime = // eslint-disable-line
                 (state.courses[courseIndex].preparationTime as number) - totalTime;
         },
+        // Change the modifyCourseTimeDate course time & date
+        modifyCourseTimeDate: (
+            state: CourseSliceStateInterface,
+            action: PayloadAction<{ courseIndex: number; modifiedTimeDate: string }>
+        ): void => {
+            const { courseIndex, modifiedTimeDate } = action.payload;
 
-        // Decrease course timer
+            state.courses[courseIndex].modifiedPreparationDateTime = modifiedTimeDate;
+        },
+        // Decrease or Increase the  course timer
         modifyCourseTimer: (
             state: CourseSliceStateInterface,
             action: PayloadAction<{
@@ -298,6 +307,7 @@ export const {
     expandCourse,
     increaseItemQuantity,
     decreaseItemQuantity,
+    modifyCourseTimeDate,
     modifyCourseTimer,
     modifyItemQuantity,
     setItemNote,

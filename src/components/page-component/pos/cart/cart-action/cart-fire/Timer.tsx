@@ -1,38 +1,29 @@
-import dynamic from 'next/dynamic';
-import { Button, Stack } from '@mui/material';
-import { useEffect, useState } from 'react';
-import { getDateFromTimeString, getTimeInAMPMFormat } from '@/utils/global';
-import { Course } from '@/features/cart/courseSlice';
-import { TimeOutput } from 'react-timekeeper';
-import { useDispatch } from 'react-redux';
+import React, { useEffect, useState } from 'react';
 import { handleAlert } from '@/features/alert/alertSlice';
-
-import TextField from '@mui/material/TextField';
-import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+import { useDispatch } from 'react-redux';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { StaticTimePicker } from '@mui/x-date-pickers/StaticTimePicker';
+import { Button, Stack } from '@mui/material';
+import { Course, modifyCourseTimeDate } from '@/features/cart/courseSlice';
 
 interface PropInterface {
     course: Course;
-    courseName: string;
-    setShowCourseFireComponent: (param: boolean) => void;
-    setShowCourseOptions: (param: boolean) => void;
+    courseIndex: number;
+    setDialogueOpen: (value: boolean) => void;
 }
 
-/**
- * Course fire component for the fire action of a course
- * @returns {JSX.Element}
- * @constructor
- */
-const CourseFire = ({
-    course,
-    courseName,
-    setShowCourseFireComponent,
-    setShowCourseOptions
-}: PropInterface) => {
+const Timer = ({ course, courseIndex, setDialogueOpen }: PropInterface) => {
     const dispatch = useDispatch();
 
-    const [time, setTime] = useState<Date>(new Date(Date.now() + Number(course.preparationTime || 0)));
+    const preparationTime = new Date(Date.now() + Number(course.preparationTime || 0));
+
+    const courseTimer = // eslint-disable-line
+        course.modifiedPreparationDateTime
+            ? new Date(course.modifiedPreparationDateTime) // eslint-disable-line
+            : preparationTime;
+
+    const [time, setTime] = useState<Date>(courseTimer);
 
     const [timeValid, setTimeValid] = useState<boolean>(true);
 
@@ -40,26 +31,32 @@ const CourseFire = ({
      * Handle the click of clock done/fire button
      */
     const handleClockFireClick = () => {
-        setShowCourseFireComponent(false);
+        dispatch(
+            modifyCourseTimeDate({
+                courseIndex: courseIndex,
+                modifiedTimeDate: time.toString()
+            })
+        );
 
-        setShowCourseOptions(false);
+        setDialogueOpen(false);
     };
 
     useEffect(() => {
-        setTime(new Date(Date.now() + Number(course.preparationTime || 0)));
+        setTime(courseTimer);
     }, [course]);
 
     /**
      * Handle the clock time change event
-     * @param {TimeOutput} newTime
+     * @param {Date | null} newTime
      */
     const onTimeChange = (newTime: Date | null) => {
         try {
-            const changedDateTime = newTime?.getTime() as number;
+            const changedDateTime = new Date(newTime as Date)?.getTime() as number;
 
-            const preparationDateTime = time?.getTime() as number;
+            const preparationDateTime = preparationTime.getTime() as number;
 
-            if (changedDateTime < preparationDateTime) {
+            // If changedDateTime is less than preparationDateTime than its invalid time
+            if (changedDateTime - preparationDateTime < 0) {
                 setTimeValid(false);
 
                 throw new Error("Preparation time can't be less than total item preparation time");
@@ -79,10 +76,12 @@ const CourseFire = ({
      */
     const onResetHandleClick = () => {
         setTime(new Date(Date.now() + Number(course.preparationTime || 0)));
+
+        setTimeValid(true);
     };
 
     return (
-        <Stack sx={{ width: '100%' }}>
+        <Stack sx={{ width: '100%', px: 3 }}>
             <LocalizationProvider
                 dateAdapter={AdapterDateFns}
                 sx={{
@@ -125,19 +124,19 @@ const CourseFire = ({
                         cursor: timeValid ? 'pointer' : 'not-allowed'
                     }}
                 >
-                    {timeValid ? `Fire ${courseName}` : 'Invalid time'}
+                    {timeValid ? `Save Time` : 'Invalid time'}
                 </Button>
 
                 <Button variant="outlined" size="small" onClick={onResetHandleClick}>
                     Reset
                 </Button>
 
-                <Button variant="outlined" size="small" onClick={() => setShowCourseFireComponent(false)}>
-                    Cancel
+                <Button variant="outlined" size="small" onClick={() => setDialogueOpen(false)}>
+                    Back
                 </Button>
             </div>
         </Stack>
     );
 };
 
-export default CourseFire;
+export default Timer;

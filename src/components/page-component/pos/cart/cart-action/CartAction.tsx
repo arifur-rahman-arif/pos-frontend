@@ -2,8 +2,12 @@ import { Button, Stack } from '@mui/material';
 import { AiFillPrinter } from 'react-icons/ai';
 import { TooltipWrapper } from '@/components/page-component';
 import { MdOutlineFrontHand } from 'react-icons/md';
-import { GiCampCookingPot } from 'react-icons/gi';
 import { Box } from '@mui/system';
+import CartFire from './cart-fire/CartFire';
+import { useSelector } from 'react-redux';
+import { AppState } from '@/app/store';
+import { CartStateInterface } from '@/features/cart/cartSlice';
+import { CourseSliceStateInterface } from '@/features/cart/courseSlice';
 
 /**
  * Cart action component for handling the cart
@@ -11,6 +15,10 @@ import { Box } from '@mui/system';
  * @constructor
  */
 const CartAction = () => {
+    const { cartType } = useSelector((state: AppState) => state.cartSlice as CartStateInterface);
+
+    const { courses } = useSelector((state: AppState) => state.courseSlice as CourseSliceStateInterface);
+
     return (
         <Stack
             direction="row"
@@ -35,20 +43,7 @@ const CartAction = () => {
                 </Button>
             </TooltipWrapper>
 
-            <TooltipWrapper title="Send the order to kitchen" placement="top">
-                <Button
-                    variant="contained"
-                    sx={{
-                        fontSize: '1.7rem',
-                        p: 2,
-                        width: 65,
-                        height: 48,
-                        borderRadius: '15px'
-                    }}
-                >
-                    <GiCampCookingPot />
-                </Button>
-            </TooltipWrapper>
+            {cartType === 'course' && courses.length > 0 && <CartFire />}
 
             <Box
                 sx={{

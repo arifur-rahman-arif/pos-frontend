@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { AppState } from '@/app/store';
 import { CartStateInterface } from '@/features/cart/cartSlice';
 import { NormalCartStateInterface } from '@/features/cart/normalSlice';
-import CartItem from 'src/components/page-component/pos/cart/normalType/CartItem';
+import CartItem from 'src/components/page-component/pos/cart/normal-type/CartItem';
 
 /**
  * Normal cart component

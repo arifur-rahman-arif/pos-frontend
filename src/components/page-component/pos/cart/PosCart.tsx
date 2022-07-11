@@ -3,14 +3,14 @@ import { styled } from '@mui/material/styles';
 import { MHidden } from '@/components/@material-extend';
 import { Drawer } from '@mui/material';
 import CartHeader from './CartHeader';
-import CourseSection from './courseType/CourseSection';
+import CourseSection from './course-type/CourseSection';
 import FeeSection from './FeeSection';
-import CartAction from './CartAction';
+import CartAction from 'src/components/page-component/pos/cart/cart-action/CartAction';
 import PayButton from './PayButton';
 import { useSelector } from 'react-redux';
 import { CartStateInterface } from '@/features/cart/cartSlice';
 import { AppState } from '@/app/store';
-import CartSection from './normalType/CartSection';
+import CartSection from './normal-type/CartSection';
 
 const RootStyle = styled('div')(({ theme }) => ({
     minHeight: '100%',
