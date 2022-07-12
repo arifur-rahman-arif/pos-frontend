@@ -3,6 +3,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 export interface PosNavStateInterface {
     homePageActive: boolean;
     ordersPageActive: boolean;
+    kitchenPageActive: boolean;
     reportsPageActive: boolean;
     tablesPageActive: boolean;
 }
@@ -10,6 +11,7 @@ export interface PosNavStateInterface {
 const initialState: PosNavStateInterface = {
     homePageActive: true,
     ordersPageActive: false,
+    kitchenPageActive: false,
     reportsPageActive: false,
     tablesPageActive: false
 };
@@ -17,6 +19,7 @@ const initialState: PosNavStateInterface = {
 export type NavStateAcceptedPayload =
     | 'homePageActive'
     | 'ordersPageActive'
+    | 'kitchenPageActive'
     | 'reportsPageActive'
     | 'tablesPageActive';
 

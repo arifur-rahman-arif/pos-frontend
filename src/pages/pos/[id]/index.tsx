@@ -62,7 +62,8 @@ const PosPage: NextPage = (props: any) => {
                             sx={{
                                 '& .simplebar-content': {
                                     display: 'flex',
-                                    flexDirection: 'column'
+                                    flexDirection: 'column',
+                                    maxHeight: 'calc(100vh - 340px)'
                                 },
                                 px: 2,
                                 pb: 3

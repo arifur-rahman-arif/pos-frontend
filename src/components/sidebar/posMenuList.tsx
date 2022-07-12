@@ -1,6 +1,7 @@
 import { AiOutlineHome, AiOutlineTable } from 'react-icons/ai';
 import { MdOutlineReceiptLong } from 'react-icons/md';
 import { FiPieChart } from 'react-icons/fi';
+import { ImFire } from 'react-icons/im';
 
 const posMenuList = [
     {
@@ -14,6 +15,12 @@ const posMenuList = [
         path: '/pos/random-id/orders',
         linkSlug: 'ordersPageActive',
         icon: <MdOutlineReceiptLong />
+    },
+    {
+        title: 'Kitchen',
+        path: '/pos/random-id/kitchen',
+        linkSlug: 'kitchenPageActive',
+        icon: <ImFire />
     },
     {
         title: 'Reports',

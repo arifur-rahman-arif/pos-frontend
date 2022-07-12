@@ -83,7 +83,7 @@ const PosSidebar = () => {
 
                     <Box
                         sx={{
-                            maxHeight: '450px'
+                            maxHeight: '520px'
                         }}
                         alignSelf="stretch"
                     >
