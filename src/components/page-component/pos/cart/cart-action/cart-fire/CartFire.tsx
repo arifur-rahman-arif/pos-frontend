@@ -1,12 +1,18 @@
 import { useState } from 'react';
 import { TooltipWrapper } from '@/components/page-component';
-import { Button, Dialog, DialogActions, DialogContentText, DialogProps, DialogTitle } from '@mui/material';
+import { Button, Dialog, DialogActions, DialogProps, DialogTitle } from '@mui/material';
 import { ImFire } from 'react-icons/im';
 import { useSelector } from 'react-redux';
 import { AppState } from '@/app/store';
 import { CourseSliceStateInterface } from '@/features/cart/courseSlice';
 import Course from './Course';
+import { Box } from '@mui/system';
 
+/**
+ * Cart fire component for firing the whole cart at once
+ * @returns {JSX.Element}
+ * @constructor
+ */
 const CartFire = () => {
     const [dialogueOpen, setDialogueOpen] = useState<boolean>(false);
 
@@ -41,7 +47,7 @@ const CartFire = () => {
             >
                 <DialogTitle sx={{ p: 2.5 }}>Fire order</DialogTitle>
 
-                <DialogContentText
+                <Box
                     sx={{
                         px: 2.5,
                         pt: 0,
@@ -56,7 +62,7 @@ const CartFire = () => {
                         courses.map((course, index) => (
                             <Course key={index} course={course} courseIndex={index} />
                         ))}
-                </DialogContentText>
+                </Box>
 
                 <DialogActions sx={{ p: 2.5, gap: 1 }}>
                     <Button variant="contained" size="small">

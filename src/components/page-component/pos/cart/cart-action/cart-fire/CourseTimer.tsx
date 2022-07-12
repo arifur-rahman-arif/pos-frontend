@@ -1,14 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {
-    Button,
-    Dialog,
-    DialogActions,
-    DialogContentText,
-    DialogTitle,
-    IconButton,
-    Stack,
-    Typography
-} from '@mui/material';
+import { Dialog, DialogTitle, IconButton, Stack, Typography } from '@mui/material';
 import { BiTimeFive } from 'react-icons/bi';
 import { getTimeInAMPMFormat } from '@/utils/global';
 import { Course } from '@/features/cart/courseSlice';
@@ -19,6 +10,13 @@ interface PropInterface {
     courseIndex: number;
 }
 
+/**
+ * Course component that shows the course fire timer
+ * @param {Course} course
+ * @param {number} courseIndex
+ * @returns {JSX.Element}
+ * @constructor
+ */
 const CourseTimer = ({ course, courseIndex }: PropInterface) => {
     const preparationTime = new Date(Date.now() + Number(course.preparationTime || 0));
 
@@ -31,9 +29,20 @@ const CourseTimer = ({ course, courseIndex }: PropInterface) => {
 
     const [timer, setTimer] = useState<Date>(courseTimer);
 
+    // Update the course timer in every second when course data is updated
     useEffect(() => {
-        setTimer(courseTimer);
-    }, [course]);
+        const myInterval = setInterval(() => {
+            setTimer(
+                course.modifiedPreparationDateTime
+                    ? new Date(course.modifiedPreparationDateTime) // eslint-disable-line
+                    : new Date(Date.now() + Number(course.preparationTime || 0))
+            );
+        }, 1000);
+
+        return () => {
+            clearInterval(myInterval);
+        };
+    }, [course, timer]);
 
     return (
         <>
@@ -77,7 +86,7 @@ const CourseTimer = ({ course, courseIndex }: PropInterface) => {
             >
                 <DialogTitle sx={{ p: 2.5 }}>{course.name || `Course ${courseIndex + 1}`}</DialogTitle>
 
-                <DialogContentText
+                <Stack
                     sx={{
                         px: 2.5,
                         pt: 0,
@@ -85,7 +94,7 @@ const CourseTimer = ({ course, courseIndex }: PropInterface) => {
                     }}
                 >
                     <Timer course={course} courseIndex={courseIndex} setDialogueOpen={setDialogueOpen} />
-                </DialogContentText>
+                </Stack>
             </Dialog>
         </>
     );

@@ -65,7 +65,9 @@ const CourseFire = ({
      */
     const onTimeChange = (newTime: Date | null) => {
         try {
-            console.log(newTime);
+            if ((newTime as Date)?.getHours() < 12) {
+                (newTime as Date).setDate((newTime as Date).getDate() + 1);
+            }
 
             const changedDateTime = new Date(newTime as Date)?.getTime() as number;
 
@@ -82,7 +84,6 @@ const CourseFire = ({
 
             setTime(newTime as Date);
         } catch (error: any) {
-            console.error(error);
             dispatch(handleAlert({ showAlert: true, alertMessage: error.message, alertType: 'error' }));
         }
     };
@@ -96,15 +97,31 @@ const CourseFire = ({
         setTimeValid(true);
     };
 
+    // Set the remaining timer
     useEffect(() => {
         const myInterval = setInterval(() => {
-            setRemainingTime(getRemainingTime(time));
-        }, 100);
+            if (timeValid) {
+                setRemainingTime(
+                    getRemainingTime(
+                        course.modifiedPreparationDateTime
+                            ? new Date(course.modifiedPreparationDateTime) // eslint-disable-line
+                            : time
+                    )
+                );
+            } else {
+                setRemainingTime('0h:0m:0s');
+            }
+        }, 1000);
 
         return () => {
             clearInterval(myInterval);
         };
-    }, [course, time]);
+    }, [course, time, timeValid]);
+
+    // Set the clock timer
+    useEffect(() => {
+        setTime(courseTimer as Date);
+    }, [course]);
 
     return (
         <Stack sx={{ width: '100%' }}>
@@ -132,6 +149,7 @@ const CourseFire = ({
                     fontSize: '16px',
                     display: 'flex',
                     justifyContent: 'center',
+                    flexDirection: 'column',
                     alignItems: 'center',
                     gap: '1rem',
                     flexWrap: 'wrap',
@@ -151,27 +169,38 @@ const CourseFire = ({
                     {remainingTime}
                 </Typography>
 
-                <Button
-                    variant="outlined"
-                    color={timeValid ? 'primary' : 'error'}
-                    size="small"
-                    onClick={() => {
-                        timeValid ? handleClockFireClick() : '';
-                    }}
-                    sx={{
-                        cursor: timeValid ? 'pointer' : 'not-allowed'
+                <div
+                    style={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        flexDirection: 'row',
+                        alignItems: 'center',
+                        gap: '1rem',
+                        flexWrap: 'wrap'
                     }}
                 >
-                    {timeValid ? `Fire ${courseName}` : 'Invalid time'}
-                </Button>
+                    <Button
+                        variant="outlined"
+                        color={timeValid ? 'primary' : 'error'}
+                        size="small"
+                        onClick={() => {
+                            timeValid ? handleClockFireClick() : '';
+                        }}
+                        sx={{
+                            cursor: timeValid ? 'pointer' : 'not-allowed'
+                        }}
+                    >
+                        {timeValid ? `Fire ${courseName}` : 'Invalid time'}
+                    </Button>
 
-                <Button variant="outlined" size="small" onClick={onResetHandleClick}>
-                    Reset
-                </Button>
+                    <Button variant="outlined" size="small" onClick={onResetHandleClick}>
+                        Reset
+                    </Button>
 
-                <Button variant="outlined" size="small" onClick={() => setShowCourseFireComponent(false)}>
-                    Back
-                </Button>
+                    <Button variant="outlined" size="small" onClick={() => setShowCourseFireComponent(false)}>
+                        Back
+                    </Button>
+                </div>
             </div>
         </Stack>
     );

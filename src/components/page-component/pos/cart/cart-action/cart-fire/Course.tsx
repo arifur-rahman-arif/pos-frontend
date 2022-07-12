@@ -1,7 +1,5 @@
 import { Course } from '@/features/cart/courseSlice';
-import { Card, CardContent, IconButton, Stack, Typography } from '@mui/material';
-import { BiTimeFive, BiTimer } from 'react-icons/bi';
-import { getTimeInAMPMFormat } from '@/utils/global';
+import { Card, CardContent, Stack, Typography } from '@mui/material';
 import CourseTimer from '@/components/page-component/pos/cart/cart-action/cart-fire/CourseTimer';
 
 interface PropInterface {
@@ -9,6 +7,13 @@ interface PropInterface {
     courseIndex: number;
 }
 
+/**
+ * Course component of the Fire action user flow
+ * @param {Course} course
+ * @param {number} courseIndex
+ * @returns {JSX.Element}
+ * @constructor
+ */
 const Course = ({ course, courseIndex }: PropInterface) => {
     return (
         <Card
